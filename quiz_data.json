@@ -1,148 +1,251 @@
 {
   "categorias": [
     {
-      "id": "python",
-      "nombre": "🐍 Programación Python",
+      "id": "programacion",
+      "nombre": "💻 Programación Python",
       "preguntas": [
-        {
-          "id": "py_1",
-          "pregunta": "¿Qué tipo de dato devuelve la función len() en Python?",
-          "opciones": ["Entero (int)", "Texto (str)", "Flotante (float)", "Booleano (bool)"],
-          "respuesta_correcta": "Entero (int)"
-        },
-        {
-          "id": "py_2",
-          "pregunta": "¿Cuál de las siguientes estructuras de datos es INMUTABLE?",
-          "opciones": ["Tupla (tuple)", "Lista (list)", "Diccionario (dict)", "Conjunto (set)"],
-          "respuesta_correcta": "Tupla (tuple)"
-        },
-        {
-          "id": "py_3",
-          "pregunta": "¿Qué palabra clave se utiliza para definir una función en Python?",
-          "opciones": ["def", "function", "func", "define"],
-          "respuesta_correcta": "def"
-        },
-        {
-          "id": "py_4",
-          "pregunta": "¿Cuál es el resultado de evaluar 3 ** 2 en Python?",
-          "opciones": ["9", "6", "5", "8"],
-          "respuesta_correcta": "9"
-        }
+        {"id": 101, "tipo": "multiple", "pregunta": "¿Qué palabra clave se usa para definir una función en Python?", "opciones": ["func", "def", "function", "define"], "respuesta_correcta": "def", "imagen": null},
+        {"id": 102, "tipo": "vf", "pregunta": "¿Python es un lenguaje compilado nativamente?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Falso", "imagen": null},
+        {"id": 103, "tipo": "multiple", "pregunta": "¿Cuál de las siguientes es una estructura de datos inmutable?", "opciones": ["Lista", "Diccionario", "Tupla", "Set"], "respuesta_correcta": "Tupla", "imagen": null},
+        {"id": 104, "tipo": "vf", "pregunta": "¿El operador '==' compara la identidad de memoria de dos objetos?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Falso", "imagen": null},
+        {"id": 105, "tipo": "multiple", "pregunta": "¿Qué método se utiliza para agregar un elemento al final de una lista?", "opciones": ["add()", "push()", "insert()", "append()"], "respuesta_correcta": "append()", "imagen": null},
+        {"id": 106, "tipo": "multiple", "pregunta": "¿Cómo se inicia un bloque de comentario de una sola línea en Python?", "opciones": ["//", "/*", "#", "--"], "respuesta_correcta": "#", "imagen": null},
+        {"id": 107, "tipo": "multiple", "pregunta": "¿Qué tipo de dato representa un valor verdadero o falso en Python?", "opciones": ["int", "bool", "str", "float"], "respuesta_correcta": "bool", "imagen": null},
+        {"id": 108, "tipo": "vf", "pregunta": "¿Los índices de las listas en Python comienzan en 1?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Falso", "imagen": null},
+        {"id": 109, "tipo": "multiple", "pregunta": "¿Qué función se usa para conocer la longitud de una lista?", "opciones": ["size()", "length()", "len()", "count()"], "respuesta_correcta": "len()", "imagen": null},
+        {"id": 110, "tipo": "multiple", "pregunta": "¿Cuál de estas es una forma correcta de crear un diccionario vacío?", "opciones": ["dict()", "[]", "()", "set()"], "respuesta_correcta": "dict()", "imagen": null},
+        {"id": 111, "tipo": "vf", "pregunta": "¿En Python, las cadenas de texto (strings) son mutables?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Falso", "imagen": null},
+        {"id": 112, "tipo": "multiple", "pregunta": "¿Qué palabra clave se utiliza para manejar excepciones en Python?", "opciones": ["catch", "except", "rescue", "handle"], "respuesta_correcta": "except", "imagen": null},
+        {"id": 113, "tipo": "multiple", "pregunta": "¿Qué símbolo se usa para el operador de módulo (resto de una división)?", "opciones": ["%", "//", "**", "&"], "respuesta_correcta": "%", "imagen": null},
+        {"id": 114, "tipo": "multiple", "pregunta": "¿Cuál de estas librerías se utiliza comúnmente para análisis de datos?", "opciones": ["pandas", "tkinter", "flask", "json"], "respuesta_correcta": "pandas", "imagen": null},
+        {"id": 115, "tipo": "vf", "pregunta": "¿'for' y 'while' son ambos tipos de bucles en Python?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 116, "tipo": "multiple", "pregunta": "¿Qué método convierte todas las letras de un string a mayúsculas?", "opciones": ["upper()", "capitalize()", "toUpper()", "mayus()"], "respuesta_correcta": "upper()", "imagen": null},
+        {"id": 117, "tipo": "multiple", "pregunta": "¿Cómo se llama la convención de nombres que usa guiones bajos, como 'mi_variable'?", "opciones": ["camelCase", "snake_case", "PascalCase", "kebab-case"], "respuesta_correcta": "snake_case", "imagen": null},
+        {"id": 118, "tipo": "vf", "pregunta": "¿Se puede usar 'pip' para instalar paquetes externos en Python?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 119, "tipo": "vf", "pregunta": "¿Python distingue entre mayúsculas y minúsculas en los nombres de variables?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 120, "tipo": "multiple", "pregunta": "¿Qué extensión de archivo usan los scripts de Python?", "opciones": [".py", ".java", ".js", ".txt"], "respuesta_correcta": ".py", "imagen": null}
       ]
     },
     {
       "id": "geografia",
-      "nombre": "🌍 Geografía Mundial",
+      "nombre": "🗺️ Geografía Visual",
       "preguntas": [
-        {
-          "id": "geo_1",
-          "pregunta": "¿Cuál es la capital de Australia?",
-          "opciones": ["Camberra", "Sídney", "Melbourne", "Brisbane"],
-          "respuesta_correcta": "Camberra"
-        },
-        {
-          "id": "geo_2",
-          "pregunta": "¿Cuál es el río más largo del mundo?",
-          "opciones": ["Amazonas", "Nilo", "Misisipi", "Yangtsé"],
-          "respuesta_correcta": "Amazonas"
-        },
-        {
-          "id": "geo_3",
-          "pregunta": "¿A qué país pertenece la siguiente bandera?",
-          "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/800px-Flag_of_Argentina.svg.png",
-          "opciones": ["Argentina", "Uruguay", "Guatemala", "Grecia"],
-          "respuesta_correcta": "Argentina"
-        },
-        {
-          "id": "geo_4",
-          "pregunta": "¿En qué continente se encuentra el desierto del Sahara?",
-          "opciones": ["África", "Asia", "Oceanía", "América"],
-          "respuesta_correcta": "África"
-        }
-      ]
-    },
-    {
-      "id": "ciencia",
-      "nombre": "🧪 Ciencia y Naturaleza",
-      "preguntas": [
-        {
-          "id": "cie_1",
-          "pregunta": "¿Cuál es el elemento químico más abundante en el universo?",
-          "opciones": ["Hidrógeno", "Helio", "Oxígeno", "Carbono"],
-          "respuesta_correcta": "Hidrógeno"
-        },
-        {
-          "id": "cie_2",
-          "pregunta": "¿Cuál es el planeta más grande del sistema solar?",
-          "opciones": ["Júpiter", "Saturno", "Neptuno", "Tierra"],
-          "respuesta_correcta": "Júpiter"
-        },
-        {
-          "id": "cie_3",
-          "pregunta": "¿Qué órgano del cuerpo humano consume más energía?",
-          "opciones": ["Cerebro", "Corazón", "Hígado", "Músculos"],
-          "respuesta_correcta": "Cerebro"
-        }
+        {"id": 201, "tipo": "multiple", "pregunta": "¿A qué país pertenece esta bandera?", "opciones": ["Argentina", "Uruguay", "Grecia", "Finlandia"], "respuesta_correcta": "Argentina", "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/800px-Flag_of_Argentina.svg.png"},
+        {"id": 202, "tipo": "multiple", "pregunta": "¿Cuál es la capital del país mostrado en la bandera?", "opciones": ["Córdoba", "Buenos Aires", "Rosario", "Mendoza"], "respuesta_correcta": "Buenos Aires", "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/800px-Flag_of_Argentina.svg.png"},
+        {"id": 203, "tipo": "multiple", "pregunta": "¿En qué continente se encuentra ubicado el monte Kilimanjaro?", "opciones": ["Asia", "África", "América", "Europa"], "respuesta_correcta": "África", "imagen": null},
+        {"id": 204, "tipo": "multiple", "pregunta": "¿Cuál es el río más largo y caudaloso del mundo?", "opciones": ["Nilo", "Misisipi", "Amazonas", "Yangtsé"], "respuesta_correcta": "Amazonas", "imagen": null},
+        {"id": 205, "tipo": "vf", "pregunta": "¿Australia es tanto un país como un continente?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 206, "tipo": "multiple", "pregunta": "¿Qué idioma oficial se habla en el país de esta bandera?", "opciones": ["Portugués", "Español", "Inglés", "Francés"], "respuesta_correcta": "Español", "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/800px-Flag_of_Argentina.svg.png"},
+        {"id": 207, "tipo": "multiple", "pregunta": "¿Cuál es el desierto más grande del mundo (sin contar la Antártida)?", "opciones": ["Gobi", "Sahara", "Atacama", "Kalahari"], "respuesta_correcta": "Sahara", "imagen": null},
+        {"id": 208, "tipo": "vf", "pregunta": "¿Rusia es el país con mayor superficie territorial del mundo?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 209, "tipo": "multiple", "pregunta": "¿Cuál es el punto más alto del planeta Tierra?", "opciones": ["Monte Kilimanjaro", "Monte Everest", "Aconcagua", "K2"], "respuesta_correcta": "Monte Everest", "imagen": null},
+        {"id": 210, "tipo": "multiple", "pregunta": "¿En qué continente se encuentra Egipto?", "opciones": ["Asia", "África", "Europa", "Oceanía"], "respuesta_correcta": "África", "imagen": null},
+        {"id": 211, "tipo": "vf", "pregunta": "¿El océano Pacífico es el más grande del mundo?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 212, "tipo": "multiple", "pregunta": "¿Cuál es la capital de Japón?", "opciones": ["Seúl", "Pekín", "Tokio", "Bangkok"], "respuesta_correcta": "Tokio", "imagen": null},
+        {"id": 213, "tipo": "multiple", "pregunta": "¿Qué país tiene forma de bota en el mapa?", "opciones": ["España", "Italia", "Grecia", "Portugal"], "respuesta_correcta": "Italia", "imagen": null},
+        {"id": 214, "tipo": "vf", "pregunta": "¿Groenlandia pertenece a Dinamarca?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 215, "tipo": "multiple", "pregunta": "¿Cuál es el país más poblado del mundo actualmente?", "opciones": ["China", "Estados Unidos", "India", "Indonesia"], "respuesta_correcta": "India", "imagen": null},
+        {"id": 216, "tipo": "multiple", "pregunta": "¿Qué cordillera recorre gran parte de América del Sur?", "opciones": ["Los Alpes", "Los Andes", "El Himalaya", "Las Rocosas"], "respuesta_correcta": "Los Andes", "imagen": null},
+        {"id": 217, "tipo": "vf", "pregunta": "¿El río Nilo se encuentra en África?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 218, "tipo": "multiple", "pregunta": "¿Cuáles son los colores de esta bandera?", "opciones": ["Celeste y blanco", "Verde y amarillo", "Rojo y blanco", "Azul y rojo"], "respuesta_correcta": "Celeste y blanco", "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/800px-Flag_of_Argentina.svg.png"},
+        {"id": 219, "tipo": "multiple", "pregunta": "¿Cuál es el país más pequeño del mundo?", "opciones": ["Mónaco", "Vaticano", "San Marino", "Liechtenstein"], "respuesta_correcta": "Vaticano", "imagen": null},
+        {"id": 220, "tipo": "vf", "pregunta": "¿El ecuador terrestre divide a la Tierra en hemisferio norte y hemisferio sur?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null}
       ]
     },
     {
       "id": "historia",
-      "nombre": "📜 Historia Universal",
+      "nombre": "🏛️ Historia Universal",
       "preguntas": [
-        {
-          "id": "his_1",
-          "pregunta": "¿En qué año llegó Cristóbal Colón a América?",
-          "opciones": ["1492", "1498", "1500", "1485"],
-          "respuesta_correcta": "1492"
-        },
-        {
-          "id": "his_2",
-          "pregunta": "¿Quién fue el primer presidente de los Estados Unidos?",
-          "opciones": ["George Washington", "Thomas Jefferson", "Abraham Lincoln", "John Adams"],
-          "respuesta_correcta": "George Washington"
-        },
-        {
-          "id": "his_3",
-          "pregunta": "¿En qué año finalizó la Segunda Guerra Mundial?",
-          "opciones": ["1945", "1939", "1950", "1918"],
-          "respuesta_correcta": "1945"
-        }
+        {"id": 301, "tipo": "multiple", "pregunta": "¿En qué año comenzó la Segunda Guerra Mundial?", "opciones": ["1914", "1939", "1945", "1929"], "respuesta_correcta": "1939", "imagen": null},
+        {"id": 302, "tipo": "multiple", "pregunta": "¿Qué gran civilización construyó las pirámides de Guiza?", "opciones": ["Imperio Romano", "Antiguo Egipto", "Mesopotamia", "Imperio Inca"], "respuesta_correcta": "Antiguo Egipto", "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/All_Gizah_Pyramids.jpg/800px-All_Gizah_Pyramids.jpg"},
+        {"id": 303, "tipo": "vf", "pregunta": "¿Julio César fue el primer emperador oficial del Imperio Romano?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Falso", "imagen": null},
+        {"id": 304, "tipo": "multiple", "pregunta": "¿En qué año llegó Cristóbal Colón a América?", "opciones": ["1492", "1500", "1488", "1512"], "respuesta_correcta": "1492", "imagen": null},
+        {"id": 305, "tipo": "multiple", "pregunta": "¿A qué cultura pertenece este monumento histórico conocido como el Coliseo?", "opciones": ["Griega", "Romana", "Egipto", "Fenicia"], "respuesta_correcta": "Romana", "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/800px-Colosseo_2020.jpg"},
+        {"id": 306, "tipo": "multiple", "pregunta": "¿En qué ciudad actual se encuentra este monumento?", "opciones": ["Atenas", "Roma", "París", "Madrid"], "respuesta_correcta": "Roma", "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/800px-Colosseo_2020.jpg"},
+        {"id": 307, "tipo": "multiple", "pregunta": "¿Qué muro dividió la ciudad de Berlín durante la Guerra Fría?", "opciones": ["Muro de Adriano", "Muro de Berlín", "Gran Muralla", "Muro de las Lamentaciones"], "respuesta_correcta": "Muro de Berlín", "imagen": null},
+        {"id": 308, "tipo": "vf", "pregunta": "¿La Revolución Francesa comenzó en 1789?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 309, "tipo": "multiple", "pregunta": "¿Quién fue el primer hombre en pisar la Luna?", "opciones": ["Buzz Aldrin", "Neil Armstrong", "Yuri Gagarin", "John Glenn"], "respuesta_correcta": "Neil Armstrong", "imagen": null},
+        {"id": 310, "tipo": "multiple", "pregunta": "¿En qué año finalizó la Segunda Guerra Mundial?", "opciones": ["1943", "1945", "1950", "1939"], "respuesta_correcta": "1945", "imagen": null},
+        {"id": 311, "tipo": "vf", "pregunta": "¿Los vikingos eran originarios de Escandinavia?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 312, "tipo": "multiple", "pregunta": "¿Qué imperio construyó Machu Picchu?", "opciones": ["Imperio Azteca", "Imperio Inca", "Imperio Maya", "Imperio Romano"], "respuesta_correcta": "Imperio Inca", "imagen": null},
+        {"id": 313, "tipo": "multiple", "pregunta": "¿Qué país fue gobernado por los faraones en la antigüedad?", "opciones": ["Egipto", "Grecia", "Turquía", "Irán"], "respuesta_correcta": "Egipto", "imagen": null},
+        {"id": 314, "tipo": "vf", "pregunta": "¿La Gran Muralla China fue construida para defenderse de invasiones?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 315, "tipo": "multiple", "pregunta": "¿En qué siglo tuvo lugar el Renacimiento?", "opciones": ["Siglo X", "Siglo XV", "Siglo XX", "Siglo VIII"], "respuesta_correcta": "Siglo XV", "imagen": null},
+        {"id": 316, "tipo": "multiple", "pregunta": "¿Quién lideró el movimiento de independencia de la India de forma pacífica?", "opciones": ["Nelson Mandela", "Mahatma Gandhi", "Winston Churchill", "Che Guevara"], "respuesta_correcta": "Mahatma Gandhi", "imagen": null},
+        {"id": 317, "tipo": "vf", "pregunta": "¿La ciudad de Pompeya quedó sepultada por la erupción del volcán Vesubio?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 318, "tipo": "multiple", "pregunta": "¿Aproximadamente cuántos años de antigüedad tienen estas construcciones?", "opciones": ["Más de 4000 años", "Menos de 500 años", "Alrededor de 1000 años", "Menos de 100 años"], "respuesta_correcta": "Más de 4000 años", "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/All_Gizah_Pyramids.jpg/800px-All_Gizah_Pyramids.jpg"},
+        {"id": 319, "tipo": "multiple", "pregunta": "¿Qué explorador portugués llegó por primera vez a la India por vía marítima?", "opciones": ["Cristóbal Colón", "Vasco da Gama", "Fernando de Magallanes", "Américo Vespucio"], "respuesta_correcta": "Vasco da Gama", "imagen": null},
+        {"id": 320, "tipo": "vf", "pregunta": "¿La Declaración de Independencia de Estados Unidos se firmó en 1776?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null}
+      ]
+    },
+    {
+      "id": "ciencia",
+      "nombre": "🔬 Ciencia y Universo",
+      "preguntas": [
+        {"id": 401, "tipo": "multiple", "pregunta": "¿Cuál es el elemento químico más abundante en el universo?", "opciones": ["Oxígeno", "Helio", "Hidrógeno", "Carbono"], "respuesta_correcta": "Hidrógeno", "imagen": null},
+        {"id": 402, "tipo": "vf", "pregunta": "¿La luz viaja más rápido en el agua que en el vacío?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Falso", "imagen": null},
+        {"id": 403, "tipo": "multiple", "pregunta": "¿Qué planeta del sistema solar es conocido como el 'Planeta Rojo'?", "opciones": ["Venus", "Marte", "Júpiter", "Saturno"], "respuesta_correcta": "Marte", "imagen": null},
+        {"id": 404, "tipo": "multiple", "pregunta": "¿Qué nombre recibe el proceso por el cual las plantas convierten la luz solar en energía?", "opciones": ["Respiración", "Fotosíntesis", "Mitosis", "Fermentación"], "respuesta_correcta": "Fotosíntesis", "imagen": null},
+        {"id": 405, "tipo": "vf", "pregunta": "¿El ADN contiene toda la información genética de los seres vivos?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 406, "tipo": "multiple", "pregunta": "¿Cuántos huesos tiene aproximadamente el cuerpo humano adulto?", "opciones": ["106", "206", "306", "406"], "respuesta_correcta": "206", "imagen": null},
+        {"id": 407, "tipo": "vf", "pregunta": "¿El corazón humano tiene cuatro cámaras?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 408, "tipo": "multiple", "pregunta": "¿Cuál es el planeta más grande del sistema solar?", "opciones": ["Saturno", "Júpiter", "Neptuno", "Urano"], "respuesta_correcta": "Júpiter", "imagen": null},
+        {"id": 409, "tipo": "multiple", "pregunta": "¿Qué gas necesitan los seres humanos para respirar?", "opciones": ["Dióxido de carbono", "Nitrógeno", "Oxígeno", "Hidrógeno"], "respuesta_correcta": "Oxígeno", "imagen": null},
+        {"id": 410, "tipo": "vf", "pregunta": "¿El sonido viaja más rápido en el aire que en el agua?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Falso", "imagen": null},
+        {"id": 411, "tipo": "multiple", "pregunta": "¿Qué órgano del cuerpo humano se encarga de filtrar la sangre?", "opciones": ["Riñones", "Pulmones", "Hígado", "Estómago"], "respuesta_correcta": "Riñones", "imagen": null},
+        {"id": 412, "tipo": "multiple", "pregunta": "¿Cuál es la unidad básica de la vida?", "opciones": ["El átomo", "La célula", "La molécula", "El tejido"], "respuesta_correcta": "La célula", "imagen": null},
+        {"id": 413, "tipo": "vf", "pregunta": "¿Los seres humanos comparten aproximadamente el 98% de su ADN con los chimpancés?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 414, "tipo": "multiple", "pregunta": "¿Qué instrumento se utiliza para medir la temperatura?", "opciones": ["Barómetro", "Termómetro", "Altímetro", "Anemómetro"], "respuesta_correcta": "Termómetro", "imagen": null},
+        {"id": 415, "tipo": "multiple", "pregunta": "¿Cuántos planetas tiene el sistema solar actualmente (según la UAI)?", "opciones": ["7", "8", "9", "10"], "respuesta_correcta": "8", "imagen": null},
+        {"id": 416, "tipo": "vf", "pregunta": "¿Las plantas producen oxígeno durante la fotosíntesis?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 417, "tipo": "multiple", "pregunta": "¿Qué animal es considerado el más grande del mundo?", "opciones": ["Elefante africano", "Ballena azul", "Tiburón blanco", "Jirafa"], "respuesta_correcta": "Ballena azul", "imagen": null},
+        {"id": 418, "tipo": "multiple", "pregunta": "¿Cómo se llama la capa de gases que rodea a la Tierra?", "opciones": ["Litosfera", "Atmósfera", "Hidrósfera", "Ionosfera"], "respuesta_correcta": "Atmósfera", "imagen": null},
+        {"id": 419, "tipo": "vf", "pregunta": "¿La velocidad de la luz es la velocidad máxima permitida en el universo según la física actual?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 420, "tipo": "multiple", "pregunta": "¿Qué proceso permite a las abejas transportar polen de una flor a otra?", "opciones": ["Polinización", "Germinación", "Fotosíntesis", "Fecundación"], "respuesta_correcta": "Polinización", "imagen": null}
+      ]
+    },
+    {
+      "id": "arte_literatura",
+      "nombre": "🎨 Arte y Literatura",
+      "preguntas": [
+        {"id": 501, "tipo": "multiple", "pregunta": "¿Quién pintó esta famosa obra maestra titulada 'La Mona Lisa'?", "opciones": ["Vincent van Gogh", "Leonardo da Vinci", "Pablo Picasso", "Miguel Ángel"], "respuesta_correcta": "Leonardo da Vinci", "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/800px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"},
+        {"id": 502, "tipo": "multiple", "pregunta": "¿Quién escribió la célebre obra de la literatura española 'Don Quijote de la Mancha'?", "opciones": ["Gabriel García Márquez", "Miguel de Cervantes", "Jorge Luis Borges", "Pablo Neruda"], "respuesta_correcta": "Miguel de Cervantes", "imagen": null},
+        {"id": 503, "tipo": "vf", "pregunta": "¿William Shakespeare es el autor de 'Romeo y Julieta'?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 504, "tipo": "multiple", "pregunta": "¿A qué célebre pintor neerlandés pertenece esta emblemática obra 'La noche estrellada'?", "opciones": ["Claude Monet", "Vincent van Gogh", "Salvador Dalí", "Rembrandt"], "respuesta_correcta": "Vincent van Gogh", "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/800px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg"},
+        {"id": 505, "tipo": "multiple", "pregunta": "¿A qué corriente artística pertenece esta obra?", "opciones": ["Cubismo", "Postimpresionismo", "Renacimiento", "Surrealismo"], "respuesta_correcta": "Postimpresionismo", "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/800px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg"},
+        {"id": 506, "tipo": "multiple", "pregunta": "¿Quién escribió 'Cien años de soledad'?", "opciones": ["Gabriel García Márquez", "Mario Vargas Llosa", "Pablo Neruda", "Jorge Luis Borges"], "respuesta_correcta": "Gabriel García Márquez", "imagen": null},
+        {"id": 507, "tipo": "vf", "pregunta": "¿Pablo Picasso fue uno de los creadores del Cubismo?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 508, "tipo": "multiple", "pregunta": "¿En qué ciudad se encuentra el museo del Louvre?", "opciones": ["Londres", "Roma", "París", "Madrid"], "respuesta_correcta": "París", "imagen": null},
+        {"id": 509, "tipo": "multiple", "pregunta": "¿Quién compuso la Novena Sinfonía, conocida por el 'Himno a la alegría'?", "opciones": ["Mozart", "Beethoven", "Bach", "Chopin"], "respuesta_correcta": "Beethoven", "imagen": null},
+        {"id": 510, "tipo": "vf", "pregunta": "¿Frida Kahlo fue una pintora mexicana?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 511, "tipo": "multiple", "pregunta": "¿Qué escritor creó al detective Sherlock Holmes?", "opciones": ["Agatha Christie", "Arthur Conan Doyle", "Edgar Allan Poe", "Charles Dickens"], "respuesta_correcta": "Arthur Conan Doyle", "imagen": null},
+        {"id": 512, "tipo": "multiple", "pregunta": "¿Qué técnica artística consiste en pintar sobre una pared húmeda?", "opciones": ["Óleo", "Acuarela", "Fresco", "Grabado"], "respuesta_correcta": "Fresco", "imagen": null},
+        {"id": 513, "tipo": "vf", "pregunta": "¿'Romeo y Julieta' es una tragedia escrita por William Shakespeare?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 514, "tipo": "multiple", "pregunta": "¿Qué escultura de Auguste Rodin representa a un hombre reflexionando?", "opciones": ["El Pensador", "El Discóbolo", "El David", "La Piedad"], "respuesta_correcta": "El Pensador", "imagen": null},
+        {"id": 515, "tipo": "multiple", "pregunta": "¿En qué museo se exhibe actualmente esta obra?", "opciones": ["El Prado", "El Louvre", "El MoMA", "La Tate Gallery"], "respuesta_correcta": "El Louvre", "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/800px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"},
+        {"id": 516, "tipo": "multiple", "pregunta": "¿Quién escribió la obra teatral 'Hamlet'?", "opciones": ["William Shakespeare", "Molière", "Federico García Lorca", "Anton Chéjov"], "respuesta_correcta": "William Shakespeare", "imagen": null},
+        {"id": 517, "tipo": "vf", "pregunta": "¿Salvador Dalí es un reconocido representante del Surrealismo?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 518, "tipo": "multiple", "pregunta": "¿Qué autor argentino es reconocido por cuentos como 'El Aleph' y 'Ficciones'?", "opciones": ["Julio Cortázar", "Jorge Luis Borges", "Adolfo Bioy Casares", "Ernesto Sabato"], "respuesta_correcta": "Jorge Luis Borges", "imagen": null}
       ]
     },
     {
       "id": "cine",
-      "nombre": "🎬 Cine y Entretenimiento",
+      "nombre": "🎬 Cine y Séptimo Arte",
       "preguntas": [
-        {
-          "id": "cin_1",
-          "pregunta": "¿Qué película ganó el primer Óscar a la Mejor Película de Animación?",
-          "opciones": ["Shrek", "Monsters, Inc.", "Toy Story", "Buscando a Nemo"],
-          "respuesta_correcta": "Shrek"
-        },
-        {
-          "id": "cin_2",
-          "pregunta": "¿Quién dirigió la película 'El Señor de los Anillos'?",
-          "opciones": ["Peter Jackson", "Steven Spielberg", "Christopher Nolan", "George Lucas"],
-          "respuesta_correcta": "Peter Jackson"
-        }
+        {"id": 601, "tipo": "multiple", "pregunta": "¿Qué director dirigió clásicos del cine como 'E.T.', 'Jurassic Park' y 'Jaws'?", "opciones": ["Christopher Nolan", "Steven Spielberg", "Quentin Tarantino", "Martin Scorsese"], "respuesta_correcta": "Steven Spielberg", "imagen": null},
+        {"id": 602, "tipo": "vf", "pregunta": "¿La película 'Titanic' (1997) ganó un total de 11 Premios Oscar?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 603, "tipo": "multiple", "pregunta": "¿Cuál fue el primer largometraje animado de la historia de Disney estrenado en 1937?", "opciones": ["Pinocho", "Blancanieves y los siete enanitos", "Cenicienta", "Bambi"], "respuesta_correcta": "Blancanieves y los siete enanitos", "imagen": null},
+        {"id": 604, "tipo": "multiple", "pregunta": "¿Qué saga de películas incluye a personajes como Luke Skywalker y Darth Vader?", "opciones": ["El Señor de los Anillos", "Star Wars", "Harry Potter", "Matrix"], "respuesta_correcta": "Star Wars", "imagen": null},
+        {"id": 605, "tipo": "vf", "pregunta": "¿La ceremonia de los Premios Oscar se celebra generalmente una vez al año?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 606, "tipo": "multiple", "pregunta": "¿Qué animal es el protagonista de la película 'El Rey León'?", "opciones": ["Un tigre", "Un león", "Un elefante", "Un lobo"], "respuesta_correcta": "Un león", "imagen": null},
+        {"id": 607, "tipo": "multiple", "pregunta": "¿En qué país nació la técnica de animación llamada anime?", "opciones": ["China", "Corea del Sur", "Japón", "Estados Unidos"], "respuesta_correcta": "Japón", "imagen": null},
+        {"id": 608, "tipo": "vf", "pregunta": "¿Charles Chaplin fue una figura clave del cine mudo?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 609, "tipo": "multiple", "pregunta": "¿Cómo se llama el estudio de animación creador de 'Toy Story'?", "opciones": ["DreamWorks", "Pixar", "Illumination", "Studio Ghibli"], "respuesta_correcta": "Pixar", "imagen": null},
+        {"id": 610, "tipo": "multiple", "pregunta": "¿Qué premio es considerado el más importante del cine a nivel mundial?", "opciones": ["Globo de Oro", "Óscar", "Emmy", "Grammy"], "respuesta_correcta": "Óscar", "imagen": null},
+        {"id": 611, "tipo": "vf", "pregunta": "¿El cine sonoro reemplazó casi por completo al cine mudo a partir de la década de 1930?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 612, "tipo": "multiple", "pregunta": "¿Cuál es el estudio de animación japonés creador de 'El viaje de Chihiro'?", "opciones": ["Toei Animation", "Studio Ghibli", "Sunrise", "Madhouse"], "respuesta_correcta": "Studio Ghibli", "imagen": null},
+        {"id": 613, "tipo": "vf", "pregunta": "¿Los hermanos Lumière son considerados pioneros del cine?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 614, "tipo": "vf", "pregunta": "¿La película 'El Padrino' está dirigida por Francis Ford Coppola?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 615, "tipo": "multiple", "pregunta": "¿Qué actor interpretó a Iron Man en el universo cinematográfico de Marvel?", "opciones": ["Chris Evans", "Robert Downey Jr.", "Chris Hemsworth", "Mark Ruffalo"], "respuesta_correcta": "Robert Downey Jr.", "imagen": null},
+        {"id": 616, "tipo": "multiple", "pregunta": "¿Cómo se llama el festival de cine más importante de Francia?", "opciones": ["Festival de Venecia", "Festival de Cannes", "Festival de Berlín", "Festival de Sundance"], "respuesta_correcta": "Festival de Cannes", "imagen": null}
       ]
     },
     {
-      "id": "cultura",
-      "nombre": "💡 Cultura General",
+      "id": "matematica",
+      "nombre": "🔢 Matemática",
       "preguntas": [
-        {
-          "id": "cul_1",
-          "pregunta": "¿Cuántos colores tiene el arcoíris tradicionalmente?",
-          "opciones": ["7", "6", "8", "5"],
-          "respuesta_correcta": "7"
-        },
-        {
-          "id": "cul_2",
-          "pregunta": "¿Cuál es la moneda oficial del Japón?",
-          "opciones": ["Yen", "Yuan", "Won", "Baht"],
-          "respuesta_correcta": "Yen"
-        }
+        {"id": 701, "tipo": "multiple", "pregunta": "¿Cuánto es 7 x 8?", "opciones": ["54", "56", "64", "48"], "respuesta_correcta": "56", "imagen": null},
+        {"id": 702, "tipo": "vf", "pregunta": "¿El número 0 es un número par?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 703, "tipo": "multiple", "pregunta": "¿Cómo se llama un triángulo que tiene sus tres lados iguales?", "opciones": ["Escaleno", "Isósceles", "Equilátero", "Rectángulo"], "respuesta_correcta": "Equilátero", "imagen": null},
+        {"id": 704, "tipo": "multiple", "pregunta": "¿Cuál es el resultado de 15 - 9?", "opciones": ["4", "5", "6", "7"], "respuesta_correcta": "6", "imagen": null},
+        {"id": 705, "tipo": "vf", "pregunta": "¿Un número primo solo puede dividirse exactamente por 1 y por sí mismo?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 706, "tipo": "multiple", "pregunta": "¿Cuánto es la mitad de 100?", "opciones": ["25", "40", "50", "60"], "respuesta_correcta": "50", "imagen": null},
+        {"id": 707, "tipo": "multiple", "pregunta": "¿Cómo se llama el resultado de una multiplicación?", "opciones": ["Suma", "Cociente", "Producto", "Diferencia"], "respuesta_correcta": "Producto", "imagen": null},
+        {"id": 708, "tipo": "vf", "pregunta": "¿Pi (π) es un número aproximadamente igual a 3,14?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 709, "tipo": "multiple", "pregunta": "¿Cuántos lados tiene un hexágono?", "opciones": ["5", "6", "7", "8"], "respuesta_correcta": "6", "imagen": null},
+        {"id": 710, "tipo": "multiple", "pregunta": "¿Cuál es el resultado de elevar 2 al cuadrado (2²)?", "opciones": ["2", "4", "8", "16"], "respuesta_correcta": "4", "imagen": null},
+        {"id": 711, "tipo": "vf", "pregunta": "¿La suma de los ángulos internos de un triángulo es 180°?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 712, "tipo": "multiple", "pregunta": "¿Cómo se llama un número mayor que 1 que solo puede dividirse por 1 y por sí mismo?", "opciones": ["Número compuesto", "Número primo", "Número par", "Número decimal"], "respuesta_correcta": "Número primo", "imagen": null},
+        {"id": 713, "tipo": "vf", "pregunta": "¿El resultado de cualquier número multiplicado por 0 es siempre 0?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 714, "tipo": "multiple", "pregunta": "¿Cuánto es 9 al cuadrado (9²)?", "opciones": ["18", "81", "72", "99"], "respuesta_correcta": "81", "imagen": null},
+        {"id": 715, "tipo": "multiple", "pregunta": "¿Cómo se llama una fracción en la que el numerador es mayor que el denominador?", "opciones": ["Fracción propia", "Fracción impropia", "Fracción decimal", "Fracción mixta"], "respuesta_correcta": "Fracción impropia", "imagen": null},
+        {"id": 716, "tipo": "vf", "pregunta": "¿El número 1 es considerado un número primo?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Falso", "imagen": null}
+      ]
+    },
+    {
+      "id": "musica",
+      "nombre": "🎵 Música",
+      "preguntas": [
+        {"id": 801, "tipo": "multiple", "pregunta": "¿Cuántas cuerdas tiene una guitarra clásica en su formato estándar?", "opciones": ["4", "5", "6", "7"], "respuesta_correcta": "6", "imagen": null},
+        {"id": 802, "tipo": "vf", "pregunta": "¿El piano es un instrumento de percusión y cuerda a la vez?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 803, "tipo": "multiple", "pregunta": "¿Qué banda británica es conocida por canciones como 'Hey Jude' y 'Let It Be'?", "opciones": ["The Rolling Stones", "The Beatles", "Queen", "Pink Floyd"], "respuesta_correcta": "The Beatles", "imagen": null},
+        {"id": 804, "tipo": "multiple", "pregunta": "¿Cómo se llama la escala musical de siete notas: Do, Re, Mi, Fa, Sol, La, Si?", "opciones": ["Escala pentatónica", "Escala diatónica", "Escala cromática", "Escala mayor pentatónica"], "respuesta_correcta": "Escala diatónica", "imagen": null},
+        {"id": 805, "tipo": "vf", "pregunta": "¿Ludwig van Beethoven quedó sordo en la última etapa de su vida?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 806, "tipo": "multiple", "pregunta": "¿Qué género musical se originó en Jamaica y está asociado a Bob Marley?", "opciones": ["Reggae", "Salsa", "Tango", "Jazz"], "respuesta_correcta": "Reggae", "imagen": null},
+        {"id": 807, "tipo": "multiple", "pregunta": "¿Qué instrumento está fuertemente asociado al tango argentino?", "opciones": ["Violín", "Bandoneón", "Acordeón", "Guitarra"], "respuesta_correcta": "Bandoneón", "imagen": null},
+        {"id": 808, "tipo": "vf", "pregunta": "¿El jazz es un género musical que se originó en Estados Unidos?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 809, "tipo": "multiple", "pregunta": "¿Cómo se llama la voz femenina más aguda en el canto clásico?", "opciones": ["Contralto", "Soprano", "Mezzosoprano", "Tenor"], "respuesta_correcta": "Soprano", "imagen": null},
+        {"id": 810, "tipo": "multiple", "pregunta": "¿Qué instrumento de viento con forma de 'S' es típico del jazz?", "opciones": ["Trompeta", "Saxofón", "Flauta", "Clarinete"], "respuesta_correcta": "Saxofón", "imagen": null},
+        {"id": 811, "tipo": "multiple", "pregunta": "¿Qué compositor austríaco es autor de 'Las bodas de Fígaro'?", "opciones": ["Beethoven", "Mozart", "Bach", "Vivaldi"], "respuesta_correcta": "Mozart", "imagen": null},
+        {"id": 812, "tipo": "vf", "pregunta": "¿La ópera es un género que combina música, canto y teatro?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 813, "tipo": "multiple", "pregunta": "¿Qué instrumento de percusión se toca con las manos y es típico de la música afrolatina?", "opciones": ["Xilófono", "Congas", "Platillos", "Batería"], "respuesta_correcta": "Congas", "imagen": null},
+        {"id": 814, "tipo": "multiple", "pregunta": "¿Cuántas líneas tiene un pentagrama musical?", "opciones": ["4", "5", "6", "7"], "respuesta_correcta": "5", "imagen": null}
+      ]
+    },
+    {
+      "id": "deportes",
+      "nombre": "⚽ Deportes",
+      "preguntas": [
+        {"id": 901, "tipo": "multiple", "pregunta": "¿Cada cuántos años se celebran los Juegos Olímpicos de verano?", "opciones": ["2", "3", "4", "5"], "respuesta_correcta": "4", "imagen": null},
+        {"id": 902, "tipo": "vf", "pregunta": "¿En el fútbol, un equipo tiene 11 jugadores en la cancha?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 903, "tipo": "multiple", "pregunta": "¿En qué deporte se usa una raqueta y una pelota amarilla?", "opciones": ["Fútbol", "Tenis", "Vóley", "Rugby"], "respuesta_correcta": "Tenis", "imagen": null},
+        {"id": 904, "tipo": "multiple", "pregunta": "¿Cuántos jugadores tiene un equipo de básquetbol en cancha por vez?", "opciones": ["4", "5", "6", "7"], "respuesta_correcta": "5", "imagen": null},
+        {"id": 905, "tipo": "vf", "pregunta": "¿El maratón olímpico tiene una distancia de 42,195 km?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 906, "tipo": "multiple", "pregunta": "¿Qué país ganó más Copas del Mundo de fútbol masculino hasta la fecha?", "opciones": ["Argentina", "Alemania", "Italia", "Brasil"], "respuesta_correcta": "Brasil", "imagen": null},
+        {"id": 907, "tipo": "multiple", "pregunta": "¿En qué deporte se utiliza un 'ring' para competir?", "opciones": ["Boxeo", "Esgrima", "Judo", "Ajedrez"], "respuesta_correcta": "Boxeo", "imagen": null},
+        {"id": 908, "tipo": "vf", "pregunta": "¿El vóley se juega con una red que separa a los dos equipos?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 909, "tipo": "multiple", "pregunta": "¿Cuántos sets se necesitan ganar para vencer un partido de tenis a mejor de 5?", "opciones": ["2", "3", "4", "5"], "respuesta_correcta": "3", "imagen": null},
+        {"id": 910, "tipo": "multiple", "pregunta": "¿Qué deporte se practica sobre una tabla y una ola?", "opciones": ["Surf", "Esquí", "Vela", "Buceo"], "respuesta_correcta": "Surf", "imagen": null},
+        {"id": 911, "tipo": "vf", "pregunta": "¿El rugby se juega con un balón ovalado?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 912, "tipo": "multiple", "pregunta": "¿En qué deporte olímpico se compite lanzando una jabalina?", "opciones": ["Atletismo", "Natación", "Ciclismo", "Esgrima"], "respuesta_correcta": "Atletismo", "imagen": null},
+        {"id": 913, "tipo": "multiple", "pregunta": "¿Cuántos jugadores conforman un equipo de vóley en la cancha?", "opciones": ["5", "6", "7", "8"], "respuesta_correcta": "6", "imagen": null},
+        {"id": 914, "tipo": "vf", "pregunta": "¿El ajedrez es considerado un deporte mental en muchas federaciones?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null}
+      ]
+    },
+    {
+      "id": "animales",
+      "nombre": "🐾 Mundo Animal",
+      "preguntas": [
+        {"id": 1001, "tipo": "multiple", "pregunta": "¿Cuál es el animal terrestre más grande del mundo?", "opciones": ["Rinoceronte", "Elefante africano", "Hipopótamo", "Jirafa"], "respuesta_correcta": "Elefante africano", "imagen": null},
+        {"id": 1002, "tipo": "vf", "pregunta": "¿Los delfines son mamíferos?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 1003, "tipo": "multiple", "pregunta": "¿Qué ave no puede volar y es la más grande del mundo?", "opciones": ["Pingüino", "Avestruz", "Emú", "Casuario"], "respuesta_correcta": "Avestruz", "imagen": null},
+        {"id": 1004, "tipo": "multiple", "pregunta": "¿Cuál es el animal terrestre más rápido del mundo?", "opciones": ["León", "Guepardo", "Caballo", "Antílope"], "respuesta_correcta": "Guepardo", "imagen": null},
+        {"id": 1005, "tipo": "vf", "pregunta": "¿Las arañas tienen ocho patas?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 1006, "tipo": "multiple", "pregunta": "¿Qué animal cambia de color para camuflarse en su entorno?", "opciones": ["Camaleón", "Cocodrilo", "Iguana", "Serpiente"], "respuesta_correcta": "Camaleón", "imagen": null},
+        {"id": 1007, "tipo": "multiple", "pregunta": "¿Cómo se llama el proceso mediante el cual una oruga se convierte en mariposa?", "opciones": ["Mutación", "Metamorfosis", "Evolución", "Hibernación"], "respuesta_correcta": "Metamorfosis", "imagen": null},
+        {"id": 1008, "tipo": "vf", "pregunta": "¿Los pingüinos viven de forma natural en el Polo Norte?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Falso", "imagen": null},
+        {"id": 1009, "tipo": "multiple", "pregunta": "¿Cuál es el mamífero marino más grande del mundo?", "opciones": ["Orca", "Tiburón blanco", "Ballena azul", "Elefante marino"], "respuesta_correcta": "Ballena azul", "imagen": null},
+        {"id": 1010, "tipo": "multiple", "pregunta": "¿Qué animal es conocido como 'el rey de la selva'?", "opciones": ["Tigre", "León", "Leopardo", "Elefante"], "respuesta_correcta": "León", "imagen": null},
+        {"id": 1011, "tipo": "vf", "pregunta": "¿Las tortugas pueden vivir más de 100 años en algunas especies?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 1012, "tipo": "multiple", "pregunta": "¿Qué insecto es conocido por producir miel?", "opciones": ["Hormiga", "Abeja", "Mariposa", "Avispa"], "respuesta_correcta": "Abeja", "imagen": null}
+      ]
+    },
+    {
+      "id": "cultura_general",
+      "nombre": "🧠 Cultura General",
+      "preguntas": [
+        {"id": 1101, "tipo": "multiple", "pregunta": "¿Cuántos días tiene un año bisiesto?", "opciones": ["364", "365", "366", "367"], "respuesta_correcta": "366", "imagen": null},
+        {"id": 1102, "tipo": "vf", "pregunta": "¿El español es idioma oficial de más de 20 países?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 1103, "tipo": "multiple", "pregunta": "¿Cuál es la moneda oficial de Japón?", "opciones": ["Yuan", "Won", "Yen", "Dólar"], "respuesta_correcta": "Yen", "imagen": null},
+        {"id": 1104, "tipo": "multiple", "pregunta": "¿Cómo se llama la organización internacional que reúne a la mayoría de los países del mundo para promover la paz?", "opciones": ["OTAN", "ONU", "OMS", "UNESCO"], "respuesta_correcta": "ONU", "imagen": null},
+        {"id": 1105, "tipo": "vf", "pregunta": "¿El café es una de las bebidas más consumidas del mundo?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 1106, "tipo": "multiple", "pregunta": "¿Qué invento revolucionó la comunicación a distancia en el siglo XIX?", "opciones": ["El teléfono", "La televisión", "Internet", "El fax"], "respuesta_correcta": "El teléfono", "imagen": null},
+        {"id": 1107, "tipo": "multiple", "pregunta": "¿Cuál es el idioma más hablado del mundo como lengua materna?", "opciones": ["Inglés", "Español", "Mandarín", "Hindi"], "respuesta_correcta": "Mandarín", "imagen": null},
+        {"id": 1108, "tipo": "vf", "pregunta": "¿La Torre Eiffel se encuentra en París?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 1109, "tipo": "multiple", "pregunta": "¿Cuántos continentes hay en el mundo según la clasificación más común?", "opciones": ["5", "6", "7", "8"], "respuesta_correcta": "7", "imagen": null},
+        {"id": 1110, "tipo": "multiple", "pregunta": "¿Qué símbolo se usa al comienzo de una pregunta en español?", "opciones": ["¿", "¡", "°", "º"], "respuesta_correcta": "¿", "imagen": null},
+        {"id": 1111, "tipo": "vf", "pregunta": "¿El sistema métrico decimal utiliza el metro como unidad de longitud?", "opciones": ["Verdadero", "Falso"], "respuesta_correcta": "Verdadero", "imagen": null},
+        {"id": 1112, "tipo": "multiple", "pregunta": "¿Cómo se le llama a una palabra que se lee igual al derecho y al revés, como 'reconocer'?", "opciones": ["Anagrama", "Palíndromo", "Sinónimo", "Antónimo"], "respuesta_correcta": "Palíndromo", "imagen": null}
       ]
     }
   ]
