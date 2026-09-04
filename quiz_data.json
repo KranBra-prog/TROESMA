@@ -1,434 +1,147 @@
 {
   "categorias": [
     {
-      "id": "programacion",
-      "nombre": "💻 Programación Python",
+      "id": "python",
+      "nombre": "🐍 Programación Python",
       "preguntas": [
         {
-          "id": 101,
-          "tipo": "multiple",
-          "pregunta": "¿Qué palabra clave se usa para definir una función en Python?",
-          "opciones": ["func", "def", "function", "define"],
-          "respuesta_correcta": "def",
-          "imagen": null
+          "id": "py_1",
+          "pregunta": "¿Qué tipo de dato devuelve la función len() en Python?",
+          "opciones": ["Entero (int)", "Texto (str)", "Flotante (float)", "Booleano (bool)"],
+          "respuesta_correcta": "Entero (int)"
         },
         {
-          "id": 102,
-          "tipo": "vf",
-          "pregunta": "¿Python es un lenguaje compilado nativamente?",
-          "opciones": ["Verdadero", "Falso"],
-          "respuesta_correcta": "Falso",
-          "imagen": null
+          "id": "py_2",
+          "pregunta": "¿Cuál de las siguientes estructuras de datos es INMUTABLE?",
+          "opciones": ["Tupla (tuple)", "Lista (list)", "Diccionario (dict)", "Conjunto (set)"],
+          "respuesta_correcta": "Tupla (tuple)"
         },
         {
-          "id": 103,
-          "tipo": "multiple",
-          "pregunta": "¿Cuál de las siguientes es una estructura de datos inmutable?",
-          "opciones": ["Lista", "Diccionario", "Tupla", "Set"],
-          "respuesta_correcta": "Tupla",
-          "imagen": null
+          "id": "py_3",
+          "pregunta": "¿Qué palabra clave se utiliza para definir una función en Python?",
+          "opciones": ["def", "function", "func", "define"],
+          "respuesta_correcta": "def"
         },
         {
-          "id": 104,
-          "tipo": "vf",
-          "pregunta": "¿El operador '==' compara la identidad de memoria de dos objetos?",
-          "opciones": ["Verdadero", "Falso"],
-          "respuesta_correcta": "Falso",
-          "imagen": null
-        },
-        {
-          "id": 105,
-          "tipo": "multiple",
-          "pregunta": "¿Qué método se utiliza para agregar un elemento al final de una lista?",
-          "opciones": ["add()", "push()", "insert()", "append()"],
-          "respuesta_correcta": "append()",
-          "imagen": null
-        },
-        {
-          "id": 106,
-          "tipo": "multiple",
-          "pregunta": "¿Cómo se inicia un bloque de comentario de una sola línea en Python?",
-          "opciones": ["//", "/*", "#", "--"],
-          "respuesta_correcta": "#",
-          "imagen": null
-        },
-        {
-          "id": 107,
-          "tipo": "multiple",
-          "pregunta": "¿Qué función se utiliza para obtener la longitud de una lista o cadena en Python?",
-          "opciones": ["length()", "len()", "size()", "count()"],
-          "respuesta_correcta": "len()",
-          "imagen": null
-        },
-        {
-          "id": 108,
-          "tipo": "vf",
-          "pregunta": "¿En Python las sangrías (indentación) son obligatorias para definir bloques de código?",
-          "opciones": ["Verdadero", "Falso"],
-          "respuesta_correcta": "Verdadero",
-          "imagen": null
+          "id": "py_4",
+          "pregunta": "¿Cuál es el resultado de evaluar 3 ** 2 en Python?",
+          "opciones": ["9", "6", "5", "8"],
+          "respuesta_correcta": "9"
         }
       ]
     },
     {
       "id": "geografia",
-      "nombre": "🗺️ Geografía Visual",
+      "nombre": "🌍 Geografía Mundial",
       "preguntas": [
         {
-          "id": 201,
-          "tipo": "multiple",
-          "pregunta": "¿A qué país pertenece esta bandera?",
-          "opciones": ["Argentina", "Uruguay", "Grecia", "Finlandia"],
-          "respuesta_correcta": "Argentina",
-          "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/800px-Flag_of_Argentina.svg.png"
+          "id": "geo_1",
+          "pregunta": "¿Cuál es la capital de Australia?",
+          "opciones": ["Camberra", "Sídney", "Melbourne", "Brisbane"],
+          "respuesta_correcta": "Camberra"
         },
         {
-          "id": 202,
-          "tipo": "multiple",
-          "pregunta": "¿Cuál es la capital del país mostrado en la bandera?",
-          "opciones": ["Córdoba", "Buenos Aires", "Rosario", "Mendoza"],
-          "respuesta_correcta": "Buenos Aires",
-          "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/800px-Flag_of_Argentina.svg.png"
+          "id": "geo_2",
+          "pregunta": "¿Cuál es el río más largo del mundo?",
+          "opciones": ["Amazonas", "Nilo", "Misisipi", "Yangtsé"],
+          "respuesta_correcta": "Amazonas"
         },
         {
-          "id": 203,
-          "tipo": "multiple",
-          "pregunta": "¿En qué continente se encuentra ubicado el monte Kilimanjaro?",
-          "opciones": ["Asia", "África", "América", "Europa"],
-          "respuesta_correcta": "África",
-          "imagen": null
+          "id": "geo_3",
+          "pregunta": "¿A qué país pertenece la siguiente bandera?",
+          "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/800px-Flag_of_Argentina.svg.png",
+          "opciones": ["Argentina", "Uruguay", "Guatemala", "Grecia"],
+          "respuesta_correcta": "Argentina"
         },
         {
-          "id": 204,
-          "tipo": "multiple",
-          "pregunta": "¿Cuál es el río más largo y caudaloso del mundo?",
-          "opciones": ["Nilo", "Misisipi", "Amazonas", "Yangtsé"],
-          "respuesta_correcta": "Amazonas",
-          "imagen": null
-        },
-        {
-          "id": 205,
-          "tipo": "vf",
-          "pregunta": "¿Australia es tanto un país como un continente?",
-          "opciones": ["Verdadero", "Falso"],
-          "respuesta_correcta": "Verdadero",
-          "imagen": null
-        },
-        {
-          "id": 206,
-          "tipo": "multiple",
-          "pregunta": "¿Cuál es el país con mayor superficie territorial del planeta?",
-          "opciones": ["Canadá", "Estados Unidos", "China", "Rusia"],
-          "respuesta_correcta": "Rusia",
-          "imagen": null
-        },
-        {
-          "id": 207,
-          "tipo": "vf",
-          "pregunta": "¿El desierto del Sahara es el desierto cálido más grande del mundo?",
-          "opciones": ["Verdadero", "Falso"],
-          "respuesta_correcta": "Verdadero",
-          "imagen": null
-        }
-      ]
-    },
-    {
-      "id": "historia",
-      "nombre": "🏛️ Historia Universal",
-      "preguntas": [
-        {
-          "id": 301,
-          "tipo": "multiple",
-          "pregunta": "¿En qué año comenzó la Segunda Guerra Mundial?",
-          "opciones": ["1914", "1939", "1945", "1929"],
-          "respuesta_correcta": "1939",
-          "imagen": null
-        },
-        {
-          "id": 302,
-          "tipo": "multiple",
-          "pregunta": "¿Qué gran civilización construyó las pirámides de Guiza?",
-          "opciones": ["Imperio Romano", "Antiguo Egipto", "Mesopotamia", "Imperio Inca"],
-          "respuesta_correcta": "Antiguo Egipto",
-          "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/All_Gizah_Pyramids.jpg/800px-All_Gizah_Pyramids.jpg"
-        },
-        {
-          "id": 303,
-          "tipo": "vf",
-          "pregunta": "¿Julio César fue el primer emperador oficial del Imperio Romano?",
-          "opciones": ["Verdadero", "Falso"],
-          "respuesta_correcta": "Falso",
-          "imagen": null
-        },
-        {
-          "id": 304,
-          "tipo": "multiple",
-          "pregunta": "¿En qué año llegó Cristóbal Colón a América?",
-          "opciones": ["1492", "1500", "1488", "1512"],
-          "respuesta_correcta": "1492",
-          "imagen": null
-        },
-        {
-          "id": 305,
-          "tipo": "multiple",
-          "pregunta": "¿A qué cultura pertenece este monumento histórico conocido como el Coliseo?",
-          "opciones": ["Griega", "Romana", "Egipto", "Fenicia"],
-          "respuesta_correcta": "Romana",
-          "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/800px-Colosseo_2020.jpg"
-        },
-        {
-          "id": 306,
-          "tipo": "multiple",
-          "pregunta": "¿En qué año ocurrió la caída del Muro de Berlín?",
-          "opciones": ["1989", "1991", "1975", "1983"],
-          "respuesta_correcta": "1989",
-          "imagen": null
-        },
-        {
-          "id": 307,
-          "tipo": "vf",
-          "pregunta": "¿La Revolución Francesa comenzó en el año 1789?",
-          "opciones": ["Verdadero", "Falso"],
-          "respuesta_correcta": "Verdadero",
-          "imagen": null
+          "id": "geo_4",
+          "pregunta": "¿En qué continente se encuentra el desierto del Sahara?",
+          "opciones": ["África", "Asia", "Oceanía", "América"],
+          "respuesta_correcta": "África"
         }
       ]
     },
     {
       "id": "ciencia",
-      "nombre": "🔬 Ciencia y Universo",
+      "nombre": "🧪 Ciencia y Naturaleza",
       "preguntas": [
         {
-          "id": 401,
-          "tipo": "multiple",
+          "id": "cie_1",
           "pregunta": "¿Cuál es el elemento químico más abundante en el universo?",
-          "opciones": ["Oxígeno", "Helio", "Hidrógeno", "Carbono"],
-          "respuesta_correcta": "Hidrógeno",
-          "imagen": null
+          "opciones": ["Hidrógeno", "Helio", "Oxígeno", "Carbono"],
+          "respuesta_correcta": "Hidrógeno"
         },
         {
-          "id": 402,
-          "tipo": "vf",
-          "pregunta": "¿La luz viaja más rápido en el agua que en el vacío?",
-          "opciones": ["Verdadero", "Falso"],
-          "respuesta_correcta": "Falso",
-          "imagen": null
+          "id": "cie_2",
+          "pregunta": "¿Cuál es el planeta más grande del sistema solar?",
+          "opciones": ["Júpiter", "Saturno", "Neptuno", "Tierra"],
+          "respuesta_correcta": "Júpiter"
         },
         {
-          "id": 403,
-          "tipo": "multiple",
-          "pregunta": "¿Qué planeta del sistema solar es conocido como el 'Planeta Rojo'?",
-          "opciones": ["Venus", "Marte", "Júpiter", "Saturno"],
-          "respuesta_correcta": "Marte",
-          "imagen": null
-        },
-        {
-          "id": 404,
-          "tipo": "multiple",
-          "pregunta": "¿Qué nombre recibe el proceso por el cual las plantas convierten la luz solar en energía?",
-          "opciones": ["Respiración", "Fotosíntesis", "Mitosis", "Fermentación"],
-          "respuesta_correcta": "Fotosíntesis",
-          "imagen": null
-        },
-        {
-          "id": 405,
-          "tipo": "vf",
-          "pregunta": "¿El ADN contiene toda la información genética de los seres vivos?",
-          "opciones": ["Verdadero", "Falso"],
-          "respuesta_correcta": "Verdadero",
-          "imagen": null
-        },
-        {
-          "id": 406,
-          "tipo": "multiple",
-          "pregunta": "¿Qué partícula subatómica posee carga eléctrica negativa?",
-          "opciones": ["Protón", "Neutrón", "Electrón", "Quark"],
-          "respuesta_correcta": "Electrón",
-          "imagen": null
-        },
-        {
-          "id": 407,
-          "tipo": "vf",
-          "pregunta": "¿El sonido puede viajar a través del vacío del espacio exterior?",
-          "opciones": ["Verdadero", "Falso"],
-          "respuesta_correcta": "Falso",
-          "imagen": null
+          "id": "cie_3",
+          "pregunta": "¿Qué órgano del cuerpo humano consume más energía?",
+          "opciones": ["Cerebro", "Corazón", "Hígado", "Músculos"],
+          "respuesta_correcta": "Cerebro"
         }
       ]
     },
     {
-      "id": "arte_literatura",
-      "nombre": "🎨 Arte y Literatura",
+      "id": "historia",
+      "nombre": "📜 Historia Universal",
       "preguntas": [
         {
-          "id": 501,
-          "tipo": "multiple",
-          "pregunta": "¿Quién pintó esta famosa obra maestra titulada 'La Mona Lisa'?",
-          "opciones": ["Vincent van Gogh", "Leonardo da Vinci", "Pablo Picasso", "Miguel Ángel"],
-          "respuesta_correcta": "Leonardo da Vinci",
-          "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/800px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"
+          "id": "his_1",
+          "pregunta": "¿En qué año llegó Cristóbal Colón a América?",
+          "opciones": ["1492", "1498", "1500", "1485"],
+          "respuesta_correcta": "1492"
         },
         {
-          "id": 502,
-          "tipo": "multiple",
-          "pregunta": "¿Quién escribió la célebre obra de la literatura española 'Don Quijote de la Mancha'?",
-          "opciones": ["Gabriel García Márquez", "Miguel de Cervantes", "Jorge Luis Borges", "Pablo Neruda"],
-          "respuesta_correcta": "Miguel de Cervantes",
-          "imagen": null
+          "id": "his_2",
+          "pregunta": "¿Quién fue el primer presidente de los Estados Unidos?",
+          "opciones": ["George Washington", "Thomas Jefferson", "Abraham Lincoln", "John Adams"],
+          "respuesta_correcta": "George Washington"
         },
         {
-          "id": 503,
-          "tipo": "vf",
-          "pregunta": "¿William Shakespeare es el autor de 'Romeo y Julieta'?",
-          "opciones": ["Verdadero", "Falso"],
-          "respuesta_correcta": "Verdadero",
-          "imagen": null
-        },
-        {
-          "id": 504,
-          "tipo": "multiple",
-          "pregunta": "¿A qué célebre pintor neerlandés pertenece esta emblemática obra 'La noche estrellada'?",
-          "opciones": ["Claude Monet", "Vincent van Gogh", "Salvador Dalí", "Rembrandt"],
-          "respuesta_correcta": "Vincent van Gogh",
-          "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/800px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg"
-        },
-        {
-          "id": 505,
-          "tipo": "multiple",
-          "pregunta": "¿Quién escribió la célebre novela 'Cien años de soledad'?",
-          "opciones": ["Mario Vargas Llosa", "Gabriel García Márquez", "Julio Cortázar", "Isabel Allende"],
-          "respuesta_correcta": "Gabriel García Márquez",
-          "imagen": null
-        },
-        {
-          "id": 506,
-          "tipo": "vf",
-          "pregunta": "¿La escultura del 'David' fue creada por el artista renacentista Miguel Ángel?",
-          "opciones": ["Verdadero", "Falso"],
-          "respuesta_correcta": "Verdadero",
-          "imagen": null
+          "id": "his_3",
+          "pregunta": "¿En qué año finalizó la Segunda Guerra Mundial?",
+          "opciones": ["1945", "1939", "1950", "1918"],
+          "respuesta_correcta": "1945"
         }
       ]
     },
     {
       "id": "cine",
-      "nombre": "🎬 Cine y Séptimo Arte",
+      "nombre": "🎬 Cine y Entretenimiento",
       "preguntas": [
         {
-          "id": 601,
-          "tipo": "multiple",
-          "pregunta": "¿Qué director dirigió clásicos del cine como 'E.T.', 'Jurassic Park' y 'Jaws'?",
-          "opciones": ["Christopher Nolan", "Steven Spielberg", "Quentin Tarantino", "Martin Scorsese"],
-          "respuesta_correcta": "Steven Spielberg",
-          "imagen": null
+          "id": "cin_1",
+          "pregunta": "¿Qué película ganó el primer Óscar a la Mejor Película de Animación?",
+          "opciones": ["Shrek", "Monsters, Inc.", "Toy Story", "Buscando a Nemo"],
+          "respuesta_correcta": "Shrek"
         },
         {
-          "id": 602,
-          "tipo": "vf",
-          "pregunta": "¿La película 'Titanic' (1997) ganó un total de 11 Premios Oscar?",
-          "opciones": ["Verdadero", "Falso"],
-          "respuesta_correcta": "Verdadero",
-          "imagen": null
-        },
-        {
-          "id": 603,
-          "tipo": "multiple",
-          "pregunta": "¿Cuál fue el primer largometraje animado de la historia de Disney estrenado en 1937?",
-          "opciones": ["Pinocho", "Blancanieves y los siete enanitos", "Cenicienta", "Bambi"],
-          "respuesta_correcta": "Blancanieves y los siete enanitos",
-          "imagen": null
-        },
-        {
-          "id": 604,
-          "tipo": "multiple",
-          "pregunta": "¿Qué actor interpretó al personaje de Jack Sparrow en la saga 'Piratas del Caribe'?",
-          "opciones": ["Brad Pitt", "Johnny Depp", "Orlando Bloom", "Tom Cruise"],
-          "respuesta_correcta": "Johnny Depp",
-          "imagen": null
-        },
-        {
-          "id": 605,
-          "tipo": "vf",
-          "pregunta": "¿La película 'Parasite' (2019) fue la primera de habla no inglesa en ganar el Oscar a Mejor Película?",
-          "opciones": ["Verdadero", "Falso"],
-          "respuesta_correcta": "Verdadero",
-          "imagen": null
+          "id": "cin_2",
+          "pregunta": "¿Quién dirigió la película 'El Señor de los Anillos'?",
+          "opciones": ["Peter Jackson", "Steven Spielberg", "Christopher Nolan", "George Lucas"],
+          "respuesta_correcta": "Peter Jackson"
         }
       ]
     },
     {
-      "id": "deportes",
-      "nombre": "⚽ Deportes y Juegos",
+      "id": "cultura",
+      "nombre": "💡 Cultura General",
       "preguntas": [
         {
-          "id": 701,
-          "tipo": "multiple",
-          "pregunta": "¿Cada cuántos años se celebran los Juegos Olímpicos de Verano?",
-          "opciones": ["2 años", "3 años", "4 años", "5 años"],
-          "respuesta_correcta": "4 años",
-          "imagen": null
+          "id": "cul_1",
+          "pregunta": "¿Cuántos colores tiene el arcoíris tradicionalmente?",
+          "opciones": ["7", "6", "8", "5"],
+          "respuesta_correcta": "7"
         },
         {
-          "id": 702,
-          "tipo": "multiple",
-          "pregunta": "¿En qué país se disputó la Copa Mundial de Fútbol de la FIFA 2014?",
-          "opciones": ["Alemania", "Sudáfrica", "Brasil", "Rusia"],
-          "respuesta_correcta": "Brasil",
-          "imagen": null
-        },
-        {
-          "id": 703,
-          "tipo": "vf",
-          "pregunta": "¿En el baloncesto, cada enceste desde más allá de la línea reglamentaria vale 3 puntos?",
-          "opciones": ["Verdadero", "Falso"],
-          "respuesta_correcta": "Verdadero",
-          "imagen": null
-        },
-        {
-          "id": 704,
-          "tipo": "multiple",
-          "pregunta": "¿Qué tenista ha ganado la mayor cantidad de títulos individuales de Roland Garros en la historia?",
-          "opciones": ["Roger Federer", "Novak Djokovic", "Rafael Nadal", "Pete Sampras"],
-          "respuesta_correcta": "Rafael Nadal",
-          "imagen": null
-        }
-      ]
-    },
-    {
-      "id": "musica",
-      "nombre": "🎵 Música Universal",
-      "preguntas": [
-        {
-          "id": 801,
-          "tipo": "multiple",
-          "pregunta": "¿De qué ciudad británica era originaria la famosa banda 'The Beatles'?",
-          "opciones": ["Londres", "Manchester", "Liverpool", "Birmingham"],
-          "respuesta_correcta": "Liverpool",
-          "imagen": null
-        },
-        {
-          "id": 802,
-          "tipo": "vf",
-          "pregunta": "¿Ludwig van Beethoven compuso su Novena Sinfonía estando completamente sordo?",
-          "opciones": ["Verdadero", "Falso"],
-          "respuesta_correcta": "Verdadero",
-          "imagen": null
-        },
-        {
-          "id": 803,
-          "tipo": "multiple",
-          "pregunta": "¿Qué instrumento musical de viento-madera utiliza una lengüeta doble?",
-          "opciones": ["Flauta traversa", "Oboe", "Clarinete", "Saxofón"],
-          "respuesta_correcta": "Oboe",
-          "imagen": null
-        },
-        {
-          "id": 804,
-          "tipo": "multiple",
-          "pregunta": "¿A qué artista pop se le conoce mundialmente como el 'Rey del Pop'?",
-          "opciones": ["Elvis Presley", "Michael Jackson", "Prince", "Freddie Mercury"],
-          "respuesta_correcta": "Michael Jackson",
-          "imagen": null
+          "id": "cul_2",
+          "pregunta": "¿Cuál es la moneda oficial del Japón?",
+          "opciones": ["Yen", "Yuan", "Won", "Baht"],
+          "respuesta_correcta": "Yen"
         }
       ]
     }
