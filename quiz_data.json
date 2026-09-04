@@ -51,6 +51,22 @@
           "opciones": ["//", "/*", "#", "--"],
           "respuesta_correcta": "#",
           "imagen": null
+        },
+        {
+          "id": 107,
+          "tipo": "multiple",
+          "pregunta": "¿Qué función se utiliza para obtener la longitud de una lista o cadena en Python?",
+          "opciones": ["length()", "len()", "size()", "count()"],
+          "respuesta_correcta": "len()",
+          "imagen": null
+        },
+        {
+          "id": 108,
+          "tipo": "vf",
+          "pregunta": "¿En Python las sangrías (indentación) son obligatorias para definir bloques de código?",
+          "opciones": ["Verdadero", "Falso"],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null
         }
       ]
     },
@@ -94,6 +110,22 @@
           "id": 205,
           "tipo": "vf",
           "pregunta": "¿Australia es tanto un país como un continente?",
+          "opciones": ["Verdadero", "Falso"],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null
+        },
+        {
+          "id": 206,
+          "tipo": "multiple",
+          "pregunta": "¿Cuál es el país con mayor superficie territorial del planeta?",
+          "opciones": ["Canadá", "Estados Unidos", "China", "Rusia"],
+          "respuesta_correcta": "Rusia",
+          "imagen": null
+        },
+        {
+          "id": 207,
+          "tipo": "vf",
+          "pregunta": "¿El desierto del Sahara es el desierto cálido más grande del mundo?",
           "opciones": ["Verdadero", "Falso"],
           "respuesta_correcta": "Verdadero",
           "imagen": null
@@ -143,6 +175,22 @@
           "opciones": ["Griega", "Romana", "Egipto", "Fenicia"],
           "respuesta_correcta": "Romana",
           "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/800px-Colosseo_2020.jpg"
+        },
+        {
+          "id": 306,
+          "tipo": "multiple",
+          "pregunta": "¿En qué año ocurrió la caída del Muro de Berlín?",
+          "opciones": ["1989", "1991", "1975", "1983"],
+          "respuesta_correcta": "1989",
+          "imagen": null
+        },
+        {
+          "id": 307,
+          "tipo": "vf",
+          "pregunta": "¿La Revolución Francesa comenzó en el año 1789?",
+          "opciones": ["Verdadero", "Falso"],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null
         }
       ]
     },
@@ -189,6 +237,22 @@
           "opciones": ["Verdadero", "Falso"],
           "respuesta_correcta": "Verdadero",
           "imagen": null
+        },
+        {
+          "id": 406,
+          "tipo": "multiple",
+          "pregunta": "¿Qué partícula subatómica posee carga eléctrica negativa?",
+          "opciones": ["Protón", "Neutrón", "Electrón", "Quark"],
+          "respuesta_correcta": "Electrón",
+          "imagen": null
+        },
+        {
+          "id": 407,
+          "tipo": "vf",
+          "pregunta": "¿El sonido puede viajar a través del vacío del espacio exterior?",
+          "opciones": ["Verdadero", "Falso"],
+          "respuesta_correcta": "Falso",
+          "imagen": null
         }
       ]
     },
@@ -227,6 +291,22 @@
           "opciones": ["Claude Monet", "Vincent van Gogh", "Salvador Dalí", "Rembrandt"],
           "respuesta_correcta": "Vincent van Gogh",
           "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/800px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg"
+        },
+        {
+          "id": 505,
+          "tipo": "multiple",
+          "pregunta": "¿Quién escribió la célebre novela 'Cien años de soledad'?",
+          "opciones": ["Mario Vargas Llosa", "Gabriel García Márquez", "Julio Cortázar", "Isabel Allende"],
+          "respuesta_correcta": "Gabriel García Márquez",
+          "imagen": null
+        },
+        {
+          "id": 506,
+          "tipo": "vf",
+          "pregunta": "¿La escultura del 'David' fue creada por el artista renacentista Miguel Ángel?",
+          "opciones": ["Verdadero", "Falso"],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null
         }
       ]
     },
@@ -256,6 +336,98 @@
           "pregunta": "¿Cuál fue el primer largometraje animado de la historia de Disney estrenado en 1937?",
           "opciones": ["Pinocho", "Blancanieves y los siete enanitos", "Cenicienta", "Bambi"],
           "respuesta_correcta": "Blancanieves y los siete enanitos",
+          "imagen": null
+        },
+        {
+          "id": 604,
+          "tipo": "multiple",
+          "pregunta": "¿Qué actor interpretó al personaje de Jack Sparrow en la saga 'Piratas del Caribe'?",
+          "opciones": ["Brad Pitt", "Johnny Depp", "Orlando Bloom", "Tom Cruise"],
+          "respuesta_correcta": "Johnny Depp",
+          "imagen": null
+        },
+        {
+          "id": 605,
+          "tipo": "vf",
+          "pregunta": "¿La película 'Parasite' (2019) fue la primera de habla no inglesa en ganar el Oscar a Mejor Película?",
+          "opciones": ["Verdadero", "Falso"],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": "deportes",
+      "nombre": "⚽ Deportes y Juegos",
+      "preguntas": [
+        {
+          "id": 701,
+          "tipo": "multiple",
+          "pregunta": "¿Cada cuántos años se celebran los Juegos Olímpicos de Verano?",
+          "opciones": ["2 años", "3 años", "4 años", "5 años"],
+          "respuesta_correcta": "4 años",
+          "imagen": null
+        },
+        {
+          "id": 702,
+          "tipo": "multiple",
+          "pregunta": "¿En qué país se disputó la Copa Mundial de Fútbol de la FIFA 2014?",
+          "opciones": ["Alemania", "Sudáfrica", "Brasil", "Rusia"],
+          "respuesta_correcta": "Brasil",
+          "imagen": null
+        },
+        {
+          "id": 703,
+          "tipo": "vf",
+          "pregunta": "¿En el baloncesto, cada enceste desde más allá de la línea reglamentaria vale 3 puntos?",
+          "opciones": ["Verdadero", "Falso"],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null
+        },
+        {
+          "id": 704,
+          "tipo": "multiple",
+          "pregunta": "¿Qué tenista ha ganado la mayor cantidad de títulos individuales de Roland Garros en la historia?",
+          "opciones": ["Roger Federer", "Novak Djokovic", "Rafael Nadal", "Pete Sampras"],
+          "respuesta_correcta": "Rafael Nadal",
+          "imagen": null
+        }
+      ]
+    },
+    {
+      "id": "musica",
+      "nombre": "🎵 Música Universal",
+      "preguntas": [
+        {
+          "id": 801,
+          "tipo": "multiple",
+          "pregunta": "¿De qué ciudad británica era originaria la famosa banda 'The Beatles'?",
+          "opciones": ["Londres", "Manchester", "Liverpool", "Birmingham"],
+          "respuesta_correcta": "Liverpool",
+          "imagen": null
+        },
+        {
+          "id": 802,
+          "tipo": "vf",
+          "pregunta": "¿Ludwig van Beethoven compuso su Novena Sinfonía estando completamente sordo?",
+          "opciones": ["Verdadero", "Falso"],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null
+        },
+        {
+          "id": 803,
+          "tipo": "multiple",
+          "pregunta": "¿Qué instrumento musical de viento-madera utiliza una lengüeta doble?",
+          "opciones": ["Flauta traversa", "Oboe", "Clarinete", "Saxofón"],
+          "respuesta_correcta": "Oboe",
+          "imagen": null
+        },
+        {
+          "id": 804,
+          "tipo": "multiple",
+          "pregunta": "¿A qué artista pop se le conoce mundialmente como el 'Rey del Pop'?",
+          "opciones": ["Elvis Presley", "Michael Jackson", "Prince", "Freddie Mercury"],
+          "respuesta_correcta": "Michael Jackson",
           "imagen": null
         }
       ]
