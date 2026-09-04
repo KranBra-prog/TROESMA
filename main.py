@@ -49,34 +49,112 @@ def cargar_quiz_data():
 QUIZ_DATA = cargar_quiz_data()
 
 # ---------------------------------------------------------
+# DISEÑO: ICONOS, BARRAS Y HELPERS VISUALES
+# ---------------------------------------------------------
+
+# Icono fijo para categorías conocidas; si aparece una categoría nueva
+# en el JSON que no está en este mapa, se le asigna un icono de la
+# lista de reserva de forma estable (siempre el mismo para esa categoría).
+ICONOS_CATEGORIA = {
+    "geografia": "🌍",
+    "geografía": "🌍",
+    "matematica": "🔢",
+    "matemática": "🔢",
+    "biologia": "🧬",
+    "biología": "🧬",
+    "historia": "🏛️",
+    "arte": "🎨",
+    "musica": "🎵",
+    "música": "🎵",
+    "deportes": "⚽",
+    "ciencia": "🔬",
+    "literatura": "📚",
+    "tecnologia": "💻",
+    "tecnología": "💻",
+}
+ICONOS_RESERVA = ["🧩", "✨", "🎯", "📌", "🔖", "🃏"]
+
+SEPARADOR = "━━━━━━━━━━━━━━━━━━━━"
+
+
+def icono_categoria(categoria: dict) -> str:
+    clave = categoria["nombre"].strip().lower()
+    if clave in ICONOS_CATEGORIA:
+        return ICONOS_CATEGORIA[clave]
+    indice = sum(ord(c) for c in clave) % len(ICONOS_RESERVA)
+    return ICONOS_RESERVA[indice]
+
+
+def encabezado(emoji: str, titulo: str) -> str:
+    return f"<b>{emoji} {SEPARADOR}</b>\n<b>{titulo}</b>\n<b>{emoji} {SEPARADOR}</b>\n\n"
+
+
+def barra_tiempo(tiempo_actual: int, tiempo_total: int = 15) -> str:
+    total_bloques = 10
+    llenos = max(0, min(total_bloques, round((tiempo_actual / tiempo_total) * total_bloques)))
+    vacios = total_bloques - llenos
+
+    if tiempo_actual > tiempo_total * 0.6:
+        bloque = "🟩"
+    elif tiempo_actual > tiempo_total * 0.3:
+        bloque = "🟨"
+    else:
+        bloque = "🟥"
+
+    return f"{bloque * llenos}{'⬜' * vacios}  <code>{tiempo_actual}s</code>"
+
+
+def medalla(posicion: int) -> str:
+    return {1: "🥇", 2: "🥈", 3: "🥉"}.get(posicion, f"{posicion}.")
+
+
+def barra_puntaje(positivos: int, negativos: int, ancho: int = 10) -> str:
+    total = positivos + negativos
+    if total == 0:
+        return "▫️" * ancho
+    llenos_pos = max(0, min(ancho, round((positivos / total) * ancho)))
+    return "🟢" * llenos_pos + "🔴" * (ancho - llenos_pos)
+
+
+def fila_ranking(pos: int, nombre: str, pos_pts, neg_pts, total) -> str:
+    pos_pts = pos_pts or 0
+    neg_pts = neg_pts or 0
+    total = total or 0
+    signo = "-" if total < 0 else ""
+    return (
+        f"{medalla(pos)} <b>{nombre}</b>\n"
+        f"   {barra_puntaje(pos_pts, neg_pts)}\n"
+        f"   🔵 {pos_pts}  🔴 -{neg_pts}   ⭐ <b>{signo}{abs(total)} pts</b>\n\n"
+    )
+
+# ---------------------------------------------------------
 # COMANDOS PRINCIPALES
 # ---------------------------------------------------------
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.effective_user
     db.registrar_o_actualizar_usuario(user.id, user.username or "Anonimo", user.first_name)
-    
+
     mensaje = (
-        "<b>✨ ────────────────────────── ✨</b>\n"
-        "<b>🎓 ¡BIENVENIDO AL QUIZ EDUCATIVO! 🎓</b>\n"
-        "<b>✨ ────────────────────────── ✨</b>\n\n"
-        "<i>Demuestra tus conocimientos, compite en el ranking\n"
+        encabezado("🎓", "¡BIENVENIDO AL QUIZ EDUCATIVO!")
+        + "<i>Demuestra tus conocimientos, compite en el ranking\n"
         "y pon a prueba tu rapidez mental.</i>\n\n"
-        "<b>📌 Comandos Disponibles:</b>\n"
-        "🔹 <b>/quiz</b> : Iniciar un cuestionario\n"
-        "🔹 <b>/ranking_cat</b> : Ranking por categoría\n"
-        "🔹 <b>/ranking_gen</b> : Ranking general de usuarios\n"
-        "🔹 <b>/reiniciar</b> : Limpiar tu historial para volver a jugar\n"
-        "🔹 <b>/donar</b> : Apoyar el proyecto en Cafecito\n\n"
-        "<b>⏱️ Reglas:</b> Cuentas con 15s por pregunta en cuenta regresiva. Si llega a 0s pasa a la siguiente descontando 1 punto."
+        "<b>📌 Comandos disponibles</b>\n"
+        "🔹 /quiz — Iniciar un cuestionario\n"
+        "🔹 /ranking_cat — Ranking por categoría\n"
+        "🔹 /ranking_gen — Ranking general\n"
+        "🔹 /reiniciar — Limpiar tu historial\n"
+        "🔹 /donar — Apoyar el proyecto\n\n"
+        "<b>⏱️ Regla:</b> tenés 15s por pregunta. Si el tiempo llega a 0, "
+        "se pasa a la siguiente y se descuenta 1 punto."
     )
-    
+
     keyboard = [
         [InlineKeyboardButton("🎮 Jugar Quiz", callback_data="menu_quiz")],
         [InlineKeyboardButton("📊 Ranking General", callback_data="menu_rank_gen")],
-        [InlineKeyboardButton("☕ Donar con Cafecito", url=CAFECITO_URL)]
+        [InlineKeyboardButton("☕ Donar con Cafecito", url=CAFECITO_URL)],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    
+
     if update.message:
         await update.message.reply_text(mensaje, parse_mode="HTML", reply_markup=reply_markup)
     elif update.callback_query:
@@ -85,17 +163,22 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def comando_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.effective_user
     db.registrar_o_actualizar_usuario(user.id, user.username or "Anonimo", user.first_name)
-    
+
     keyboard = []
+    fila = []
     for cat in QUIZ_DATA["categorias"]:
-        keyboard.append([InlineKeyboardButton(cat["nombre"], callback_data=f"playcat_{cat['id']}")])
-    
+        etiqueta = f"{icono_categoria(cat)} {cat['nombre']}"
+        fila.append(InlineKeyboardButton(etiqueta, callback_data=f"playcat_{cat['id']}"))
+        if len(fila) == 2:
+            keyboard.append(fila)
+            fila = []
+    if fila:
+        keyboard.append(fila)
+
     reply_markup = InlineKeyboardMarkup(keyboard)
     texto = (
-        "<b>🎯 ────────────────────────── 🎯</b>\n"
-        "<b>🗂️ SELECCIONA UNA CATEGORÍA 🗂️</b>\n"
-        "<b>🎯 ────────────────────────── 🎯</b>\n\n"
-        "<i>Elige un tema para iniciar una ronda de 5 preguntas:</i>"
+        encabezado("🗂️", "SELECCIONÁ UNA CATEGORÍA")
+        + "<i>Elegí un tema para iniciar una ronda de 5 preguntas:</i>"
     )
     if update.message:
         await update.message.reply_text(texto, parse_mode="HTML", reply_markup=reply_markup)
@@ -105,6 +188,16 @@ async def comando_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ---------------------------------------------------------
 # LÓGICA DE PREGUNTAS Y TEMPORIZADOR
 # ---------------------------------------------------------
+def texto_pregunta_render(categoria: dict, pregunta_obj: dict, idx: int, total: int, tiempo: int) -> str:
+    icono = icono_categoria(categoria)
+    return (
+        f"{icono} <b>{categoria['nombre']}</b>   ·   Pregunta <b>{idx + 1}/{total}</b>\n"
+        f"{SEPARADOR}\n\n"
+        f"<b>{pregunta_obj['pregunta']}</b>\n\n"
+        f"{barra_tiempo(tiempo)}"
+    )
+
+
 async def manejar_pregunta(query, context, cat_id: str, idx: int, preguntas: list = None):
     if preguntas is None:
         if context.user_data is not None:
@@ -113,38 +206,31 @@ async def manejar_pregunta(query, context, cat_id: str, idx: int, preguntas: lis
             preguntas = []
 
     categoria = next((c for c in QUIZ_DATA["categorias"] if c["id"] == cat_id), None)
-    
+
     if not categoria or idx >= len(preguntas):
         await query.message.reply_text(
-            "<b>🎉 ────────────────────────── 🎉</b>\n"
-            "<b>¡HAS COMPLETADO TU RONDA!</b>\n"
-            "<b>🎉 ────────────────────────── 🎉</b>\n\n"
-            "<i>Consulta tus puntos actualizados usando /ranking_cat o /ranking_gen</i>",
-            parse_mode="HTML"
+            encabezado("🎉", "¡HAS COMPLETADO TU RONDA!")
+            + "<i>Consultá tus puntos actualizados con /ranking_cat o /ranking_gen</i>",
+            parse_mode="HTML",
         )
         if context.user_data is not None:
             context.user_data.pop("preguntas_quiz", None)
         return
 
     pregunta_obj = preguntas[idx]
-    
+
     opciones = pregunta_obj["opciones"].copy()
     random.shuffle(opciones)
-    
+
     keyboard = []
     for opc in opciones:
         cb_data = f"ans_{cat_id}_{idx}_{opc}"
-        keyboard.append([InlineKeyboardButton(opc, callback_data=cb_data)])
-        
+        keyboard.append([InlineKeyboardButton(f"▫️ {opc}", callback_data=cb_data)])
+
     reply_markup = InlineKeyboardMarkup(keyboard)
-    
+
     tiempo_inicial = 15
-    texto_pregunta = (
-        f"<b>📋 Categoría:</b> {categoria['nombre']}\n"
-        f"<b>❓ Pregunta {idx+1}/{len(preguntas)}:</b>\n\n"
-        f"<b>{pregunta_obj['pregunta']}</b>\n\n"
-        f"⏳ <b>Tiempo restante:</b> <code>{tiempo_inicial}s</code>"
-    )
+    texto_pregunta = texto_pregunta_render(categoria, pregunta_obj, idx, len(preguntas), tiempo_inicial)
 
     if pregunta_obj.get("imagen"):
         msg = await query.message.reply_photo(
@@ -173,6 +259,7 @@ async def manejar_pregunta(query, context, cat_id: str, idx: int, preguntas: lis
             "tiene_foto": bool(pregunta_obj.get("imagen")),
             "preguntas": preguntas,
             "tiempo": tiempo_inicial,
+            "tiempo_total": tiempo_inicial,
             "query": query
         },
         name=f"timer_{msg.message_id}"
@@ -181,7 +268,7 @@ async def manejar_pregunta(query, context, cat_id: str, idx: int, preguntas: lis
 async def cuenta_regresiva_callback(context: ContextTypes.DEFAULT_TYPE):
     job = context.job
     job_data = job.data
-    
+
     job_data["tiempo"] -= 1
     tiempo_actual = job_data["tiempo"]
     chat_id = job_data["chat_id"]
@@ -193,17 +280,14 @@ async def cuenta_regresiva_callback(context: ContextTypes.DEFAULT_TYPE):
     categoria = next((c for c in QUIZ_DATA["categorias"] if c["id"] == cat_id), None)
 
     if tiempo_actual > 0:
-        texto_actualizado = (
-            f"<b>📋 Categoría:</b> {categoria['nombre']}\n"
-            f"<b>❓ Pregunta {idx+1}/{len(preguntas)}:</b>\n\n"
-            f"<b>{pregunta_obj['pregunta']}</b>\n\n"
-            f"⏳ <b>Tiempo restante:</b> <code>{tiempo_actual}s</code>"
+        texto_actualizado = texto_pregunta_render(
+            categoria, pregunta_obj, idx, len(preguntas), tiempo_actual
         )
-        
+
         keyboard = []
         for opc in pregunta_obj["opciones"]:
             cb_data = f"ans_{cat_id}_{idx}_{opc}"
-            keyboard.append([InlineKeyboardButton(opc, callback_data=cb_data)])
+            keyboard.append([InlineKeyboardButton(f"▫️ {opc}", callback_data=cb_data)])
         reply_markup = InlineKeyboardMarkup(keyboard)
 
         try:
@@ -217,20 +301,16 @@ async def cuenta_regresiva_callback(context: ContextTypes.DEFAULT_TYPE):
                 )
         except Exception:
             pass
-            
+
     else:
         job.schedule_removal()
-        
+
         user_id = job_data["user_id"]
         db.registrar_pregunta_respondida(user_id, pregunta_obj["id"])
         db.actualizar_puntaje(user_id, cat_id, es_correcto=False)
-        
-        texto_expirado = (
-            "<b>⏰ ────────────────────────── ⏰</b>\n"
-            "<b>¡TIEMPO AGOTADO! ❌ (-1 Punto)</b>\n"
-            "<b>⏰ ────────────────────────── ⏰</b>"
-        )
-        
+
+        texto_expirado = encabezado("⏰", "¡TIEMPO AGOTADO! ❌  (-1 Punto)")
+
         try:
             if job_data["tiene_foto"]:
                 await context.bot.edit_message_caption(chat_id=chat_id, message_id=message_id, caption=texto_expirado, parse_mode="HTML")
@@ -245,12 +325,12 @@ async def cuenta_regresiva_callback(context: ContextTypes.DEFAULT_TYPE):
 async def procesar_respuesta(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
-    
+
     parts = query.data.split("_")
     cat_id = parts[1]
     idx = int(parts[2])
     respuesta = "_".join(parts[3:])
-    
+
     current_jobs = context.job_queue.get_jobs_by_name(f"timer_{query.message.message_id}")
     for job in current_jobs:
         job.schedule_removal()
@@ -258,16 +338,19 @@ async def procesar_respuesta(update: Update, context: ContextTypes.DEFAULT_TYPE)
     preguntas = context.user_data.get("preguntas_quiz", []) if context.user_data else []
     if idx >= len(preguntas):
         return
-        
+
     pregunta_obj = preguntas[idx]
     db.registrar_pregunta_respondida(query.from_user.id, pregunta_obj["id"])
-    
+
     if respuesta == pregunta_obj["respuesta_correcta"]:
         db.actualizar_puntaje(query.from_user.id, cat_id, es_correcto=True)
-        resultado = "<b>✅ ¡RESPUESTA CORRECTA! (+1 Punto)</b>"
+        resultado = encabezado("✅", "¡RESPUESTA CORRECTA!  (+1 Punto)")
     else:
         db.actualizar_puntaje(query.from_user.id, cat_id, es_correcto=False)
-        resultado = f"<b>❌ RESPUESTA INCORRECTA (-1 Punto)</b>\n<i>Correcta: {pregunta_obj['respuesta_correcta']}</i>"
+        resultado = (
+            encabezado("❌", "RESPUESTA INCORRECTA  (-1 Punto)")
+            + f"<i>Correcta: {pregunta_obj['respuesta_correcta']}</i>"
+        )
 
     if query.message.photo:
         await query.edit_message_caption(caption=resultado, parse_mode="HTML")
@@ -282,28 +365,15 @@ async def procesar_respuesta(update: Update, context: ContextTypes.DEFAULT_TYPE)
 # ---------------------------------------------------------
 async def comando_ranking_gen(update: Update, context: ContextTypes.DEFAULT_TYPE):
     ranking = db.obtener_ranking_general()
-    
-    texto = (
-        "<b>🏆 ────────────────────────── 🏆</b>\n"
-        "<b>📊 RANKING GENERAL DE JUGADORES 📊</b>\n"
-        "<b>🏆 ────────────────────────── 🏆</b>\n\n"
-    )
-    
+
+    texto = encabezado("🏆", "RANKING GENERAL DE JUGADORES")
+
     if not ranking:
         texto += "<i>Aún no hay puntos registrados en el juego.</i>"
     else:
         for pos, row in enumerate(ranking, start=1):
             nombre, pos_pts, neg_pts, total = row
-            pos_pts = pos_pts or 0
-            neg_pts = neg_pts or 0
-            total = total or 0
-            
-            signo = "-" if total < 0 else ""
-            texto += (
-                f"<b>{pos}. {nombre}</b>\n"
-                f"   🔵 Positivas: {pos_pts} | 🔴 Negativas: -{neg_pts}\n"
-                f"   ⭐ Total: <b>{signo}{abs(total)} pts</b>\n\n"
-            )
+            texto += fila_ranking(pos, nombre, pos_pts, neg_pts, total)
 
     if update.message:
         await update.message.reply_text(texto, parse_mode="HTML")
@@ -312,15 +382,20 @@ async def comando_ranking_gen(update: Update, context: ContextTypes.DEFAULT_TYPE
 
 async def comando_ranking_cat(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = []
+    fila = []
     for cat in QUIZ_DATA["categorias"]:
-        keyboard.append([InlineKeyboardButton(cat["nombre"], callback_data=f"showrankcat_{cat['id']}")])
-    
+        etiqueta = f"{icono_categoria(cat)} {cat['nombre']}"
+        fila.append(InlineKeyboardButton(etiqueta, callback_data=f"showrankcat_{cat['id']}"))
+        if len(fila) == 2:
+            keyboard.append(fila)
+            fila = []
+    if fila:
+        keyboard.append(fila)
+
     reply_markup = InlineKeyboardMarkup(keyboard)
     texto = (
-        "<b>🏅 ────────────────────────── 🏅</b>\n"
-        "<b>📊 RANKING POR CATEGORÍA 📊</b>\n"
-        "<b>🏅 ────────────────────────── 🏅</b>\n\n"
-        "<i>Selecciona una categoría para ver sus posiciones:</i>"
+        encabezado("🏅", "RANKING POR CATEGORÍA")
+        + "<i>Seleccioná una categoría para ver sus posiciones:</i>"
     )
     if update.message:
         await update.message.reply_text(texto, parse_mode="HTML", reply_markup=reply_markup)
@@ -331,30 +406,18 @@ async def mostrar_ranking_cat_seleccionado(update: Update, context: ContextTypes
     query = update.callback_query
     await query.answer()
     cat_id = query.data.split("_")[1]
-    
+
     categoria = next((c for c in QUIZ_DATA["categorias"] if c["id"] == cat_id), None)
     ranking = db.obtener_ranking_categoria(cat_id)
-    
-    texto = (
-        f"<b>🏅 RANKING: {categoria['nombre']} 🏅</b>\n"
-        "<b>─────────────────────────────</b>\n\n"
-    )
-    
+
+    texto = encabezado(icono_categoria(categoria), f"RANKING: {categoria['nombre'].upper()}")
+
     if not ranking:
         texto += "<i>No hay puntos registrados en esta categoría aún.</i>"
     else:
         for pos, row in enumerate(ranking, start=1):
             nombre, pos_pts, neg_pts, total = row
-            pos_pts = pos_pts or 0
-            neg_pts = neg_pts or 0
-            total = total or 0
-            
-            signo = "-" if total < 0 else ""
-            texto += (
-                f"<b>{pos}. {nombre}</b>\n"
-                f"   🔵 Positivas: {pos_pts} | 🔴 Negativas: -{neg_pts}\n"
-                f"   ⭐ Total: <b>{signo}{abs(total)} pts</b>\n\n"
-            )
+            texto += fila_ranking(pos, nombre, pos_pts, neg_pts, total)
 
     await query.edit_message_text(texto, parse_mode="HTML")
 
@@ -362,22 +425,20 @@ async def comando_reiniciar(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     db.reiniciar_historial_usuario(user_id)
     await update.message.reply_text(
-        "<b>🔄 ────────────────────────── 🔄</b>\n"
-        "<b>¡HISTORIAL REINICIADO!</b>\n"
-        "<b>🔄 ────────────────────────── 🔄</b>\n\n"
-        "<i>Se ha limpiado tu registro de preguntas respondidas. Ahora puedes volver a jugar todas las categorías desde cero.</i>",
+        encabezado("🔄", "¡HISTORIAL REINICIADO!")
+        + "<i>Se limpió tu registro de preguntas respondidas. Ahora podés volver a "
+        "jugar todas las categorías desde cero.</i>",
         parse_mode="HTML"
     )
 
 async def comando_donar(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [[InlineKeyboardButton("☕ Invítame un Cafecito", url=CAFECITO_URL)]]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    
+
     texto = (
-        "<b>☕ ────────────────────────── ☕</b>\n"
-        "<b>APOYA AL PROYECTO EDUCATIVO</b>\n"
-        "<b>☕ ────────────────────────── ☕</b>\n\n"
-        "<i>Si disfrutas aprendiendo con este Bot, puedes colaborar invitándonos un Cafecito para financiar el mantenimiento y agregar más contenido.</i>\n\n"
+        encabezado("☕", "APOYÁ AL PROYECTO EDUCATIVO")
+        + "<i>Si disfrutás aprendiendo con este bot, podés colaborar invitándonos "
+        "un cafecito para financiar el mantenimiento y sumar más contenido.</i>\n\n"
         "<b>¡Muchas gracias por tu apoyo! ❤️</b>"
     )
     if update.message:
@@ -386,12 +447,12 @@ async def comando_donar(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.callback_query.edit_message_text(texto, parse_mode="HTML", reply_markup=reply_markup)
 
 # ---------------------------------------------------------
-# CALLBACK HANDLER GENERÁL
+# CALLBACK HANDLER GENERAL
 # ---------------------------------------------------------
 async def callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     data = query.data
-    
+
     if data == "menu_quiz":
         await comando_quiz(update, context)
     elif data == "menu_rank_gen":
@@ -399,22 +460,20 @@ async def callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif data.startswith("playcat_"):
         cat_id = data.split("_")[1]
         user_id = query.from_user.id
-        
+
         categoria = next((c for c in QUIZ_DATA["categorias"] if c["id"] == cat_id), None)
         if categoria:
             respondidas_ids = db.obtener_ids_preguntas_respondidas(user_id)
             preguntas_disponibles = [
-                p for p in categoria["preguntas"] 
+                p for p in categoria["preguntas"]
                 if p["id"] not in respondidas_ids
             ]
-            
+
             if not preguntas_disponibles:
                 await query.edit_message_text(
-                    "<b>🎓 ────────────────────────── 🎓</b>\n"
-                    "<b>¡FELICITACIONES! 🎉</b>\n"
-                    "<b>🎓 ────────────────────────── 🎓</b>\n\n"
-                    "<i>Ya has respondido todas las preguntas de esta categoría.</i>\n\n"
-                    "Usa /reiniciar para volver a jugar esta categoría o elige otra disponible.",
+                    encabezado("🎓", "¡FELICITACIONES! 🎉")
+                    + "<i>Ya respondiste todas las preguntas de esta categoría.</i>\n\n"
+                    "Usá /reiniciar para volver a jugarla o elegí otra disponible.",
                     parse_mode="HTML"
                 )
                 return
@@ -423,7 +482,7 @@ async def callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             ronda_preguntas = preguntas_disponibles[:5]
             if context.user_data is not None:
                 context.user_data["preguntas_quiz"] = ronda_preguntas
-            
+
             await manejar_pregunta(query, context, cat_id, 0, preguntas=ronda_preguntas)
     elif data.startswith("ans_"):
         await procesar_respuesta(update, context)
@@ -435,24 +494,23 @@ async def callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ---------------------------------------------------------
 def main():
     db.init_db()
-    
+
     # Iniciar servidor web para que Render mantenga el Web Service vivo
     keep_alive()
-    
+
     app = Application.builder().token(TOKEN).build()
-    
+
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("quiz", comando_quiz))
     app.add_handler(CommandHandler("ranking_cat", comando_ranking_cat))
     app.add_handler(CommandHandler("ranking_gen", comando_ranking_gen))
     app.add_handler(CommandHandler("reiniciar", comando_reiniciar))
     app.add_handler(CommandHandler("donar", comando_donar))
-    
+
     app.add_handler(CallbackQueryHandler(callback_handler))
-    
+
     print("🤖 Bot educativo listo y en ejecución...")
     app.run_polling()
 
 if __name__ == "__main__":
     main()
-    
