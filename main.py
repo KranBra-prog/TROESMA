@@ -1,495 +1,445 @@
 import os
-import json
-import random
 import asyncio
+import logging
 from threading import Thread
 from flask import Flask
 from dotenv import load_dotenv
 
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.error import BadRequest
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import (
     Application,
-    CommandHandler,
     CallbackQueryHandler,
+    CommandHandler,
     ContextTypes,
 )
+
 import database as db
 
-# ---------------------------------------------------------
-# CONFIGURACIÓN Y VARIABLES DE ENTORNO
-# ---------------------------------------------------------
+# Cargar variables de entorno
 load_dotenv()
-TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 CAFECITO_URL = os.getenv("CAFECITO_URL", "https://cafecito.app")
 
-if not TOKEN:
-    print("❌ ERROR: La variable TELEGRAM_BOT_TOKEN no está configurada en las variables de entorno.")
+# Configuración de Logs
+logging.basicConfig(
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
+)
+logger = logging.getLogger(__name__)
 
-# ---------------------------------------------------------
-# SERVIDOR FLASK EN SEGUNDO PLANO (PARA PLAN FREE EN RENDER)
-# ---------------------------------------------------------
-web_app = Flask('')
+# --- SERVIDOR KEEP-ALIVE PARA RENDER ---
+app = Flask("")
 
-@web_app.route('/')
+@app.route("/")
 def home():
-    return "🤖 Bot educativo activo 24/7"
+    return "Bot de Trivia activo 24/7"
 
-def run_web():
-    port = int(os.environ.get("PORT", 8080))
-    web_app.run(host='0.0.0.0', port=port)
+def run_flask():
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
 
 def keep_alive():
-    t = Thread(target=run_web)
+    t = Thread(target=run_flask)
     t.daemon = True
     t.start()
 
-# ---------------------------------------------------------
-# CARGA DE DATOS DE TRIVIA
-# ---------------------------------------------------------
-def cargar_quiz_data():
-    try:
-        with open("quiz_data.json", "r", encoding="utf-8") as f:
-            return json.load(f)
-    except FileNotFoundError:
-        print("❌ ERROR: Archivo 'quiz_data.json' no encontrado.")
-        return {"categorias": []}
+# --- DISEÑO Y UTILIDADES VISUALES ---
+def encabezado(titulo: str) -> str:
+    """Genera un encabezado visual estandarizado para los mensajes."""
+    return f"━━━━━━━━━━━━━━━━━━━━━━\n🎯 *TROESMA QUIZ* | {titulo}\n━━━━━━━━━━━━━━━━━━━━━━\n\n"
 
-QUIZ_DATA = cargar_quiz_data()
+def generar_barra_progreso(porcentaje: float, longitud: int = 10) -> str:
+    """Genera una barra de progreso basada en el porcentaje especificado."""
+    llenos = int(round(longitud * (porcentaje / 100)))
+    vacios = longitud - llenos
+    return "█" * llenos + "░" * vacios
 
-# ---------------------------------------------------------
-# FUNCIONES AUXILIARES DE DISEÑO VISUAL
-# ---------------------------------------------------------
-def encabezado(icono: str, titulo: str) -> str:
-    """Genera un encabezado uniforme para todo el bot."""
-    return (
-        f"<b>{icono} ────────────────────────── {icono}</b>\n"
-        f"<b>{titulo}</b>\n"
-        f"<b>{icono} ────────────────────────── {icono}</b>\n\n"
-    )
-
-def generar_barra_tiempo(tiempo_restante: int, tiempo_total: int = 15) -> str:
-    """Genera una barra visual de 10 bloques que cambia de color según el tiempo restante."""
-    porcentaje = max(0, min(1, tiempo_restante / tiempo_total))
-    bloques_llenos = int(porcentaje * 10)
-    bloques_vacios = 10 - bloques_llenos
-
-    if porcentaje > 0.5:
+def generar_barra_tiempo(segundos_restantes: int, total_segundos: int = 15) -> str:
+    """Genera una barra de tiempo animada colorimétrica."""
+    porcentaje = segundos_restantes / total_segundos
+    bloques = int(porcentaje * 10)
+    
+    if porcentaje > 0.6:
         color = "🟩"
-    elif porcentaje > 0.2:
+    elif porcentaje > 0.3:
         color = "🟨"
     else:
         color = "🟥"
+        
+    return f"[{color * bloques}{'▫️' * (10 - bloques)}] ({segundos_restantes}s)"
 
-    barra = (color * bloques_llenos) + ("⬛" * bloques_vacios)
-    return f"{barra} <code>{tiempo_restante}s</code>"
+# --- COMANDOS DEL BOT ---
 
-def generar_barra_proporcion(positivas: int, negativas: int) -> str:
-    """Genera una mini-barra proporcional de aciertos (🟩) vs errores (🟥)."""
-    total = positivas + negativas
-    if total == 0:
-        return "⬛⬛⬛⬛⬛ <i>(Sin jugadas)</i>"
-    
-    ancho_total = 5
-    llenos_pos = round((positivas / total) * ancho_total)
-    llenos_neg = ancho_total - llenos_pos
-    
-    return ("🟩" * llenos_pos) + ("🟥" * llenos_neg)
-
-# ---------------------------------------------------------
-# COMANDOS PRINCIPALES
-# ---------------------------------------------------------
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Muestra el mensaje de bienvenida principal."""
     user = update.effective_user
-    db.registrar_o_actualizar_usuario(user.id, user.username or "Anonimo", user.first_name)
+    db.registrar_o_actualizar_usuario(user.id, user.username, user.first_name)
     
-    mensaje = (
-        encabezado("✨", "🎓 ¡BIENVENIDO AL QUIZ EDUCATIVO! 🎓") +
-        "<i>Demuestra tus conocimientos, compite en el ranking\n"
-        "y pon a prueba tu rapidez mental.</i>\n\n"
-        "<b>📌 Comandos Disponibles:</b>\n"
-        "🔹 <b>/quiz</b> : Iniciar un cuestionario\n"
-        "🔹 <b>/ranking_cat</b> : Ranking por categoría\n"
-        "🔹 <b>/ranking_gen</b> : Ranking general de usuarios\n"
-        "🔹 <b>/reiniciar</b> : Limpiar tu historial para volver a jugar\n"
-        "🔹 <b>/donar</b> : Apoyar el proyecto en Cafecito\n\n"
-        "<b>⏱️ Reglas:</b> Cuentas con 15s por pregunta. Si el tiempo expira, pasas a la siguiente descontando 1 punto."
+    texto = (
+        f"{encabezado('¡BIENVENIDO!')}"
+        f"Hola *{user.first_name}* 👋\n\n"
+        "Demuestra tus conocimientos en nuestras trivias interactivas.\n\n"
+        "📌 *Comandos principales:*\n"
+        "• /quiz - Iniciar una nueva ronda de preguntas\n"
+        "• /perfil - Ver tu nivel, estadísticas y racha\n"
+        "• /ranking_gen - Tabla global de clasificación\n"
+        "• /ranking_cat - Clasificación por categoría\n"
+        "• /reiniciar - Limpiar historial para volver a jugar\n"
+        "• /donar - Apoyar el proyecto\n"
     )
     
     keyboard = [
-        [InlineKeyboardButton("🎮 Jugar Quiz", callback_data="menu_quiz")],
-        [InlineKeyboardButton("📊 Ranking General", callback_data="menu_rank_gen")],
-        [InlineKeyboardButton("☕ Donar con Cafecito", url=CAFECITO_URL)]
+        [InlineKeyboardButton("🎮 Jugar Ahora", callback_data="menu_quiz")],
+        [InlineKeyboardButton("👤 Mi Perfil", callback_data="ver_perfil"),
+         InlineKeyboardButton("🏆 Ranking", callback_data="menu_ranking")]
     ]
-    reply_markup = InlineKeyboardMarkup(keyboard)
     
-    if update.message:
-        await update.message.reply_text(mensaje, parse_mode="HTML", reply_markup=reply_markup)
-    elif update.callback_query:
-        await update.callback_query.edit_message_text(mensaje, parse_mode="HTML", reply_markup=reply_markup)
-
-async def comando_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    user = update.effective_user
-    db.registrar_o_actualizar_usuario(user.id, user.username or "Anonimo", user.first_name)
-    
-    keyboard = []
-    for cat in QUIZ_DATA.get("categorias", []):
-        keyboard.append([InlineKeyboardButton(cat["nombre"], callback_data=f"playcat_{cat['id']}")])
-    
-    reply_markup = InlineKeyboardMarkup(keyboard)
-    texto = (
-        encabezado("🎯", "🗂️ SELECCIONA UNA CATEGORÍA 🗂️") +
-        "<i>Elige un tema para iniciar una ronda de preguntas:</i>"
+    await update.message.reply_text(
+        texto, parse_mode="Markdown", reply_markup=InlineKeyboardMarkup(keyboard)
     )
-    if update.message:
-        await update.message.reply_text(texto, parse_mode="HTML", reply_markup=reply_markup)
-    else:
-        await update.callback_query.edit_message_text(texto, parse_mode="HTML", reply_markup=reply_markup)
 
-# ---------------------------------------------------------
-# LÓGICA DE PREGUNTAS Y TEMPORIZADOR EN VIVO
-# ---------------------------------------------------------
-async def manejar_pregunta(query, context, cat_id: str, idx: int, preguntas: list = None):
-    if preguntas is None:
-        preguntas = context.user_data.get("preguntas_quiz", []) if context.user_data else []
-
-    categoria = next((c for c in QUIZ_DATA.get("categorias", []) if c["id"] == cat_id), None)
+async def cmd_perfil(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Muestra la tarjeta de perfil y estadísticas del jugador."""
+    user = update.effective_user
+    db.registrar_o_actualizar_usuario(user.id, user.username, user.first_name)
     
-    if not categoria or idx >= len(preguntas):
-        await query.message.reply_text(
-            encabezado("🎉", "¡HAS COMPLETADO TU RONDA!") +
-            "<i>Consulta tus puntos actualizados usando /ranking_cat o /ranking_gen</i>",
-            parse_mode="HTML"
-        )
-        if context.user_data is not None:
-            context.user_data.pop("preguntas_quiz", None)
+    # Obtener datos acumulados
+    ranking = db.obtener_ranking_general()
+    pos_user = "N/A"
+    p_pos, p_neg, total = 0, 0, 0
+    
+    for idx, fila in enumerate(ranking, start=1):
+        # fila: (nombre, pos, neg, total)
+        if fila[0] == (user.first_name or user.username or "Anónimo"):
+            pos_user = f"#{idx}"
+            p_pos = fila[1] or 0
+            p_neg = fila[2] or 0
+            total = fila[3] or 0
+            break
+
+    total_respuestas = p_pos + p_neg
+    efectividad = (p_pos / total_respuestas * 100) if total_respuestas > 0 else 0
+    barra_efectividad = generar_barra_progreso(efectividad)
+    
+    racha_actual = context.user_data.get("streak", 0)
+
+    texto = (
+        f"{encabezado('PERFIL DE JUGADOR')}"
+        f"👤 *Usuario:* {user.first_name}\n"
+        f"🏅 *Posición Global:* {pos_user}\n"
+        f"🔥 *Racha Actual:* {racha_actual} seguidas\n"
+        f"⭐ *Puntos Totales:* {total}\n\n"
+        f"📊 *Efectividad:* {efectividad:.1f}%\n"
+        f"`[{barra_efectividad}]`\n\n"
+        f"✅ *Aciertos:* {p_pos}\n"
+        f"❌ *Errores:* {p_neg}\n"
+        f"📝 *Total Contestado:* {total_respuestas}"
+    )
+    
+    keyboard = [[InlineKeyboardButton("🚀 Iniciar Quiz", callback_data="menu_quiz")]]
+    
+    if update.message:
+        await update.message.reply_text(texto, parse_mode="Markdown", reply_markup=InlineKeyboardMarkup(keyboard))
+    else:
+        await update.callback_query.edit_message_text(texto, parse_mode="Markdown", reply_markup=InlineKeyboardMarkup(keyboard))
+
+async def cmd_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Muestra el menú de categorías para comenzar un quiz."""
+    data_quiz = context.bot_data.get("quiz_json", {})
+    categorias = data_quiz.get("categorias", [])
+
+    if not categorias:
+        msg = "⚠️ No se encontraron categorías cargadas en el sistema."
+        if update.message:
+            await update.message.reply_text(msg)
+        else:
+            await update.callback_query.edit_message_text(msg)
         return
 
-    pregunta_obj = preguntas[idx]
-    
-    opciones = pregunta_obj["opciones"].copy()
-    random.shuffle(opciones)
-    
     keyboard = []
-    for opc in opciones:
-        cb_data = f"ans_{cat_id}_{idx}_{opc}"
-        keyboard.append([InlineKeyboardButton(opc, callback_data=cb_data)])
-        
-    reply_markup = InlineKeyboardMarkup(keyboard)
+    for cat in categorias:
+        keyboard.append([InlineKeyboardButton(cat["nombre"], callback_data=f"cat_{cat['id']}")])
+
+    texto = f"{encabezado('SELECCIÓN DE CATEGORÍA')}" "Elige la categoría en la que deseas competir:"
     
-    tiempo_inicial = 15
+    if update.message:
+        await update.message.reply_text(texto, parse_mode="Markdown", reply_markup=InlineKeyboardMarkup(keyboard))
+    else:
+        await update.callback_query.edit_message_text(texto, parse_mode="Markdown", reply_markup=InlineKeyboardMarkup(keyboard))
+
+# --- LÓGICA DEL JUEGO Y PREGUNTAS ---
+
+async def presentar_pregunta(query, context: ContextTypes.DEFAULT_TYPE, user_id: int, cat_id: str):
+    """Selecciona y envía una pregunta no respondida al usuario con temporizador dinámico."""
+    data_quiz = context.bot_data.get("quiz_json", {})
+    categoria = next((c for c in data_quiz.get("categorias", []) if c["id"] == cat_id), None)
+
+    if not categoria:
+        await query.edit_message_text("❌ Categoría no encontrada.")
+        return
+
+    # Obtener preguntas no respondidas
+    respondidas = db.obtener_ids_preguntas_respondidas(user_id)
+    disponibles = [p for p in categoria["preguntas"] if p["id"] not in respondidas]
+
+    if not disponibles:
+        texto = (
+            f"{encabezado('CATEGORÍA COMPLETADA')}"
+            f"🎉 ¡Felicidades! Has respondido todas las preguntas de *{categoria['nombre']}*.\n\n"
+            "Usa el comando /reiniciar si deseas volver a jugar esta categoría."
+        )
+        keyboard = [[InlineKeyboardButton("📂 Otra Categoría", callback_data="menu_quiz")]]
+        await query.edit_message_text(texto, parse_mode="Markdown", reply_markup=InlineKeyboardMarkup(keyboard))
+        return
+
+    pregunta_actual = disponibles[0]
+    context.user_data["pregunta_activa"] = pregunta_actual
+    context.user_data["cat_activa"] = cat_id
+
+    # Construir botones de opciones
+    keyboard = []
+    for idx, opcion in enumerate(pregunta_actual["opciones"]):
+        keyboard.append([InlineKeyboardButton(opcion, callback_data=f"ans_{idx}")])
+
+    markup = InlineKeyboardMarkup(keyboard)
+    
+    # Renderizar tarjeta inicial
+    racha = context.user_data.get("streak", 0)
+    indicador_racha = f" (🔥 Racha x{racha})" if racha > 1 else ""
+    
     texto_pregunta = (
-        f"<b>📋 Categoría:</b> {categoria['nombre']}\n"
-        f"<b>❓ Pregunta {idx+1}/{len(preguntas)}:</b>\n\n"
-        f"<b>{pregunta_obj['pregunta']}</b>\n\n"
-        f"⏳ {generar_barra_tiempo(tiempo_inicial)}"
+        f"{encabezado(categoria['nombre'])}\n"
+        f"❓ *{pregunta_actual['pregunta']}*{indicador_racha}\n\n"
+        f"⏱️ Tiempo restante:\n`{generar_barra_tiempo(15)}`"
     )
 
-    if pregunta_obj.get("imagen"):
+    # Si la pregunta incluye imagen opcional
+    if "imagen" in pregunta_actual and pregunta_actual["imagen"]:
         msg = await query.message.reply_photo(
-            photo=pregunta_obj["imagen"],
+            photo=pregunta_actual["imagen"],
             caption=texto_pregunta,
-            parse_mode="HTML",
-            reply_markup=reply_markup
+            parse_mode="Markdown",
+            reply_markup=markup
         )
     else:
-        msg = await query.message.reply_text(
-            texto_pregunta,
-            parse_mode="HTML",
-            reply_markup=reply_markup
+        msg = await query.edit_message_text(
+            text=texto_pregunta,
+            parse_mode="Markdown",
+            reply_markup=markup
         )
 
-    context.job_queue.run_repeating(
-        cuenta_regresiva_callback,
-        interval=1,
-        first=1,
-        data={
-            "chat_id": query.message.chat_id,
-            "message_id": msg.message_id,
-            "cat_id": cat_id,
-            "idx": idx,
-            "user_id": query.from_user.id,
-            "tiene_foto": bool(pregunta_obj.get("imagen")),
-            "preguntas": preguntas,
-            "tiempo": tiempo_inicial,
-            "query": query
-        },
-        name=f"timer_{msg.message_id}"
+    context.user_data["msg_id_activo"] = msg.message_id
+
+    # Iniciar temporizador en segundo plano (15 segundos)
+    asyncio.create_task(
+        iniciar_temporizador(
+            chat_id=query.message.chat_id,
+            message_id=msg.message_id,
+            context=context,
+            pregunta_id=pregunta_actual["id"],
+            has_photo="imagen" in pregunta_actual and bool(pregunta_actual["imagen"])
+        )
     )
 
-async def cuenta_regresiva_callback(context: ContextTypes.DEFAULT_TYPE):
-    job = context.job
-    job_data = job.data
-    
-    job_data["tiempo"] -= 1
-    tiempo_actual = job_data["tiempo"]
-    chat_id = job_data["chat_id"]
-    message_id = job_data["message_id"]
-    cat_id = job_data["cat_id"]
-    idx = job_data["idx"]
-    preguntas = job_data["preguntas"]
-    pregunta_obj = preguntas[idx]
-    categoria = next((c for c in QUIZ_DATA.get("categorias", []) if c["id"] == cat_id), None)
-
-    if tiempo_actual > 0:
-        texto_actualizado = (
-            f"<b>📋 Categoría:</b> {categoria['nombre']}\n"
-            f"<b>❓ Pregunta {idx+1}/{len(preguntas)}:</b>\n\n"
-            f"<b>{pregunta_obj['pregunta']}</b>\n\n"
-            f"⏳ {generar_barra_tiempo(tiempo_actual)}"
-        )
+async def iniciar_temporizador(chat_id: int, message_id: int, context: ContextTypes.DEFAULT_TYPE, pregunta_id: str, has_photo: bool):
+    """Cuenta regresiva dinámicamente actualizada cada segundo."""
+    for s in range(14, -1, -1):
+        await asyncio.sleep(1)
         
-        keyboard = []
-        for opc in pregunta_obj["opciones"]:
-            cb_data = f"ans_{cat_id}_{idx}_{opc}"
-            keyboard.append([InlineKeyboardButton(opc, callback_data=cb_data)])
-        reply_markup = InlineKeyboardMarkup(keyboard)
+        # Verificar si el usuario ya respondió
+        preg_activa = context.user_data.get("pregunta_activa")
+        if not preg_activa or preg_activa["id"] != pregunta_id:
+            return  # La pregunta fue respondida o cambió
+
+        # Actualizar texto con la barra de tiempo
+        barra = generar_barra_tiempo(s)
+        pregunta = preg_activa["pregunta"]
+        cat_nombre = context.user_data.get("cat_activa", "QUIZ")
+        
+        nuevo_texto = (
+            f"{encabezado(cat_nombre)}\n"
+            f"❓ *{pregunta}*\n\n"
+            f"⏱️ Tiempo restante:\n`{barra}`"
+        )
 
         try:
-            if job_data["tiene_foto"]:
+            if has_photo:
                 await context.bot.edit_message_caption(
-                    chat_id=chat_id, message_id=message_id, caption=texto_actualizado, parse_mode="HTML", reply_markup=reply_markup
+                    chat_id=chat_id, message_id=message_id, caption=nuevo_texto, parse_mode="Markdown"
                 )
             else:
                 await context.bot.edit_message_text(
-                    chat_id=chat_id, message_id=message_id, text=texto_actualizado, parse_mode="HTML", reply_markup=reply_markup
+                    chat_id=chat_id, message_id=message_id, text=nuevo_texto, parse_mode="Markdown"
                 )
-        except BadRequest:
-            pass
-        except Exception as e:
-            print(f"Error actualizando temporizador: {e}")
-            
-    else:
-        job.schedule_removal()
-        
-        user_id = job_data["user_id"]
-        db.registrar_pregunta_respondida(user_id, pregunta_obj["id"])
-        db.actualizar_puntaje(user_id, cat_id, es_correcto=False)
-        
-        texto_expirado = encabezado("⏰", "¡TIEMPO AGOTADO! ❌ (-1 Punto)")
-        
-        try:
-            if job_data["tiene_foto"]:
-                await context.bot.edit_message_caption(chat_id=chat_id, message_id=message_id, caption=texto_expirado, parse_mode="HTML")
-            else:
-                await context.bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=texto_expirado, parse_mode="HTML")
         except Exception:
-            pass
+            pass # Prevenir errores si Telegram limita la tasa de edición
 
-        await asyncio.sleep(2)
-        await manejar_pregunta(job_data["query"], context, cat_id, idx + 1, preguntas=preguntas)
+    # Si llega a 0 sin respuesta:
+    if context.user_data.get("pregunta_activa", {}).get("id") == pregunta_id:
+        context.user_data["streak"] = 0 # Reiniciar racha por tiempo agotado
+        db.registrar_pregunta_respondida(chat_id, pregunta_id)
+        db.actualizar_puntaje(chat_id, context.user_data.get("cat_activa"), es_correcto=False)
+        context.user_data.pop("pregunta_activa", None)
 
-async def procesar_respuesta(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_query
-    await query.answer()
-    
-    parts = query.data.split("_")
-    cat_id = parts[1]
-    idx = int(parts[2])
-    respuesta = "_".join(parts[3:])
-    
-    current_jobs = context.job_queue.get_jobs_by_name(f"timer_{query.message.message_id}")
-    for job in current_jobs:
-        job.schedule_removal()
-
-    preguntas = context.user_data.get("preguntas_quiz", []) if context.user_data else []
-    if idx >= len(preguntas):
-        return
+        texto_fin = f"{encabezado('⏱️ TIEMPO AGOTADO')}\n¡Se agotaron los 15 segundos! No sumas puntos."
+        keyboard = [[InlineKeyboardButton("➡️ Siguiente Pregunta", callback_data=f"cat_{context.user_data.get('cat_activa')}")]]
         
-    pregunta_obj = preguntas[idx]
-    db.registrar_pregunta_respondida(query.from_user.id, pregunta_obj["id"])
-    
-    if respuesta == pregunta_obj["respuesta_correcta"]:
-        db.actualizar_puntaje(query.from_user.id, cat_id, es_correcto=True)
-        resultado = encabezado("✅", "¡RESPUESTA CORRECTA! (+1 Punto)")
-    else:
-        db.actualizar_puntaje(query.from_user.id, cat_id, es_correcto=False)
-        resultado = (
-            encabezado("❌", "RESPUESTA INCORRECTA (-1 Punto)") +
-            f"<i>Respuesta correcta: {pregunta_obj['respuesta_correcta']}</i>"
-        )
-
-    try:
-        if query.message.photo:
-            await query.edit_message_caption(caption=resultado, parse_mode="HTML")
+        if has_photo:
+            await context.bot.edit_message_caption(chat_id=chat_id, message_id=message_id, caption=texto_fin, parse_mode="Markdown", reply_markup=InlineKeyboardMarkup(keyboard))
         else:
-            await query.edit_message_text(text=resultado, parse_mode="HTML")
-    except Exception:
-        pass
+            await context.bot.edit_message_text(chat_id=chat_id, message_id=message_id, text=texto_fin, parse_mode="Markdown", reply_markup=InlineKeyboardMarkup(keyboard))
 
-    await asyncio.sleep(2)
-    await manejar_pregunta(query, context, cat_id, idx + 1, preguntas=preguntas)
+# --- MANEJADOR DE CALLBACKS E INTERACTIVIDAD ---
 
-# ---------------------------------------------------------
-# RANKING CON MEDALLAS Y PROPORCIÓN
-# ---------------------------------------------------------
-async def comando_ranking_gen(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    ranking = db.obtener_ranking_general()
-    
-    texto = encabezado("🏆", "📊 RANKING GENERAL DE JUGADORES 📊")
-    
-    if not ranking:
-        texto += "<i>Aún no hay puntos registrados en el juego.</i>"
-    else:
-        medallas = {1: "🥇", 2: "🥈", 3: "🥉"}
-        for pos, row in enumerate(ranking, start=1):
-            nombre, pos_pts, neg_pts, total = row
-            pos_pts = pos_pts or 0
-            neg_pts = neg_pts or 0
-            total = total or 0
-            
-            prefijo = medallas.get(pos, f"<b>{pos}.</b>")
-            barra = generar_barra_proporcion(pos_pts, neg_pts)
-            signo = "-" if total < 0 else ""
-            
-            texto += (
-                f"{prefijo} <b>{nombre}</b>\n"
-                f"   Efectividad: {barra}\n"
-                f"   🔵 {pos_pts} aciertos | 🔴 {neg_pts} errores\n"
-                f"   ⭐ Total: <b>{signo}{abs(total)} pts</b>\n\n"
-            )
-
-    if update.message:
-        await update.message.reply_text(texto, parse_mode="HTML")
-    else:
-        await update.callback_query.edit_message_text(texto, parse_mode="HTML")
-
-async def comando_ranking_cat(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    keyboard = []
-    for cat in QUIZ_DATA.get("categorias", []):
-        keyboard.append([InlineKeyboardButton(cat["nombre"], callback_data=f"showrankcat_{cat['id']}")])
-    
-    reply_markup = InlineKeyboardMarkup(keyboard)
-    texto = (
-        encabezado("🏅", "📊 RANKING POR CATEGORÍA 📊") +
-        "<i>Selecciona una categoría para ver sus posiciones:</i>"
-    )
-    if update.message:
-        await update.message.reply_text(texto, parse_mode="HTML", reply_markup=reply_markup)
-    else:
-        await update.callback_query.edit_message_text(texto, parse_mode="HTML", reply_markup=reply_markup)
-
-async def mostrar_ranking_cat_seleccionado(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_query
-    await query.answer()
-    cat_id = query.data.split("_")[1]
-    
-    categoria = next((c for c in QUIZ_DATA.get("categorias", []) if c["id"] == cat_id), None)
-    ranking = db.obtener_ranking_categoria(cat_id)
-    
-    nombre_cat = categoria['nombre'] if categoria else 'Categoría'
-    texto = encabezado("🏅", f"RANKING: {nombre_cat}")
-    
-    if not ranking:
-        texto += "<i>No hay puntos registrados en esta categoría aún.</i>"
-    else:
-        medallas = {1: "🥇", 2: "🥈", 3: "🥉"}
-        for pos, row in enumerate(ranking, start=1):
-            nombre, pos_pts, neg_pts, total = row
-            pos_pts = pos_pts or 0
-            neg_pts = neg_pts or 0
-            total = total or 0
-            
-            prefijo = medallas.get(pos, f"<b>{pos}.</b>")
-            barra = generar_barra_proporcion(pos_pts, neg_pts)
-            signo = "-" if total < 0 else ""
-            
-            texto += (
-                f"{prefijo} <b>{nombre}</b>\n"
-                f"   Efectividad: {barra}\n"
-                f"   🔵 {pos_pts} aciertos | 🔴 {neg_pts} errores\n"
-                f"   ⭐ Total: <b>{signo}{abs(total)} pts</b>\n\n"
-            )
-
-    await query.edit_message_text(texto, parse_mode="HTML")
-
-async def comando_reiniciar(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    user_id = update.effective_user.id
-    db.reiniciar_historial_usuario(user_id)
-    await update.message.reply_text(
-        encabezado("🔄", "¡HISTORIAL REINICIADO!") +
-        "<i>Se ha limpiado tu registro de preguntas respondidas. Ahora puedes volver a jugar todas las categorías desde cero.</i>",
-        parse_mode="HTML"
-    )
-
-async def comando_donar(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    keyboard = [[InlineKeyboardButton("☕ Invítame un Cafecito", url=CAFECITO_URL)]]
-    reply_markup = InlineKeyboardMarkup(keyboard)
-    
-    texto = (
-        encabezado("☕", "APOYA AL PROYECTO EDUCATIVO") +
-        "<i>Si disfrutas aprendiendo con este Bot, puedes colaborar invitándonos un Cafecito para financiar el mantenimiento y agregar más contenido.</i>\n\n"
-        "<b>¡Muchas gracias por tu apoyo! ❤️</b>"
-    )
-    if update.message:
-        await update.message.reply_text(texto, parse_mode="HTML", reply_markup=reply_markup)
-    else:
-        await update.callback_query.edit_message_text(texto, parse_mode="HTML", reply_markup=reply_markup)
-
-# ---------------------------------------------------------
-# CALLBACK HANDLER GENERAL
-# ---------------------------------------------------------
-async def callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def manejar_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Procesa los clics en botones inline."""
     query = update.callback_query
     data = query.data
-    
+    user = query.from_user
+
+    # Asegurar registro de usuario
+    db.registrar_o_actualizar_usuario(user.id, user.username, user.first_name)
+
     if data == "menu_quiz":
-        await comando_quiz(update, context)
-    elif data == "menu_rank_gen":
-        await comando_ranking_gen(update, context)
-    elif data.startswith("playcat_"):
-        cat_id = data.split("_")[1]
-        user_id = query.from_user.id
-        
-        categoria = next((c for c in QUIZ_DATA.get("categorias", []) if c["id"] == cat_id), None)
-        if categoria:
-            respondidas_ids = db.obtener_ids_preguntas_respondidas(user_id)
-            preguntas_disponibles = [
-                p for p in categoria["preguntas"] 
-                if p["id"] not in respondidas_ids
-            ]
-            
-            if not preguntas_disponibles:
-                await query.edit_message_text(
-                    encabezado("🎓", "¡FELICITACIONES! 🎉") +
-                    "<i>Ya has respondido todas las preguntas de esta categoría.</i>\n\n"
-                    "Usa /reiniciar para volver a jugar esta categoría o elige otra disponible.",
-                    parse_mode="HTML"
-                )
-                return
+        await cmd_quiz(update, context)
+        await query.answer()
 
-            random.shuffle(preguntas_disponibles)
-            ronda_preguntas = preguntas_disponibles[:5]
-            if context.user_data is not None:
-                context.user_data["preguntas_quiz"] = ronda_preguntas
-            
-            await manejar_pregunta(query, context, cat_id, 0, preguntas=ronda_preguntas)
+    elif data == "ver_perfil":
+        await cmd_perfil(update, context)
+        await query.answer()
+
+    elif data.startswith("cat_"):
+        cat_id = data.replace("cat_", "")
+        await presentar_pregunta(query, context, user.id, cat_id)
+        await query.answer()
+
     elif data.startswith("ans_"):
-        await procesar_respuesta(update, context)
-    elif data.startswith("showrankcat_"):
-        await mostrar_ranking_cat_seleccionado(update, context)
+        idx_seleccionado = int(data.replace("ans_", ""))
+        pregunta = context.user_data.get("pregunta_activa")
 
-# ---------------------------------------------------------
-# INICIALIZACIÓN Y ARRANQUE
-# ---------------------------------------------------------
+        if not pregunta:
+            await query.answer("⚠️ Esta pregunta ya expiró o fue respondida.", show_alert=True)
+            return
+
+        opcion_elegida = pregunta["opciones"][idx_seleccionado]
+        es_correcta = (opcion_elegida == pregunta["respuesta_correcta"])
+        cat_id = context.user_data.get("cat_activa")
+
+        # Registro en Base de Datos
+        db.registrar_pregunta_respondida(user.id, pregunta["id"])
+        db.actualizar_puntaje(user.id, cat_id, es_correcto)
+
+        # Manejo de Racha
+        if es_correcta:
+            context.user_data["streak"] = context.user_data.get("streak", 0) + 1
+            racha = context.user_data["streak"]
+            msg_popup = f"🎉 ¡CORRECTO! +1 Punto\n🔥 Racha de {racha} aciertos"
+        else:
+            context.user_data["streak"] = 0
+            msg_popup = f"❌ INCORRECTO\nLa respuesta era: {pregunta['respuesta_correcta']}"
+
+        # 💡 POP-UP EMERGENTE EN PANTALLA
+        await query.answer(text=msg_popup, show_alert=not es_correcta)
+
+        # Construir mensaje de retroalimentación en el chat
+        explicacion = pregunta.get("explicacion", "")
+        bloque_explicacion = f"\n\n💡 *Explicación:*\n_{explicacion}_" if explicacion else ""
+
+        if es_correcta:
+            res_texto = (
+                f"{encabezado('✅ ¡RESPUESTA CORRECTA!')}"
+                f"Elegiste: *{opcion_elegida}*{bloque_explicacion}"
+            )
+        else:
+            res_texto = (
+                f"{encabezado('❌ RESPUESTA INCORRECTA')}"
+                f"Tu respuesta: ~{opcion_elegida}~\n"
+                f"Correcta: *{pregunta['respuesta_correcta']}*{bloque_explicacion}"
+            )
+
+        # Limpiar pregunta activa
+        context.user_data.pop("pregunta_activa", None)
+
+        keyboard = [[InlineKeyboardButton("➡️ Siguiente Pregunta", callback_data=f"cat_{cat_id}")]]
+        
+        if query.message.photo:
+            await query.edit_message_caption(caption=res_texto, parse_mode="Markdown", reply_markup=InlineKeyboardMarkup(keyboard))
+        else:
+            await query.edit_message_text(text=res_texto, parse_mode="Markdown", reply_markup=InlineKeyboardMarkup(keyboard))
+
+# --- COMANDOS ADICIONALES ---
+
+async def cmd_ranking_gen(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Muestra el ranking global con medallas y gauges."""
+    ranking = db.obtener_ranking_general()
+    
+    if not ranking:
+        await update.message.reply_text("🏆 Aún no hay puntajes registrados.")
+        return
+
+    medallas = ["🥇", "🥈", "🥉"]
+    lineas = []
+    
+    for idx, (nombre, pos, neg, total) in enumerate(ranking[:10], start=1):
+        medalla = medallas[idx-1] if idx <= 3 else f"#{idx}"
+        pos = pos or 0
+        neg = neg or 0
+        tot_resp = pos + neg
+        
+        efectividad = (pos / tot_resp * 100) if tot_resp > 0 else 0
+        gauge = "🟩" * int(efectividad // 20) + "🟥" * (5 - int(efectividad // 20))
+        
+        lineas.append(f"{medalla} *{nombre}* - {total} pts `{gauge}`")
+
+    texto = f"{encabezado('TOP 10 RANKING GENERAL')}" + "\n".join(lineas)
+    await update.message.reply_text(texto, parse_mode="Markdown")
+
+async def cmd_reiniciar(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Limpia el historial de preguntas del usuario."""
+    user = update.effective_user
+    db.reiniciar_historial_usuario(user.id)
+    context.user_data["streak"] = 0
+    await update.message.reply_text("🔄 *Tu historial de preguntas ha sido reiniciado.* Puedes volver a jugar cualquier categoría desde cero.", parse_mode="Markdown")
+
+async def cmd_donar(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Envía el enlace de apoyo al creador."""
+    keyboard = [[InlineKeyboardButton("☕ Donar en Cafecito", url=CAFECITO_URL)]]
+    await update.message.reply_text(
+        "Si disfrutas de este bot y deseas apoyar su mantenimiento, puedes invitarme un Cafecito ☕:",
+        reply_markup=InlineKeyboardMarkup(keyboard)
+    )
+
+# --- CARGA DE DATOS Y MAIN ---
+
+def cargar_quiz_data() -> dict:
+    import json
+    if os.path.exists("quiz_data.json"):
+        with open("quiz_data.json", "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {"categorias": []}
+
 def main():
+    # Inicializar Base de Datos en Supabase
     db.init_db()
-    
+
+    # Iniciar Servidor Web Keep-Alive para Render
     keep_alive()
-    
-    app = Application.builder().token(TOKEN).build()
-    
-    app.add_handler(CommandHandler("start", start))
-    app.add_handler(CommandHandler("quiz", comando_quiz))
-    app.add_handler(CommandHandler("ranking_cat", comando_ranking_cat))
-    app.add_handler(CommandHandler("ranking_gen", comando_ranking_gen))
-    app.add_handler(CommandHandler("reiniciar", comando_reiniciar))
-    app.add_handler(CommandHandler("donar", comando_donar))
-    
-    app.add_handler(CallbackQueryHandler(callback_handler))
-    
-    print("🤖 Bot educativo listo y en ejecución...")
-    app.run_polling()
+
+    # Configurar la aplicación de Telegram
+    app_telegram = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
+    app_telegram.bot_data["quiz_json"] = cargar_quiz_data()
+
+    # Handlers de Comandos
+    app_telegram.add_handler(CommandHandler("start", cmd_start))
+    app_telegram.add_handler(CommandHandler("perfil", cmd_perfil))
+    app_telegram.add_handler(CommandHandler("quiz", cmd_quiz))
+    app_telegram.add_handler(CommandHandler("ranking_gen", cmd_ranking_gen))
+    app_telegram.add_handler(CommandHandler("reiniciar", cmd_reiniciar))
+    app_telegram.add_handler(CommandHandler("donar", cmd_donar))
+
+    # Handler de Callbacks
+    app_telegram.add_handler(CallbackQueryHandler(manejar_callback))
+
+    logger.info("🤖 Bot desplegado e iniciando Polling...")
+    app_telegram.run_polling()
 
 if __name__ == "__main__":
     main()
