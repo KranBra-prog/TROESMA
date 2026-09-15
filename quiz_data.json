@@ -1,7 +1,2498 @@
 {
-  "id": "py_2",
-  "pregunta": "¿Cuál de las siguientes estructuras de datos es INMUTABLE?",
-  "opciones": ["Tupla (tuple)", "Lista (list)", "Diccionario (dict)", "Conjunto (set)"],
-  "respuesta_correcta": "Tupla (tuple)",
-  "explicacion": "Las tuplas no pueden modificarse, añadirse o eliminarse después de ser creadas."
+  "categorias": [
+    {
+      "id": "programacion",
+      "nombre": "💻 Programación Python",
+      "preguntas": [
+        {
+          "id": 101,
+          "tipo": "multiple",
+          "pregunta": "¿Qué palabra clave se usa para definir una función en Python?",
+          "opciones": [
+            "func",
+            "def",
+            "function",
+            "define"
+          ],
+          "respuesta_correcta": "def",
+          "imagen": null,
+          "explicacion": "La palabra clave 'def' se usa para declarar funciones en Python."
+        },
+        {
+          "id": 102,
+          "tipo": "vf",
+          "pregunta": "¿Python es un lenguaje compilado nativamente?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Falso",
+          "imagen": null,
+          "explicacion": "Python es un lenguaje interpretado, no se compila directamente a código máquina antes de ejecutarse."
+        },
+        {
+          "id": 103,
+          "tipo": "multiple",
+          "pregunta": "¿Cuál de las siguientes es una estructura de datos inmutable?",
+          "opciones": [
+            "Lista",
+            "Diccionario",
+            "Tupla",
+            "Set"
+          ],
+          "respuesta_correcta": "Tupla",
+          "imagen": null,
+          "explicacion": "Las tuplas no pueden modificarse, añadirse o eliminarse después de ser creadas."
+        },
+        {
+          "id": 104,
+          "tipo": "vf",
+          "pregunta": "¿El operador '==' compara la identidad de memoria de dos objetos?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Falso",
+          "imagen": null,
+          "explicacion": "El operador '==' compara los valores de los objetos, no su identidad en memoria (eso lo hace 'is')."
+        },
+        {
+          "id": 105,
+          "tipo": "multiple",
+          "pregunta": "¿Qué método se utiliza para agregar un elemento al final de una lista?",
+          "opciones": [
+            "add()",
+            "push()",
+            "insert()",
+            "append()"
+          ],
+          "respuesta_correcta": "append()",
+          "imagen": null,
+          "explicacion": "El método append() agrega un elemento al final de una lista."
+        },
+        {
+          "id": 106,
+          "tipo": "multiple",
+          "pregunta": "¿Cómo se inicia un bloque de comentario de una sola línea en Python?",
+          "opciones": [
+            "//",
+            "/*",
+            "#",
+            "--"
+          ],
+          "respuesta_correcta": "#",
+          "imagen": null,
+          "explicacion": "En Python, el símbolo # indica el inicio de un comentario de una sola línea."
+        },
+        {
+          "id": 107,
+          "tipo": "multiple",
+          "pregunta": "¿Qué tipo de dato representa un valor verdadero o falso en Python?",
+          "opciones": [
+            "int",
+            "bool",
+            "str",
+            "float"
+          ],
+          "respuesta_correcta": "bool",
+          "imagen": null,
+          "explicacion": "El tipo bool representa los valores True o False."
+        },
+        {
+          "id": 108,
+          "tipo": "vf",
+          "pregunta": "¿Los índices de las listas en Python comienzan en 1?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Falso",
+          "imagen": null,
+          "explicacion": "En Python, los índices de las listas comienzan en 0, no en 1."
+        },
+        {
+          "id": 109,
+          "tipo": "multiple",
+          "pregunta": "¿Qué función se usa para conocer la longitud de una lista?",
+          "opciones": [
+            "size()",
+            "length()",
+            "len()",
+            "count()"
+          ],
+          "respuesta_correcta": "len()",
+          "imagen": null,
+          "explicacion": "La función len() devuelve la cantidad de elementos de una lista u otra secuencia."
+        },
+        {
+          "id": 110,
+          "tipo": "multiple",
+          "pregunta": "¿Cuál de estas es una forma correcta de crear un diccionario vacío?",
+          "opciones": [
+            "dict()",
+            "[]",
+            "()",
+            "set()"
+          ],
+          "respuesta_correcta": "dict()",
+          "imagen": null,
+          "explicacion": "dict() crea un diccionario vacío; los corchetes [] y paréntesis () vacíos crean una lista y una tupla respectivamente."
+        },
+        {
+          "id": 111,
+          "tipo": "vf",
+          "pregunta": "¿En Python, las cadenas de texto (strings) son mutables?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Falso",
+          "imagen": null,
+          "explicacion": "Las cadenas de texto en Python son inmutables: no se pueden modificar una vez creadas."
+        },
+        {
+          "id": 112,
+          "tipo": "multiple",
+          "pregunta": "¿Qué palabra clave se utiliza para manejar excepciones en Python?",
+          "opciones": [
+            "catch",
+            "except",
+            "rescue",
+            "handle"
+          ],
+          "respuesta_correcta": "except",
+          "imagen": null,
+          "explicacion": "La palabra clave 'except' se usa junto con 'try' para capturar y manejar excepciones."
+        },
+        {
+          "id": 113,
+          "tipo": "multiple",
+          "pregunta": "¿Qué símbolo se usa para el operador de módulo (resto de una división)?",
+          "opciones": [
+            "%",
+            "//",
+            "**",
+            "&"
+          ],
+          "respuesta_correcta": "%",
+          "imagen": null,
+          "explicacion": "El símbolo % es el operador módulo, que devuelve el resto de una división."
+        },
+        {
+          "id": 114,
+          "tipo": "multiple",
+          "pregunta": "¿Cuál de estas librerías se utiliza comúnmente para análisis de datos?",
+          "opciones": [
+            "pandas",
+            "tkinter",
+            "flask",
+            "json"
+          ],
+          "respuesta_correcta": "pandas",
+          "imagen": null,
+          "explicacion": "pandas es una de las librerías más utilizadas para el análisis y manipulación de datos en Python."
+        },
+        {
+          "id": 115,
+          "tipo": "vf",
+          "pregunta": "¿'for' y 'while' son ambos tipos de bucles en Python?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "'for' y 'while' son las dos estructuras de bucle principales en Python."
+        },
+        {
+          "id": 116,
+          "tipo": "multiple",
+          "pregunta": "¿Qué método convierte todas las letras de un string a mayúsculas?",
+          "opciones": [
+            "upper()",
+            "capitalize()",
+            "toUpper()",
+            "mayus()"
+          ],
+          "respuesta_correcta": "upper()",
+          "imagen": null,
+          "explicacion": "El método upper() convierte todas las letras de un string a mayúsculas."
+        },
+        {
+          "id": 117,
+          "tipo": "multiple",
+          "pregunta": "¿Cómo se llama la convención de nombres que usa guiones bajos, como 'mi_variable'?",
+          "opciones": [
+            "camelCase",
+            "snake_case",
+            "PascalCase",
+            "kebab-case"
+          ],
+          "respuesta_correcta": "snake_case",
+          "imagen": null,
+          "explicacion": "snake_case es la convención que usa guiones bajos entre palabras, típica en Python."
+        },
+        {
+          "id": 118,
+          "tipo": "vf",
+          "pregunta": "¿Se puede usar 'pip' para instalar paquetes externos en Python?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "pip es el gestor de paquetes que permite instalar librerías externas en Python."
+        },
+        {
+          "id": 119,
+          "tipo": "vf",
+          "pregunta": "¿Python distingue entre mayúsculas y minúsculas en los nombres de variables?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "Python es sensible a mayúsculas y minúsculas (case-sensitive), por lo que 'variable' y 'Variable' son distintas."
+        },
+        {
+          "id": 120,
+          "tipo": "multiple",
+          "pregunta": "¿Qué extensión de archivo usan los scripts de Python?",
+          "opciones": [
+            ".py",
+            ".java",
+            ".js",
+            ".txt"
+          ],
+          "respuesta_correcta": ".py",
+          "imagen": null,
+          "explicacion": "Los archivos de código fuente de Python usan la extensión .py."
+        }
+      ]
+    },
+    {
+      "id": "geografia",
+      "nombre": "🗺️ Geografía Visual",
+      "preguntas": [
+        {
+          "id": 201,
+          "tipo": "multiple",
+          "pregunta": "¿A qué país pertenece esta bandera?",
+          "opciones": [
+            "Argentina",
+            "Uruguay",
+            "Grecia",
+            "Finlandia"
+          ],
+          "respuesta_correcta": "Argentina",
+          "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/800px-Flag_of_Argentina.svg.png",
+          "explicacion": "La bandera celeste y blanca con el sol en el centro corresponde a Argentina."
+        },
+        {
+          "id": 202,
+          "tipo": "multiple",
+          "pregunta": "¿Cuál es la capital del país mostrado en la bandera?",
+          "opciones": [
+            "Córdoba",
+            "Buenos Aires",
+            "Rosario",
+            "Mendoza"
+          ],
+          "respuesta_correcta": "Buenos Aires",
+          "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/800px-Flag_of_Argentina.svg.png",
+          "explicacion": "Buenos Aires es la capital de Argentina."
+        },
+        {
+          "id": 203,
+          "tipo": "multiple",
+          "pregunta": "¿En qué continente se encuentra ubicado el monte Kilimanjaro?",
+          "opciones": [
+            "Asia",
+            "África",
+            "América",
+            "Europa"
+          ],
+          "respuesta_correcta": "África",
+          "imagen": null,
+          "explicacion": "El monte Kilimanjaro se encuentra en Tanzania, en el continente africano."
+        },
+        {
+          "id": 204,
+          "tipo": "multiple",
+          "pregunta": "¿Cuál es el río más largo y caudaloso del mundo?",
+          "opciones": [
+            "Nilo",
+            "Misisipi",
+            "Amazonas",
+            "Yangtsé"
+          ],
+          "respuesta_correcta": "Amazonas",
+          "imagen": null,
+          "explicacion": "El río Amazonas es el más caudaloso del mundo."
+        },
+        {
+          "id": 205,
+          "tipo": "vf",
+          "pregunta": "¿Australia es tanto un país como un continente?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "Australia es el único país que ocupa la totalidad de un continente."
+        },
+        {
+          "id": 206,
+          "tipo": "multiple",
+          "pregunta": "¿Qué idioma oficial se habla en el país de esta bandera?",
+          "opciones": [
+            "Portugués",
+            "Español",
+            "Inglés",
+            "Francés"
+          ],
+          "respuesta_correcta": "Español",
+          "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/800px-Flag_of_Argentina.svg.png",
+          "explicacion": "El español es el idioma oficial de Argentina."
+        },
+        {
+          "id": 207,
+          "tipo": "multiple",
+          "pregunta": "¿Cuál es el desierto más grande del mundo (sin contar la Antártida)?",
+          "opciones": [
+            "Gobi",
+            "Sahara",
+            "Atacama",
+            "Kalahari"
+          ],
+          "respuesta_correcta": "Sahara",
+          "imagen": null,
+          "explicacion": "El Sahara, en el norte de África, es el desierto cálido más grande del mundo."
+        },
+        {
+          "id": 208,
+          "tipo": "vf",
+          "pregunta": "¿Rusia es el país con mayor superficie territorial del mundo?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "Rusia tiene la mayor superficie territorial del planeta, abarcando dos continentes."
+        },
+        {
+          "id": 209,
+          "tipo": "multiple",
+          "pregunta": "¿Cuál es el punto más alto del planeta Tierra?",
+          "opciones": [
+            "Monte Kilimanjaro",
+            "Monte Everest",
+            "Aconcagua",
+            "K2"
+          ],
+          "respuesta_correcta": "Monte Everest",
+          "imagen": null,
+          "explicacion": "El monte Everest, en el Himalaya, es el punto más alto sobre el nivel del mar."
+        },
+        {
+          "id": 210,
+          "tipo": "multiple",
+          "pregunta": "¿En qué continente se encuentra Egipto?",
+          "opciones": [
+            "Asia",
+            "África",
+            "Europa",
+            "Oceanía"
+          ],
+          "respuesta_correcta": "África",
+          "imagen": null,
+          "explicacion": "Egipto se ubica en el noreste de África."
+        },
+        {
+          "id": 211,
+          "tipo": "vf",
+          "pregunta": "¿El océano Pacífico es el más grande del mundo?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "El océano Pacífico es el más extenso y profundo de todos los océanos."
+        },
+        {
+          "id": 212,
+          "tipo": "multiple",
+          "pregunta": "¿Cuál es la capital de Japón?",
+          "opciones": [
+            "Seúl",
+            "Pekín",
+            "Tokio",
+            "Bangkok"
+          ],
+          "respuesta_correcta": "Tokio",
+          "imagen": null,
+          "explicacion": "Tokio es la capital de Japón."
+        },
+        {
+          "id": 213,
+          "tipo": "multiple",
+          "pregunta": "¿Qué país tiene forma de bota en el mapa?",
+          "opciones": [
+            "España",
+            "Italia",
+            "Grecia",
+            "Portugal"
+          ],
+          "respuesta_correcta": "Italia",
+          "imagen": null,
+          "explicacion": "El territorio de Italia tiene la característica forma de una bota."
+        },
+        {
+          "id": 214,
+          "tipo": "vf",
+          "pregunta": "¿Groenlandia pertenece a Dinamarca?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "Groenlandia es un territorio autónomo perteneciente al Reino de Dinamarca."
+        },
+        {
+          "id": 215,
+          "tipo": "multiple",
+          "pregunta": "¿Cuál es el país más poblado del mundo actualmente?",
+          "opciones": [
+            "China",
+            "Estados Unidos",
+            "India",
+            "Indonesia"
+          ],
+          "respuesta_correcta": "India",
+          "imagen": null,
+          "explicacion": "India superó a China como el país más poblado del mundo en los últimos años."
+        },
+        {
+          "id": 216,
+          "tipo": "multiple",
+          "pregunta": "¿Qué cordillera recorre gran parte de América del Sur?",
+          "opciones": [
+            "Los Alpes",
+            "Los Andes",
+            "El Himalaya",
+            "Las Rocosas"
+          ],
+          "respuesta_correcta": "Los Andes",
+          "imagen": null,
+          "explicacion": "La cordillera de los Andes recorre gran parte del oeste de América del Sur."
+        },
+        {
+          "id": 217,
+          "tipo": "vf",
+          "pregunta": "¿El río Nilo se encuentra en África?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "El río Nilo, uno de los más largos del mundo, atraviesa varios países de África."
+        },
+        {
+          "id": 218,
+          "tipo": "multiple",
+          "pregunta": "¿Cuáles son los colores de esta bandera?",
+          "opciones": [
+            "Celeste y blanco",
+            "Verde y amarillo",
+            "Rojo y blanco",
+            "Azul y rojo"
+          ],
+          "respuesta_correcta": "Celeste y blanco",
+          "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/800px-Flag_of_Argentina.svg.png",
+          "explicacion": "La bandera argentina está compuesta por franjas celestes y blancas, con un sol en el centro."
+        },
+        {
+          "id": 219,
+          "tipo": "multiple",
+          "pregunta": "¿Cuál es el país más pequeño del mundo?",
+          "opciones": [
+            "Mónaco",
+            "Vaticano",
+            "San Marino",
+            "Liechtenstein"
+          ],
+          "respuesta_correcta": "Vaticano",
+          "imagen": null,
+          "explicacion": "El Vaticano es el estado independiente más pequeño del mundo por superficie."
+        },
+        {
+          "id": 220,
+          "tipo": "vf",
+          "pregunta": "¿El ecuador terrestre divide a la Tierra en hemisferio norte y hemisferio sur?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "El ecuador es la línea imaginaria que divide a la Tierra en hemisferio norte y hemisferio sur."
+        }
+      ]
+    },
+    {
+      "id": "historia",
+      "nombre": "🏛️ Historia Universal",
+      "preguntas": [
+        {
+          "id": 301,
+          "tipo": "multiple",
+          "pregunta": "¿En qué año comenzó la Segunda Guerra Mundial?",
+          "opciones": [
+            "1914",
+            "1939",
+            "1945",
+            "1929"
+          ],
+          "respuesta_correcta": "1939",
+          "imagen": null,
+          "explicacion": "La Segunda Guerra Mundial comenzó en 1939 con la invasión de Polonia."
+        },
+        {
+          "id": 302,
+          "tipo": "multiple",
+          "pregunta": "¿Qué gran civilización construyó las pirámides de Guiza?",
+          "opciones": [
+            "Imperio Romano",
+            "Antiguo Egipto",
+            "Mesopotamia",
+            "Imperio Inca"
+          ],
+          "respuesta_correcta": "Antiguo Egipto",
+          "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/All_Gizah_Pyramids.jpg/800px-All_Gizah_Pyramids.jpg",
+          "explicacion": "Las pirámides de Guiza fueron construidas por los antiguos egipcios como tumbas para sus faraones."
+        },
+        {
+          "id": 303,
+          "tipo": "vf",
+          "pregunta": "¿Julio César fue el primer emperador oficial del Imperio Romano?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Falso",
+          "imagen": null,
+          "explicacion": "Julio César nunca llegó a ser emperador oficial; el primer emperador romano fue Augusto."
+        },
+        {
+          "id": 304,
+          "tipo": "multiple",
+          "pregunta": "¿En qué año llegó Cristóbal Colón a América?",
+          "opciones": [
+            "1492",
+            "1500",
+            "1488",
+            "1512"
+          ],
+          "respuesta_correcta": "1492",
+          "imagen": null,
+          "explicacion": "Cristóbal Colón llegó a América en 1492."
+        },
+        {
+          "id": 305,
+          "tipo": "multiple",
+          "pregunta": "¿A qué cultura pertenece este monumento histórico conocido como el Coliseo?",
+          "opciones": [
+            "Griega",
+            "Romana",
+            "Egipto",
+            "Fenicia"
+          ],
+          "respuesta_correcta": "Romana",
+          "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/800px-Colosseo_2020.jpg",
+          "explicacion": "El Coliseo fue construido por el Imperio Romano en la antigua Roma."
+        },
+        {
+          "id": 306,
+          "tipo": "multiple",
+          "pregunta": "¿En qué ciudad actual se encuentra este monumento?",
+          "opciones": [
+            "Atenas",
+            "Roma",
+            "París",
+            "Madrid"
+          ],
+          "respuesta_correcta": "Roma",
+          "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/800px-Colosseo_2020.jpg",
+          "explicacion": "El Coliseo se encuentra en la ciudad de Roma, Italia."
+        },
+        {
+          "id": 307,
+          "tipo": "multiple",
+          "pregunta": "¿Qué muro dividió la ciudad de Berlín durante la Guerra Fría?",
+          "opciones": [
+            "Muro de Adriano",
+            "Muro de Berlín",
+            "Gran Muralla",
+            "Muro de las Lamentaciones"
+          ],
+          "respuesta_correcta": "Muro de Berlín",
+          "imagen": null,
+          "explicacion": "El Muro de Berlín dividió la ciudad durante la Guerra Fría, desde 1961 hasta 1989."
+        },
+        {
+          "id": 308,
+          "tipo": "vf",
+          "pregunta": "¿La Revolución Francesa comenzó en 1789?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "La Revolución Francesa comenzó en 1789 con la toma de la Bastilla."
+        },
+        {
+          "id": 309,
+          "tipo": "multiple",
+          "pregunta": "¿Quién fue el primer hombre en pisar la Luna?",
+          "opciones": [
+            "Buzz Aldrin",
+            "Neil Armstrong",
+            "Yuri Gagarin",
+            "John Glenn"
+          ],
+          "respuesta_correcta": "Neil Armstrong",
+          "imagen": null,
+          "explicacion": "Neil Armstrong fue el primer ser humano en caminar sobre la Luna en 1969."
+        },
+        {
+          "id": 310,
+          "tipo": "multiple",
+          "pregunta": "¿En qué año finalizó la Segunda Guerra Mundial?",
+          "opciones": [
+            "1943",
+            "1945",
+            "1950",
+            "1939"
+          ],
+          "respuesta_correcta": "1945",
+          "imagen": null,
+          "explicacion": "La Segunda Guerra Mundial finalizó en 1945."
+        },
+        {
+          "id": 311,
+          "tipo": "vf",
+          "pregunta": "¿Los vikingos eran originarios de Escandinavia?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "Los vikingos procedían de la región escandinava (actuales Noruega, Suecia y Dinamarca)."
+        },
+        {
+          "id": 312,
+          "tipo": "multiple",
+          "pregunta": "¿Qué imperio construyó Machu Picchu?",
+          "opciones": [
+            "Imperio Azteca",
+            "Imperio Inca",
+            "Imperio Maya",
+            "Imperio Romano"
+          ],
+          "respuesta_correcta": "Imperio Inca",
+          "imagen": null,
+          "explicacion": "Machu Picchu fue construida por el Imperio Inca en el siglo XV."
+        },
+        {
+          "id": 313,
+          "tipo": "multiple",
+          "pregunta": "¿Qué país fue gobernado por los faraones en la antigüedad?",
+          "opciones": [
+            "Egipto",
+            "Grecia",
+            "Turquía",
+            "Irán"
+          ],
+          "respuesta_correcta": "Egipto",
+          "imagen": null,
+          "explicacion": "Los faraones gobernaron el antiguo Egipto durante miles de años."
+        },
+        {
+          "id": 314,
+          "tipo": "vf",
+          "pregunta": "¿La Gran Muralla China fue construida para defenderse de invasiones?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "La Gran Muralla China se construyó principalmente para proteger el territorio de invasiones."
+        },
+        {
+          "id": 315,
+          "tipo": "multiple",
+          "pregunta": "¿En qué siglo tuvo lugar el Renacimiento?",
+          "opciones": [
+            "Siglo X",
+            "Siglo XV",
+            "Siglo XX",
+            "Siglo VIII"
+          ],
+          "respuesta_correcta": "Siglo XV",
+          "imagen": null,
+          "explicacion": "El Renacimiento comenzó aproximadamente en el siglo XV en Italia."
+        },
+        {
+          "id": 316,
+          "tipo": "multiple",
+          "pregunta": "¿Quién lideró el movimiento de independencia de la India de forma pacífica?",
+          "opciones": [
+            "Nelson Mandela",
+            "Mahatma Gandhi",
+            "Winston Churchill",
+            "Che Guevara"
+          ],
+          "respuesta_correcta": "Mahatma Gandhi",
+          "imagen": null,
+          "explicacion": "Gandhi lideró el movimiento de independencia de la India mediante la resistencia pacífica."
+        },
+        {
+          "id": 317,
+          "tipo": "vf",
+          "pregunta": "¿La ciudad de Pompeya quedó sepultada por la erupción del volcán Vesubio?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "La erupción del Vesubio en el año 79 d.C. sepultó la ciudad de Pompeya."
+        },
+        {
+          "id": 318,
+          "tipo": "multiple",
+          "pregunta": "¿Aproximadamente cuántos años de antigüedad tienen estas construcciones?",
+          "opciones": [
+            "Más de 4000 años",
+            "Menos de 500 años",
+            "Alrededor de 1000 años",
+            "Menos de 100 años"
+          ],
+          "respuesta_correcta": "Más de 4000 años",
+          "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/All_Gizah_Pyramids.jpg/800px-All_Gizah_Pyramids.jpg",
+          "explicacion": "Las pirámides de Guiza tienen más de 4000 años de antigüedad."
+        },
+        {
+          "id": 319,
+          "tipo": "multiple",
+          "pregunta": "¿Qué explorador portugués llegó por primera vez a la India por vía marítima?",
+          "opciones": [
+            "Cristóbal Colón",
+            "Vasco da Gama",
+            "Fernando de Magallanes",
+            "Américo Vespucio"
+          ],
+          "respuesta_correcta": "Vasco da Gama",
+          "imagen": null,
+          "explicacion": "Vasco da Gama fue el primer europeo en llegar a la India por mar, en 1498."
+        },
+        {
+          "id": 320,
+          "tipo": "vf",
+          "pregunta": "¿La Declaración de Independencia de Estados Unidos se firmó en 1776?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "La independencia de Estados Unidos se declaró el 4 de julio de 1776."
+        }
+      ]
+    },
+    {
+      "id": "ciencia",
+      "nombre": "🔬 Ciencia y Universo",
+      "preguntas": [
+        {
+          "id": 401,
+          "tipo": "multiple",
+          "pregunta": "¿Cuál es el elemento químico más abundante en el universo?",
+          "opciones": [
+            "Oxígeno",
+            "Helio",
+            "Hidrógeno",
+            "Carbono"
+          ],
+          "respuesta_correcta": "Hidrógeno",
+          "imagen": null,
+          "explicacion": "El hidrógeno es el elemento más simple y abundante del universo."
+        },
+        {
+          "id": 402,
+          "tipo": "vf",
+          "pregunta": "¿La luz viaja más rápido en el agua que en el vacío?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Falso",
+          "imagen": null,
+          "explicacion": "La luz viaja más lento en el agua que en el vacío, ya que el medio reduce su velocidad."
+        },
+        {
+          "id": 403,
+          "tipo": "multiple",
+          "pregunta": "¿Qué planeta del sistema solar es conocido como el 'Planeta Rojo'?",
+          "opciones": [
+            "Venus",
+            "Marte",
+            "Júpiter",
+            "Saturno"
+          ],
+          "respuesta_correcta": "Marte",
+          "imagen": null,
+          "explicacion": "Marte es conocido como el 'Planeta Rojo' por el óxido de hierro en su superficie."
+        },
+        {
+          "id": 404,
+          "tipo": "multiple",
+          "pregunta": "¿Qué nombre recibe el proceso por el cual las plantas convierten la luz solar en energía?",
+          "opciones": [
+            "Respiración",
+            "Fotosíntesis",
+            "Mitosis",
+            "Fermentación"
+          ],
+          "respuesta_correcta": "Fotosíntesis",
+          "imagen": null,
+          "explicacion": "La fotosíntesis es el proceso por el cual las plantas transforman la luz solar en energía química."
+        },
+        {
+          "id": 405,
+          "tipo": "vf",
+          "pregunta": "¿El ADN contiene toda la información genética de los seres vivos?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "El ADN contiene la información genética que determina las características de los seres vivos."
+        },
+        {
+          "id": 406,
+          "tipo": "multiple",
+          "pregunta": "¿Cuántos huesos tiene aproximadamente el cuerpo humano adulto?",
+          "opciones": [
+            "106",
+            "206",
+            "306",
+            "406"
+          ],
+          "respuesta_correcta": "206",
+          "imagen": null,
+          "explicacion": "El esqueleto humano adulto tiene aproximadamente 206 huesos."
+        },
+        {
+          "id": 407,
+          "tipo": "vf",
+          "pregunta": "¿El corazón humano tiene cuatro cámaras?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "El corazón humano tiene cuatro cámaras: dos aurículas y dos ventrículos."
+        },
+        {
+          "id": 408,
+          "tipo": "multiple",
+          "pregunta": "¿Cuál es el planeta más grande del sistema solar?",
+          "opciones": [
+            "Saturno",
+            "Júpiter",
+            "Neptuno",
+            "Urano"
+          ],
+          "respuesta_correcta": "Júpiter",
+          "imagen": null,
+          "explicacion": "Júpiter es el planeta más grande del sistema solar."
+        },
+        {
+          "id": 409,
+          "tipo": "multiple",
+          "pregunta": "¿Qué gas necesitan los seres humanos para respirar?",
+          "opciones": [
+            "Dióxido de carbono",
+            "Nitrógeno",
+            "Oxígeno",
+            "Hidrógeno"
+          ],
+          "respuesta_correcta": "Oxígeno",
+          "imagen": null,
+          "explicacion": "Los seres humanos necesitan oxígeno para la respiración celular."
+        },
+        {
+          "id": 410,
+          "tipo": "vf",
+          "pregunta": "¿El sonido viaja más rápido en el aire que en el agua?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Falso",
+          "imagen": null,
+          "explicacion": "El sonido viaja más rápido en el agua que en el aire, debido a la mayor densidad del medio."
+        },
+        {
+          "id": 411,
+          "tipo": "multiple",
+          "pregunta": "¿Qué órgano del cuerpo humano se encarga de filtrar la sangre?",
+          "opciones": [
+            "Riñones",
+            "Pulmones",
+            "Hígado",
+            "Estómago"
+          ],
+          "respuesta_correcta": "Riñones",
+          "imagen": null,
+          "explicacion": "Los riñones filtran la sangre y eliminan desechos a través de la orina."
+        },
+        {
+          "id": 412,
+          "tipo": "multiple",
+          "pregunta": "¿Cuál es la unidad básica de la vida?",
+          "opciones": [
+            "El átomo",
+            "La célula",
+            "La molécula",
+            "El tejido"
+          ],
+          "respuesta_correcta": "La célula",
+          "imagen": null,
+          "explicacion": "La célula es la unidad estructural y funcional básica de todos los seres vivos."
+        },
+        {
+          "id": 413,
+          "tipo": "vf",
+          "pregunta": "¿Los seres humanos comparten aproximadamente el 98% de su ADN con los chimpancés?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "Los humanos comparten alrededor del 98% de su ADN con los chimpancés."
+        },
+        {
+          "id": 414,
+          "tipo": "multiple",
+          "pregunta": "¿Qué instrumento se utiliza para medir la temperatura?",
+          "opciones": [
+            "Barómetro",
+            "Termómetro",
+            "Altímetro",
+            "Anemómetro"
+          ],
+          "respuesta_correcta": "Termómetro",
+          "imagen": null,
+          "explicacion": "El termómetro es el instrumento utilizado para medir la temperatura."
+        },
+        {
+          "id": 415,
+          "tipo": "multiple",
+          "pregunta": "¿Cuántos planetas tiene el sistema solar actualmente (según la UAI)?",
+          "opciones": [
+            "7",
+            "8",
+            "9",
+            "10"
+          ],
+          "respuesta_correcta": "8",
+          "imagen": null,
+          "explicacion": "Actualmente el sistema solar cuenta con 8 planetas reconocidos por la Unión Astronómica Internacional."
+        },
+        {
+          "id": 416,
+          "tipo": "vf",
+          "pregunta": "¿Las plantas producen oxígeno durante la fotosíntesis?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "Durante la fotosíntesis, las plantas liberan oxígeno como subproducto."
+        },
+        {
+          "id": 417,
+          "tipo": "multiple",
+          "pregunta": "¿Qué animal es considerado el más grande del mundo?",
+          "opciones": [
+            "Elefante africano",
+            "Ballena azul",
+            "Tiburón blanco",
+            "Jirafa"
+          ],
+          "respuesta_correcta": "Ballena azul",
+          "imagen": null,
+          "explicacion": "La ballena azul es el animal más grande conocido, incluso más que cualquier dinosaurio."
+        },
+        {
+          "id": 418,
+          "tipo": "multiple",
+          "pregunta": "¿Cómo se llama la capa de gases que rodea a la Tierra?",
+          "opciones": [
+            "Litosfera",
+            "Atmósfera",
+            "Hidrósfera",
+            "Ionosfera"
+          ],
+          "respuesta_correcta": "Atmósfera",
+          "imagen": null,
+          "explicacion": "La atmósfera es la capa de gases que envuelve y protege a la Tierra."
+        },
+        {
+          "id": 419,
+          "tipo": "vf",
+          "pregunta": "¿La velocidad de la luz es la velocidad máxima permitida en el universo según la física actual?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "Según la física actual, nada puede superar la velocidad de la luz en el vacío."
+        },
+        {
+          "id": 420,
+          "tipo": "multiple",
+          "pregunta": "¿Qué proceso permite a las abejas transportar polen de una flor a otra?",
+          "opciones": [
+            "Polinización",
+            "Germinación",
+            "Fotosíntesis",
+            "Fecundación"
+          ],
+          "respuesta_correcta": "Polinización",
+          "imagen": null,
+          "explicacion": "La polinización es el proceso por el cual el polen se transfiere entre flores, permitiendo la reproducción de las plantas."
+        }
+      ]
+    },
+    {
+      "id": "arte_literatura",
+      "nombre": "🎨 Arte y Literatura",
+      "preguntas": [
+        {
+          "id": 501,
+          "tipo": "multiple",
+          "pregunta": "¿Quién pintó esta famosa obra maestra titulada 'La Mona Lisa'?",
+          "opciones": [
+            "Vincent van Gogh",
+            "Leonardo da Vinci",
+            "Pablo Picasso",
+            "Miguel Ángel"
+          ],
+          "respuesta_correcta": "Leonardo da Vinci",
+          "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/800px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg",
+          "explicacion": "La Mona Lisa fue pintada por Leonardo da Vinci a comienzos del siglo XVI."
+        },
+        {
+          "id": 502,
+          "tipo": "multiple",
+          "pregunta": "¿Quién escribió la célebre obra de la literatura española 'Don Quijote de la Mancha'?",
+          "opciones": [
+            "Gabriel García Márquez",
+            "Miguel de Cervantes",
+            "Jorge Luis Borges",
+            "Pablo Neruda"
+          ],
+          "respuesta_correcta": "Miguel de Cervantes",
+          "imagen": null,
+          "explicacion": "Miguel de Cervantes escribió 'Don Quijote de la Mancha', obra cumbre de la literatura española."
+        },
+        {
+          "id": 503,
+          "tipo": "vf",
+          "pregunta": "¿William Shakespeare es el autor de 'Romeo y Julieta'?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "William Shakespeare escribió la tragedia 'Romeo y Julieta'."
+        },
+        {
+          "id": 504,
+          "tipo": "multiple",
+          "pregunta": "¿A qué célebre pintor neerlandés pertenece esta emblemática obra 'La noche estrellada'?",
+          "opciones": [
+            "Claude Monet",
+            "Vincent van Gogh",
+            "Salvador Dalí",
+            "Rembrandt"
+          ],
+          "respuesta_correcta": "Vincent van Gogh",
+          "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/800px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg",
+          "explicacion": "'La noche estrellada' es una de las obras más conocidas de Vincent van Gogh."
+        },
+        {
+          "id": 505,
+          "tipo": "multiple",
+          "pregunta": "¿A qué corriente artística pertenece esta obra?",
+          "opciones": [
+            "Cubismo",
+            "Postimpresionismo",
+            "Renacimiento",
+            "Surrealismo"
+          ],
+          "respuesta_correcta": "Postimpresionismo",
+          "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/800px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg",
+          "explicacion": "Van Gogh es uno de los principales representantes del Postimpresionismo."
+        },
+        {
+          "id": 506,
+          "tipo": "multiple",
+          "pregunta": "¿Quién escribió 'Cien años de soledad'?",
+          "opciones": [
+            "Gabriel García Márquez",
+            "Mario Vargas Llosa",
+            "Pablo Neruda",
+            "Jorge Luis Borges"
+          ],
+          "respuesta_correcta": "Gabriel García Márquez",
+          "imagen": null,
+          "explicacion": "Gabriel García Márquez escribió 'Cien años de soledad', obra emblemática del realismo mágico."
+        },
+        {
+          "id": 507,
+          "tipo": "vf",
+          "pregunta": "¿Pablo Picasso fue uno de los creadores del Cubismo?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "Pablo Picasso, junto a Georges Braque, fue uno de los creadores del Cubismo."
+        },
+        {
+          "id": 508,
+          "tipo": "multiple",
+          "pregunta": "¿En qué ciudad se encuentra el museo del Louvre?",
+          "opciones": [
+            "Londres",
+            "Roma",
+            "París",
+            "Madrid"
+          ],
+          "respuesta_correcta": "París",
+          "imagen": null,
+          "explicacion": "El museo del Louvre se encuentra en París, Francia."
+        },
+        {
+          "id": 509,
+          "tipo": "multiple",
+          "pregunta": "¿Quién compuso la Novena Sinfonía, conocida por el 'Himno a la alegría'?",
+          "opciones": [
+            "Mozart",
+            "Beethoven",
+            "Bach",
+            "Chopin"
+          ],
+          "respuesta_correcta": "Beethoven",
+          "imagen": null,
+          "explicacion": "Ludwig van Beethoven compuso la Novena Sinfonía, que incluye el 'Himno a la alegría'."
+        },
+        {
+          "id": 510,
+          "tipo": "vf",
+          "pregunta": "¿Frida Kahlo fue una pintora mexicana?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "Frida Kahlo fue una destacada pintora mexicana del siglo XX."
+        },
+        {
+          "id": 511,
+          "tipo": "multiple",
+          "pregunta": "¿Qué escritor creó al detective Sherlock Holmes?",
+          "opciones": [
+            "Agatha Christie",
+            "Arthur Conan Doyle",
+            "Edgar Allan Poe",
+            "Charles Dickens"
+          ],
+          "respuesta_correcta": "Arthur Conan Doyle",
+          "imagen": null,
+          "explicacion": "Arthur Conan Doyle creó al personaje de Sherlock Holmes."
+        },
+        {
+          "id": 512,
+          "tipo": "multiple",
+          "pregunta": "¿Qué técnica artística consiste en pintar sobre una pared húmeda?",
+          "opciones": [
+            "Óleo",
+            "Acuarela",
+            "Fresco",
+            "Grabado"
+          ],
+          "respuesta_correcta": "Fresco",
+          "imagen": null,
+          "explicacion": "La técnica del fresco consiste en pintar sobre una superficie de yeso o mortero todavía húmeda."
+        },
+        {
+          "id": 513,
+          "tipo": "vf",
+          "pregunta": "¿'Romeo y Julieta' es una tragedia escrita por William Shakespeare?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "'Romeo y Julieta' es una de las tragedias más famosas de William Shakespeare."
+        },
+        {
+          "id": 514,
+          "tipo": "multiple",
+          "pregunta": "¿Qué escultura de Auguste Rodin representa a un hombre reflexionando?",
+          "opciones": [
+            "El Pensador",
+            "El Discóbolo",
+            "El David",
+            "La Piedad"
+          ],
+          "respuesta_correcta": "El Pensador",
+          "imagen": null,
+          "explicacion": "'El Pensador' es una célebre escultura del artista francés Auguste Rodin."
+        },
+        {
+          "id": 515,
+          "tipo": "multiple",
+          "pregunta": "¿En qué museo se exhibe actualmente esta obra?",
+          "opciones": [
+            "El Prado",
+            "El Louvre",
+            "El MoMA",
+            "La Tate Gallery"
+          ],
+          "respuesta_correcta": "El Louvre",
+          "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/800px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg",
+          "explicacion": "La Mona Lisa se exhibe actualmente en el museo del Louvre, en París."
+        },
+        {
+          "id": 516,
+          "tipo": "multiple",
+          "pregunta": "¿Quién escribió la obra teatral 'Hamlet'?",
+          "opciones": [
+            "William Shakespeare",
+            "Molière",
+            "Federico García Lorca",
+            "Anton Chéjov"
+          ],
+          "respuesta_correcta": "William Shakespeare",
+          "imagen": null,
+          "explicacion": "William Shakespeare escribió la tragedia 'Hamlet'."
+        },
+        {
+          "id": 517,
+          "tipo": "vf",
+          "pregunta": "¿Salvador Dalí es un reconocido representante del Surrealismo?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "Salvador Dalí fue uno de los principales representantes del movimiento surrealista."
+        },
+        {
+          "id": 518,
+          "tipo": "multiple",
+          "pregunta": "¿Qué autor argentino es reconocido por cuentos como 'El Aleph' y 'Ficciones'?",
+          "opciones": [
+            "Julio Cortázar",
+            "Jorge Luis Borges",
+            "Adolfo Bioy Casares",
+            "Ernesto Sabato"
+          ],
+          "respuesta_correcta": "Jorge Luis Borges",
+          "imagen": null,
+          "explicacion": "Jorge Luis Borges es el autor argentino de 'El Aleph' y 'Ficciones'."
+        }
+      ]
+    },
+    {
+      "id": "cine",
+      "nombre": "🎬 Cine y Séptimo Arte",
+      "preguntas": [
+        {
+          "id": 601,
+          "tipo": "multiple",
+          "pregunta": "¿Qué director dirigió clásicos del cine como 'E.T.', 'Jurassic Park' y 'Jaws'?",
+          "opciones": [
+            "Christopher Nolan",
+            "Steven Spielberg",
+            "Quentin Tarantino",
+            "Martin Scorsese"
+          ],
+          "respuesta_correcta": "Steven Spielberg",
+          "imagen": null,
+          "explicacion": "Steven Spielberg dirigió películas icónicas como 'E.T.', 'Jurassic Park' y 'Jaws'."
+        },
+        {
+          "id": 602,
+          "tipo": "vf",
+          "pregunta": "¿La película 'Titanic' (1997) ganó un total de 11 Premios Oscar?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "'Titanic' (1997) ganó 11 Premios Oscar, un récord compartido con otras películas."
+        },
+        {
+          "id": 603,
+          "tipo": "multiple",
+          "pregunta": "¿Cuál fue el primer largometraje animado de la historia de Disney estrenado en 1937?",
+          "opciones": [
+            "Pinocho",
+            "Blancanieves y los siete enanitos",
+            "Cenicienta",
+            "Bambi"
+          ],
+          "respuesta_correcta": "Blancanieves y los siete enanitos",
+          "imagen": null,
+          "explicacion": "'Blancanieves y los siete enanitos' (1937) fue el primer largometraje animado de Disney."
+        },
+        {
+          "id": 604,
+          "tipo": "multiple",
+          "pregunta": "¿Qué saga de películas incluye a personajes como Luke Skywalker y Darth Vader?",
+          "opciones": [
+            "El Señor de los Anillos",
+            "Star Wars",
+            "Harry Potter",
+            "Matrix"
+          ],
+          "respuesta_correcta": "Star Wars",
+          "imagen": null,
+          "explicacion": "Luke Skywalker y Darth Vader son personajes centrales de la saga Star Wars."
+        },
+        {
+          "id": 605,
+          "tipo": "vf",
+          "pregunta": "¿La ceremonia de los Premios Oscar se celebra generalmente una vez al año?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "Los Premios Oscar se entregan anualmente para reconocer lo mejor del cine."
+        },
+        {
+          "id": 606,
+          "tipo": "multiple",
+          "pregunta": "¿Qué animal es el protagonista de la película 'El Rey León'?",
+          "opciones": [
+            "Un tigre",
+            "Un león",
+            "Un elefante",
+            "Un lobo"
+          ],
+          "respuesta_correcta": "Un león",
+          "imagen": null,
+          "explicacion": "Simba, el protagonista de 'El Rey León', es un león."
+        },
+        {
+          "id": 607,
+          "tipo": "multiple",
+          "pregunta": "¿En qué país nació la técnica de animación llamada anime?",
+          "opciones": [
+            "China",
+            "Corea del Sur",
+            "Japón",
+            "Estados Unidos"
+          ],
+          "respuesta_correcta": "Japón",
+          "imagen": null,
+          "explicacion": "El anime es una técnica de animación originaria de Japón."
+        },
+        {
+          "id": 608,
+          "tipo": "vf",
+          "pregunta": "¿Charles Chaplin fue una figura clave del cine mudo?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "Charles Chaplin fue una de las figuras más importantes del cine mudo."
+        },
+        {
+          "id": 609,
+          "tipo": "multiple",
+          "pregunta": "¿Cómo se llama el estudio de animación creador de 'Toy Story'?",
+          "opciones": [
+            "DreamWorks",
+            "Pixar",
+            "Illumination",
+            "Studio Ghibli"
+          ],
+          "respuesta_correcta": "Pixar",
+          "imagen": null,
+          "explicacion": "Pixar es el estudio de animación creador de 'Toy Story'."
+        },
+        {
+          "id": 610,
+          "tipo": "multiple",
+          "pregunta": "¿Qué premio es considerado el más importante del cine a nivel mundial?",
+          "opciones": [
+            "Globo de Oro",
+            "Óscar",
+            "Emmy",
+            "Grammy"
+          ],
+          "respuesta_correcta": "Óscar",
+          "imagen": null,
+          "explicacion": "El Óscar es considerado el premio cinematográfico más prestigioso a nivel mundial."
+        },
+        {
+          "id": 611,
+          "tipo": "vf",
+          "pregunta": "¿El cine sonoro reemplazó casi por completo al cine mudo a partir de la década de 1930?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "A partir de la década de 1930, el cine sonoro desplazó casi por completo al cine mudo."
+        },
+        {
+          "id": 612,
+          "tipo": "multiple",
+          "pregunta": "¿Cuál es el estudio de animación japonés creador de 'El viaje de Chihiro'?",
+          "opciones": [
+            "Toei Animation",
+            "Studio Ghibli",
+            "Sunrise",
+            "Madhouse"
+          ],
+          "respuesta_correcta": "Studio Ghibli",
+          "imagen": null,
+          "explicacion": "Studio Ghibli, el estudio japonés de Hayao Miyazaki, creó 'El viaje de Chihiro'."
+        },
+        {
+          "id": 613,
+          "tipo": "vf",
+          "pregunta": "¿Los hermanos Lumière son considerados pioneros del cine?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "Los hermanos Lumière son considerados pioneros del cine gracias a sus primeras proyecciones públicas."
+        },
+        {
+          "id": 614,
+          "tipo": "vf",
+          "pregunta": "¿La película 'El Padrino' está dirigida por Francis Ford Coppola?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "Francis Ford Coppola dirigió la película 'El Padrino' (1972)."
+        },
+        {
+          "id": 615,
+          "tipo": "multiple",
+          "pregunta": "¿Qué actor interpretó a Iron Man en el universo cinematográfico de Marvel?",
+          "opciones": [
+            "Chris Evans",
+            "Robert Downey Jr.",
+            "Chris Hemsworth",
+            "Mark Ruffalo"
+          ],
+          "respuesta_correcta": "Robert Downey Jr.",
+          "imagen": null,
+          "explicacion": "Robert Downey Jr. interpretó a Tony Stark / Iron Man en el universo cinematográfico de Marvel."
+        },
+        {
+          "id": 616,
+          "tipo": "multiple",
+          "pregunta": "¿Cómo se llama el festival de cine más importante de Francia?",
+          "opciones": [
+            "Festival de Venecia",
+            "Festival de Cannes",
+            "Festival de Berlín",
+            "Festival de Sundance"
+          ],
+          "respuesta_correcta": "Festival de Cannes",
+          "imagen": null,
+          "explicacion": "El Festival de Cannes, en Francia, es uno de los festivales de cine más prestigiosos del mundo."
+        }
+      ]
+    },
+    {
+      "id": "matematica",
+      "nombre": "🔢 Matemática",
+      "preguntas": [
+        {
+          "id": 701,
+          "tipo": "multiple",
+          "pregunta": "¿Cuánto es 7 x 8?",
+          "opciones": [
+            "54",
+            "56",
+            "64",
+            "48"
+          ],
+          "respuesta_correcta": "56",
+          "imagen": null,
+          "explicacion": "7 multiplicado por 8 es igual a 56."
+        },
+        {
+          "id": 702,
+          "tipo": "vf",
+          "pregunta": "¿El número 0 es un número par?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "El 0 es un número par porque es divisible exactamente por 2."
+        },
+        {
+          "id": 703,
+          "tipo": "multiple",
+          "pregunta": "¿Cómo se llama un triángulo que tiene sus tres lados iguales?",
+          "opciones": [
+            "Escaleno",
+            "Isósceles",
+            "Equilátero",
+            "Rectángulo"
+          ],
+          "respuesta_correcta": "Equilátero",
+          "imagen": null,
+          "explicacion": "Un triángulo equilátero tiene sus tres lados y sus tres ángulos iguales."
+        },
+        {
+          "id": 704,
+          "tipo": "multiple",
+          "pregunta": "¿Cuál es el resultado de 15 - 9?",
+          "opciones": [
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "respuesta_correcta": "6",
+          "imagen": null,
+          "explicacion": "15 menos 9 es igual a 6."
+        },
+        {
+          "id": 705,
+          "tipo": "vf",
+          "pregunta": "¿Un número primo solo puede dividirse exactamente por 1 y por sí mismo?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "Un número primo es aquel que solo tiene dos divisores: el 1 y sí mismo."
+        },
+        {
+          "id": 706,
+          "tipo": "multiple",
+          "pregunta": "¿Cuánto es la mitad de 100?",
+          "opciones": [
+            "25",
+            "40",
+            "50",
+            "60"
+          ],
+          "respuesta_correcta": "50",
+          "imagen": null,
+          "explicacion": "La mitad de 100 es 50."
+        },
+        {
+          "id": 707,
+          "tipo": "multiple",
+          "pregunta": "¿Cómo se llama el resultado de una multiplicación?",
+          "opciones": [
+            "Suma",
+            "Cociente",
+            "Producto",
+            "Diferencia"
+          ],
+          "respuesta_correcta": "Producto",
+          "imagen": null,
+          "explicacion": "El resultado de una multiplicación se llama producto."
+        },
+        {
+          "id": 708,
+          "tipo": "vf",
+          "pregunta": "¿Pi (π) es un número aproximadamente igual a 3,14?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "Pi (π) es aproximadamente 3,14159..., una constante fundamental en geometría."
+        },
+        {
+          "id": 709,
+          "tipo": "multiple",
+          "pregunta": "¿Cuántos lados tiene un hexágono?",
+          "opciones": [
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          "respuesta_correcta": "6",
+          "imagen": null,
+          "explicacion": "Un hexágono es una figura geométrica de seis lados."
+        },
+        {
+          "id": 710,
+          "tipo": "multiple",
+          "pregunta": "¿Cuál es el resultado de elevar 2 al cuadrado (2²)?",
+          "opciones": [
+            "2",
+            "4",
+            "8",
+            "16"
+          ],
+          "respuesta_correcta": "4",
+          "imagen": null,
+          "explicacion": "2 elevado al cuadrado (2²) es igual a 4."
+        },
+        {
+          "id": 711,
+          "tipo": "vf",
+          "pregunta": "¿La suma de los ángulos internos de un triángulo es 180°?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "La suma de los ángulos internos de cualquier triángulo siempre es 180°."
+        },
+        {
+          "id": 712,
+          "tipo": "multiple",
+          "pregunta": "¿Cómo se llama un número mayor que 1 que solo puede dividirse por 1 y por sí mismo?",
+          "opciones": [
+            "Número compuesto",
+            "Número primo",
+            "Número par",
+            "Número decimal"
+          ],
+          "respuesta_correcta": "Número primo",
+          "imagen": null,
+          "explicacion": "Un número primo mayor que 1 solo puede dividirse exactamente por 1 y por sí mismo."
+        },
+        {
+          "id": 713,
+          "tipo": "vf",
+          "pregunta": "¿El resultado de cualquier número multiplicado por 0 es siempre 0?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "Cualquier número multiplicado por 0 da como resultado 0."
+        },
+        {
+          "id": 714,
+          "tipo": "multiple",
+          "pregunta": "¿Cuánto es 9 al cuadrado (9²)?",
+          "opciones": [
+            "18",
+            "81",
+            "72",
+            "99"
+          ],
+          "respuesta_correcta": "81",
+          "imagen": null,
+          "explicacion": "9 elevado al cuadrado (9²) es igual a 81."
+        },
+        {
+          "id": 715,
+          "tipo": "multiple",
+          "pregunta": "¿Cómo se llama una fracción en la que el numerador es mayor que el denominador?",
+          "opciones": [
+            "Fracción propia",
+            "Fracción impropia",
+            "Fracción decimal",
+            "Fracción mixta"
+          ],
+          "respuesta_correcta": "Fracción impropia",
+          "imagen": null,
+          "explicacion": "Una fracción impropia tiene el numerador mayor o igual que el denominador."
+        },
+        {
+          "id": 716,
+          "tipo": "vf",
+          "pregunta": "¿El número 1 es considerado un número primo?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Falso",
+          "imagen": null,
+          "explicacion": "El número 1 no se considera primo porque solo tiene un divisor."
+        }
+      ]
+    },
+    {
+      "id": "musica",
+      "nombre": "🎵 Música",
+      "preguntas": [
+        {
+          "id": 801,
+          "tipo": "multiple",
+          "pregunta": "¿Cuántas cuerdas tiene una guitarra clásica en su formato estándar?",
+          "opciones": [
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "respuesta_correcta": "6",
+          "imagen": null,
+          "explicacion": "La guitarra clásica estándar tiene 6 cuerdas."
+        },
+        {
+          "id": 802,
+          "tipo": "vf",
+          "pregunta": "¿El piano es un instrumento de percusión y cuerda a la vez?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "El piano se considera un instrumento de cuerda percutida, ya que los martillos golpean las cuerdas."
+        },
+        {
+          "id": 803,
+          "tipo": "multiple",
+          "pregunta": "¿Qué banda británica es conocida por canciones como 'Hey Jude' y 'Let It Be'?",
+          "opciones": [
+            "The Rolling Stones",
+            "The Beatles",
+            "Queen",
+            "Pink Floyd"
+          ],
+          "respuesta_correcta": "The Beatles",
+          "imagen": null,
+          "explicacion": "The Beatles es la banda británica autora de 'Hey Jude' y 'Let It Be'."
+        },
+        {
+          "id": 804,
+          "tipo": "multiple",
+          "pregunta": "¿Cómo se llama la escala musical de siete notas: Do, Re, Mi, Fa, Sol, La, Si?",
+          "opciones": [
+            "Escala pentatónica",
+            "Escala diatónica",
+            "Escala cromática",
+            "Escala mayor pentatónica"
+          ],
+          "respuesta_correcta": "Escala diatónica",
+          "imagen": null,
+          "explicacion": "La escala diatónica está formada por las siete notas: Do, Re, Mi, Fa, Sol, La, Si."
+        },
+        {
+          "id": 805,
+          "tipo": "vf",
+          "pregunta": "¿Ludwig van Beethoven quedó sordo en la última etapa de su vida?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "Beethoven perdió la audición progresivamente y quedó completamente sordo en sus últimos años."
+        },
+        {
+          "id": 806,
+          "tipo": "multiple",
+          "pregunta": "¿Qué género musical se originó en Jamaica y está asociado a Bob Marley?",
+          "opciones": [
+            "Reggae",
+            "Salsa",
+            "Tango",
+            "Jazz"
+          ],
+          "respuesta_correcta": "Reggae",
+          "imagen": null,
+          "explicacion": "El reggae es un género musical originado en Jamaica, popularizado mundialmente por Bob Marley."
+        },
+        {
+          "id": 807,
+          "tipo": "multiple",
+          "pregunta": "¿Qué instrumento está fuertemente asociado al tango argentino?",
+          "opciones": [
+            "Violín",
+            "Bandoneón",
+            "Acordeón",
+            "Guitarra"
+          ],
+          "respuesta_correcta": "Bandoneón",
+          "imagen": null,
+          "explicacion": "El bandoneón es el instrumento característico del tango argentino."
+        },
+        {
+          "id": 808,
+          "tipo": "vf",
+          "pregunta": "¿El jazz es un género musical que se originó en Estados Unidos?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "El jazz se originó a comienzos del siglo XX en Estados Unidos."
+        },
+        {
+          "id": 809,
+          "tipo": "multiple",
+          "pregunta": "¿Cómo se llama la voz femenina más aguda en el canto clásico?",
+          "opciones": [
+            "Contralto",
+            "Soprano",
+            "Mezzosoprano",
+            "Tenor"
+          ],
+          "respuesta_correcta": "Soprano",
+          "imagen": null,
+          "explicacion": "La soprano es la voz femenina más aguda dentro de la clasificación vocal clásica."
+        },
+        {
+          "id": 810,
+          "tipo": "multiple",
+          "pregunta": "¿Qué instrumento de viento con forma de 'S' es típico del jazz?",
+          "opciones": [
+            "Trompeta",
+            "Saxofón",
+            "Flauta",
+            "Clarinete"
+          ],
+          "respuesta_correcta": "Saxofón",
+          "imagen": null,
+          "explicacion": "El saxofón, con su característica forma en 'S', es un instrumento muy usado en el jazz."
+        },
+        {
+          "id": 811,
+          "tipo": "multiple",
+          "pregunta": "¿Qué compositor austríaco es autor de 'Las bodas de Fígaro'?",
+          "opciones": [
+            "Beethoven",
+            "Mozart",
+            "Bach",
+            "Vivaldi"
+          ],
+          "respuesta_correcta": "Mozart",
+          "imagen": null,
+          "explicacion": "Wolfgang Amadeus Mozart compuso la ópera 'Las bodas de Fígaro'."
+        },
+        {
+          "id": 812,
+          "tipo": "vf",
+          "pregunta": "¿La ópera es un género que combina música, canto y teatro?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "La ópera combina música, canto y actuación teatral."
+        },
+        {
+          "id": 813,
+          "tipo": "multiple",
+          "pregunta": "¿Qué instrumento de percusión se toca con las manos y es típico de la música afrolatina?",
+          "opciones": [
+            "Xilófono",
+            "Congas",
+            "Platillos",
+            "Batería"
+          ],
+          "respuesta_correcta": "Congas",
+          "imagen": null,
+          "explicacion": "Las congas son tambores de origen afrocubano tocados con las manos."
+        },
+        {
+          "id": 814,
+          "tipo": "multiple",
+          "pregunta": "¿Cuántas líneas tiene un pentagrama musical?",
+          "opciones": [
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "respuesta_correcta": "5",
+          "imagen": null,
+          "explicacion": "Un pentagrama musical está formado por cinco líneas horizontales."
+        }
+      ]
+    },
+    {
+      "id": "deportes",
+      "nombre": "⚽ Deportes",
+      "preguntas": [
+        {
+          "id": 901,
+          "tipo": "multiple",
+          "pregunta": "¿Cada cuántos años se celebran los Juegos Olímpicos de verano?",
+          "opciones": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "respuesta_correcta": "4",
+          "imagen": null,
+          "explicacion": "Los Juegos Olímpicos de verano se celebran cada 4 años."
+        },
+        {
+          "id": 902,
+          "tipo": "vf",
+          "pregunta": "¿En el fútbol, un equipo tiene 11 jugadores en la cancha?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "Un equipo de fútbol juega con 11 jugadores en la cancha, incluyendo al arquero."
+        },
+        {
+          "id": 903,
+          "tipo": "multiple",
+          "pregunta": "¿En qué deporte se usa una raqueta y una pelota amarilla?",
+          "opciones": [
+            "Fútbol",
+            "Tenis",
+            "Vóley",
+            "Rugby"
+          ],
+          "respuesta_correcta": "Tenis",
+          "imagen": null,
+          "explicacion": "El tenis se juega con raquetas y una pelota amarilla."
+        },
+        {
+          "id": 904,
+          "tipo": "multiple",
+          "pregunta": "¿Cuántos jugadores tiene un equipo de básquetbol en cancha por vez?",
+          "opciones": [
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "respuesta_correcta": "5",
+          "imagen": null,
+          "explicacion": "Un equipo de básquetbol tiene 5 jugadores en cancha por vez."
+        },
+        {
+          "id": 905,
+          "tipo": "vf",
+          "pregunta": "¿El maratón olímpico tiene una distancia de 42,195 km?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "La distancia oficial de un maratón es de 42,195 km."
+        },
+        {
+          "id": 906,
+          "tipo": "multiple",
+          "pregunta": "¿Qué país ganó más Copas del Mundo de fútbol masculino hasta la fecha?",
+          "opciones": [
+            "Argentina",
+            "Alemania",
+            "Italia",
+            "Brasil"
+          ],
+          "respuesta_correcta": "Brasil",
+          "imagen": null,
+          "explicacion": "Brasil es el país con más títulos de la Copa del Mundo de fútbol masculino."
+        },
+        {
+          "id": 907,
+          "tipo": "multiple",
+          "pregunta": "¿En qué deporte se utiliza un 'ring' para competir?",
+          "opciones": [
+            "Boxeo",
+            "Esgrima",
+            "Judo",
+            "Ajedrez"
+          ],
+          "respuesta_correcta": "Boxeo",
+          "imagen": null,
+          "explicacion": "El boxeo se disputa dentro de un cuadrilátero conocido como 'ring'."
+        },
+        {
+          "id": 908,
+          "tipo": "vf",
+          "pregunta": "¿El vóley se juega con una red que separa a los dos equipos?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "En el vóley, una red separa a los dos equipos en la cancha."
+        },
+        {
+          "id": 909,
+          "tipo": "multiple",
+          "pregunta": "¿Cuántos sets se necesitan ganar para vencer un partido de tenis a mejor de 5?",
+          "opciones": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "respuesta_correcta": "3",
+          "imagen": null,
+          "explicacion": "En un partido a mejor de 5 sets, se necesita ganar 3 para vencer."
+        },
+        {
+          "id": 910,
+          "tipo": "multiple",
+          "pregunta": "¿Qué deporte se practica sobre una tabla y una ola?",
+          "opciones": [
+            "Surf",
+            "Esquí",
+            "Vela",
+            "Buceo"
+          ],
+          "respuesta_correcta": "Surf",
+          "imagen": null,
+          "explicacion": "El surf se practica deslizándose sobre una tabla en las olas del mar."
+        },
+        {
+          "id": 911,
+          "tipo": "vf",
+          "pregunta": "¿El rugby se juega con un balón ovalado?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "El rugby se juega con un balón de forma ovalada."
+        },
+        {
+          "id": 912,
+          "tipo": "multiple",
+          "pregunta": "¿En qué deporte olímpico se compite lanzando una jabalina?",
+          "opciones": [
+            "Atletismo",
+            "Natación",
+            "Ciclismo",
+            "Esgrima"
+          ],
+          "respuesta_correcta": "Atletismo",
+          "imagen": null,
+          "explicacion": "El lanzamiento de jabalina es una disciplina del atletismo."
+        },
+        {
+          "id": 913,
+          "tipo": "multiple",
+          "pregunta": "¿Cuántos jugadores conforman un equipo de vóley en la cancha?",
+          "opciones": [
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          "respuesta_correcta": "6",
+          "imagen": null,
+          "explicacion": "Un equipo de vóley tiene 6 jugadores en la cancha."
+        },
+        {
+          "id": 914,
+          "tipo": "vf",
+          "pregunta": "¿El ajedrez es considerado un deporte mental en muchas federaciones?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "El ajedrez es reconocido como deporte mental por diversas federaciones deportivas."
+        }
+      ]
+    },
+    {
+      "id": "animales",
+      "nombre": "🐾 Mundo Animal",
+      "preguntas": [
+        {
+          "id": 1001,
+          "tipo": "multiple",
+          "pregunta": "¿Cuál es el animal terrestre más grande del mundo?",
+          "opciones": [
+            "Rinoceronte",
+            "Elefante africano",
+            "Hipopótamo",
+            "Jirafa"
+          ],
+          "respuesta_correcta": "Elefante africano",
+          "imagen": null,
+          "explicacion": "El elefante africano es el animal terrestre de mayor tamaño."
+        },
+        {
+          "id": 1002,
+          "tipo": "vf",
+          "pregunta": "¿Los delfines son mamíferos?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "Los delfines son mamíferos marinos que respiran aire a través de pulmones."
+        },
+        {
+          "id": 1003,
+          "tipo": "multiple",
+          "pregunta": "¿Qué ave no puede volar y es la más grande del mundo?",
+          "opciones": [
+            "Pingüino",
+            "Avestruz",
+            "Emú",
+            "Casuario"
+          ],
+          "respuesta_correcta": "Avestruz",
+          "imagen": null,
+          "explicacion": "El avestruz es el ave más grande del mundo y no puede volar."
+        },
+        {
+          "id": 1004,
+          "tipo": "multiple",
+          "pregunta": "¿Cuál es el animal terrestre más rápido del mundo?",
+          "opciones": [
+            "León",
+            "Guepardo",
+            "Caballo",
+            "Antílope"
+          ],
+          "respuesta_correcta": "Guepardo",
+          "imagen": null,
+          "explicacion": "El guepardo es el animal terrestre más veloz, alcanzando altas velocidades en corto tiempo."
+        },
+        {
+          "id": 1005,
+          "tipo": "vf",
+          "pregunta": "¿Las arañas tienen ocho patas?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "Las arañas son arácnidos y tienen ocho patas."
+        },
+        {
+          "id": 1006,
+          "tipo": "multiple",
+          "pregunta": "¿Qué animal cambia de color para camuflarse en su entorno?",
+          "opciones": [
+            "Camaleón",
+            "Cocodrilo",
+            "Iguana",
+            "Serpiente"
+          ],
+          "respuesta_correcta": "Camaleón",
+          "imagen": null,
+          "explicacion": "El camaleón puede cambiar de color para camuflarse o comunicarse."
+        },
+        {
+          "id": 1007,
+          "tipo": "multiple",
+          "pregunta": "¿Cómo se llama el proceso mediante el cual una oruga se convierte en mariposa?",
+          "opciones": [
+            "Mutación",
+            "Metamorfosis",
+            "Evolución",
+            "Hibernación"
+          ],
+          "respuesta_correcta": "Metamorfosis",
+          "imagen": null,
+          "explicacion": "La metamorfosis es el proceso de transformación de oruga a mariposa."
+        },
+        {
+          "id": 1008,
+          "tipo": "vf",
+          "pregunta": "¿Los pingüinos viven de forma natural en el Polo Norte?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Falso",
+          "imagen": null,
+          "explicacion": "Los pingüinos viven de forma natural en el hemisferio sur, principalmente en la Antártida, no en el Polo Norte."
+        },
+        {
+          "id": 1009,
+          "tipo": "multiple",
+          "pregunta": "¿Cuál es el mamífero marino más grande del mundo?",
+          "opciones": [
+            "Orca",
+            "Tiburón blanco",
+            "Ballena azul",
+            "Elefante marino"
+          ],
+          "respuesta_correcta": "Ballena azul",
+          "imagen": null,
+          "explicacion": "La ballena azul es el mamífero marino y el animal más grande del planeta."
+        },
+        {
+          "id": 1010,
+          "tipo": "multiple",
+          "pregunta": "¿Qué animal es conocido como 'el rey de la selva'?",
+          "opciones": [
+            "Tigre",
+            "León",
+            "Leopardo",
+            "Elefante"
+          ],
+          "respuesta_correcta": "León",
+          "imagen": null,
+          "explicacion": "El león es conocido popularmente como 'el rey de la selva'."
+        },
+        {
+          "id": 1011,
+          "tipo": "vf",
+          "pregunta": "¿Las tortugas pueden vivir más de 100 años en algunas especies?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "Algunas especies de tortugas pueden vivir más de 100 años."
+        },
+        {
+          "id": 1012,
+          "tipo": "multiple",
+          "pregunta": "¿Qué insecto es conocido por producir miel?",
+          "opciones": [
+            "Hormiga",
+            "Abeja",
+            "Mariposa",
+            "Avispa"
+          ],
+          "respuesta_correcta": "Abeja",
+          "imagen": null,
+          "explicacion": "Las abejas producen miel a partir del néctar de las flores."
+        }
+      ]
+    },
+    {
+      "id": "cultura_general",
+      "nombre": "🧠 Cultura General",
+      "preguntas": [
+        {
+          "id": 1101,
+          "tipo": "multiple",
+          "pregunta": "¿Cuántos días tiene un año bisiesto?",
+          "opciones": [
+            "364",
+            "365",
+            "366",
+            "367"
+          ],
+          "respuesta_correcta": "366",
+          "imagen": null,
+          "explicacion": "Un año bisiesto tiene 366 días, con un día extra en febrero."
+        },
+        {
+          "id": 1102,
+          "tipo": "vf",
+          "pregunta": "¿El español es idioma oficial de más de 20 países?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "El español es idioma oficial en más de 20 países alrededor del mundo."
+        },
+        {
+          "id": 1103,
+          "tipo": "multiple",
+          "pregunta": "¿Cuál es la moneda oficial de Japón?",
+          "opciones": [
+            "Yuan",
+            "Won",
+            "Yen",
+            "Dólar"
+          ],
+          "respuesta_correcta": "Yen",
+          "imagen": null,
+          "explicacion": "El yen es la moneda oficial de Japón."
+        },
+        {
+          "id": 1104,
+          "tipo": "multiple",
+          "pregunta": "¿Cómo se llama la organización internacional que reúne a la mayoría de los países del mundo para promover la paz?",
+          "opciones": [
+            "OTAN",
+            "ONU",
+            "OMS",
+            "UNESCO"
+          ],
+          "respuesta_correcta": "ONU",
+          "imagen": null,
+          "explicacion": "La ONU (Organización de las Naciones Unidas) fue creada para promover la paz y la cooperación internacional."
+        },
+        {
+          "id": 1105,
+          "tipo": "vf",
+          "pregunta": "¿El café es una de las bebidas más consumidas del mundo?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "El café es una de las bebidas más consumidas a nivel mundial."
+        },
+        {
+          "id": 1106,
+          "tipo": "multiple",
+          "pregunta": "¿Qué invento revolucionó la comunicación a distancia en el siglo XIX?",
+          "opciones": [
+            "El teléfono",
+            "La televisión",
+            "Internet",
+            "El fax"
+          ],
+          "respuesta_correcta": "El teléfono",
+          "imagen": null,
+          "explicacion": "El teléfono, inventado en el siglo XIX, revolucionó la comunicación a distancia."
+        },
+        {
+          "id": 1107,
+          "tipo": "multiple",
+          "pregunta": "¿Cuál es el idioma más hablado del mundo como lengua materna?",
+          "opciones": [
+            "Inglés",
+            "Español",
+            "Mandarín",
+            "Hindi"
+          ],
+          "respuesta_correcta": "Mandarín",
+          "imagen": null,
+          "explicacion": "El mandarín es el idioma con más hablantes nativos en el mundo."
+        },
+        {
+          "id": 1108,
+          "tipo": "vf",
+          "pregunta": "¿La Torre Eiffel se encuentra en París?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "La Torre Eiffel es un ícono de París, Francia."
+        },
+        {
+          "id": 1109,
+          "tipo": "multiple",
+          "pregunta": "¿Cuántos continentes hay en el mundo según la clasificación más común?",
+          "opciones": [
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          "respuesta_correcta": "7",
+          "imagen": null,
+          "explicacion": "Comúnmente se reconocen 7 continentes: África, América, Antártida, Asia, Europa y Oceanía."
+        },
+        {
+          "id": 1110,
+          "tipo": "multiple",
+          "pregunta": "¿Qué símbolo se usa al comienzo de una pregunta en español?",
+          "opciones": [
+            "¿",
+            "¡",
+            "°",
+            "º"
+          ],
+          "respuesta_correcta": "¿",
+          "imagen": null,
+          "explicacion": "En español, el signo ¿ se usa al inicio de una pregunta."
+        },
+        {
+          "id": 1111,
+          "tipo": "vf",
+          "pregunta": "¿El sistema métrico decimal utiliza el metro como unidad de longitud?",
+          "opciones": [
+            "Verdadero",
+            "Falso"
+          ],
+          "respuesta_correcta": "Verdadero",
+          "imagen": null,
+          "explicacion": "El sistema métrico decimal usa el metro como unidad base de longitud."
+        },
+        {
+          "id": 1112,
+          "tipo": "multiple",
+          "pregunta": "¿Cómo se le llama a una palabra que se lee igual al derecho y al revés, como 'reconocer'?",
+          "opciones": [
+            "Anagrama",
+            "Palíndromo",
+            "Sinónimo",
+            "Antónimo"
+          ],
+          "respuesta_correcta": "Palíndromo",
+          "imagen": null,
+          "explicacion": "Un palíndromo es una palabra o frase que se lee igual al derecho y al revés."
+        }
+      ]
+    }
+  ]
 }
